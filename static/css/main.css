@@ -68,7 +68,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #FFF;
+  background-color: #F5F8F0;
 }
 
 [tabindex="-1"]:focus {
@@ -11760,8 +11760,8 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.focus {
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding;
   background-clip: padding-box;
-  *border-right-width: 2px;
-  *border-bottom-width: 2px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
   color: #333333;
   font-size: 13px;
   line-height: 1.42857143;
@@ -14863,10 +14863,9 @@ be a descendant of the grid when it is being dragged.
 }
 
 .app-content {
-  min-height: calc(100vh - 50px);
-  margin-top: 50px;
+  min-height: 100vh;
   padding: 30px;
-  background-color: #E5E5E5;
+  background-color: #F5F8F0;
   -webkit-transition: margin-left 0.3s ease;
   -o-transition: margin-left 0.3s ease;
   transition: margin-left 0.3s ease;
@@ -14978,17 +14977,18 @@ be a descendant of the grid when it is being dragged.
   transition: background-color 0.3s ease;
 }
 
+.app-sidebar__toggle_styles{
+  display: flex;
+  justify-content: end;
+  padding-top: 50px;
+}
+
 @media (max-width: 767px) {
   .app-sidebar__toggle {
     -webkit-box-ordinal-group: 0;
         -ms-flex-order: -1;
             order: -1;
   }
-}
-
-.app-sidebar__toggle:before {
-  content: "\f0c9";
-  font-size: 21px;
 }
 
 .app-sidebar__toggle:focus, .app-sidebar__toggle:hover {
@@ -15017,9 +15017,9 @@ be a descendant of the grid when it is being dragged.
 
 .app-nav__item {
   display: block;
-  padding: 15px;
+  margin-left: 50px;
   line-height: 20px;
-  color: #fff;
+  color: #00635a;
   -webkit-transition: background-color 0.3s ease;
   -o-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
@@ -15156,16 +15156,18 @@ be a descendant of the grid when it is being dragged.
   top: 0;
   bottom: 0;
   left: 0;
-  padding-top: 70px;
-  width: 230px;
+  width: 210px;
   overflow: auto;
   z-index: 10;
-  background-color: #222d32;
+  background-color: #ffffff;
   -webkit-box-shadow: 0px 8px 17px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 8px 17px rgba(0, 0, 0, 0.2);
-  -webkit-transition: left 0.3s ease, width 0.3s ease;
-  -o-transition: left 0.3s ease, width 0.3s ease;
-  transition: left 0.3s ease, width 0.3s ease;
+  -webkit-transition: left 0.3s ease,
+ width 0.3s ease;
+  -o-transition: left 0.3s ease,
+ width 0.3s ease;
+  transition: left 0.3s ease,
+ width 0.3s ease;
 }
 
 .app-sidebar::-webkit-scrollbar {
@@ -15191,6 +15193,13 @@ be a descendant of the grid when it is being dragged.
     right: 0;
     z-index: 9;
   }
+}
+
+.app-sidebar-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .app-sidebar__user {
@@ -15242,17 +15251,20 @@ be a descendant of the grid when it is being dragged.
   padding: 12px 15px;
   font-size: 1.08em;
   border-left: 3px solid transparent;
-  -webkit-transition: border-left-color 0.3s ease, background-color 0.3s ease;
-  -o-transition: border-left-color 0.3s ease, background-color 0.3s ease;
-  transition: border-left-color 0.3s ease, background-color 0.3s ease;
-  color: #fff;
+  -webkit-transition: border-left-color 0.3s ease,
+ background-color 0.3s ease;
+  -o-transition: border-left-color 0.3s ease,
+ background-color 0.3s ease;
+  transition: border-left-color 0.3s ease,
+ background-color 0.3s ease;
+ color: #007d71;
 }
 
 .app-menu__item.active, .app-menu__item:hover, .app-menu__item:focus {
-  background: #0d1214;
-  border-left-color: #009688;
+  background: #009688;
+  border-left-color: #FFFFFF;
   text-decoration: none;
-  color: #fff;
+  color: #FFFFFF;
 }
 
 .app-menu__icon {
@@ -15270,12 +15282,14 @@ be a descendant of the grid when it is being dragged.
 }
 
 .treeview.is-expanded [data-toggle='treeview'] {
-  border-left-color: #009688;
-  background: #0d1214;
+  border-left-color: #FFFFFF;
+  background: #009688;
+  color: #FFFFFF;
 }
 
 .treeview.is-expanded .treeview-menu {
   max-height: 100vh;
+  background-color: #59BBB2;
 }
 
 .treeview.is-expanded .treeview-indicator {
@@ -15460,11 +15474,9 @@ be a descendant of the grid when it is being dragged.
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  background-color: #FFF;
   margin: -30px -30px 30px;
   padding: 20px 30px;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
 }
 
 @media print {
