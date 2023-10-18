@@ -53,6 +53,11 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'accounts.auth_backends.MatriculaAuthBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 ROOT_URLCONF = "eventcalendar.urls"
 
 TEMPLATES = [
