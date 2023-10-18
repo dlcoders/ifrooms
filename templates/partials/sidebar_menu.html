@@ -1,14 +1,15 @@
- <!-- Sidebar menu-->
+{% load static %}
+<!-- Sidebar menu-->
  <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
         
  <aside class="app-sidebar">
-     
+    <div class="app-sidebar-img">
+        <img class="app-sidebar__overlay" src="{% static 'images/logoifrooms.svg' %}" height="100px">
+    </div>
+
      <ul class="app-menu">
-         
-         <li>
-            <!-- Sidebar toggle button-->
-            <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>         </li>
-         <li>
+        
+        <li>
              <a class="app-menu__item active" href="{% url 'dashboard' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a>
          </li>
          <li>
@@ -31,5 +32,10 @@
          <li>
              <a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Docs</span></a>
          </li>
+         <li class="app-sidebar__toggle_styles">
+            <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
+                <i class="fa fa-expand" style="color: #59BBB2"></i>
+            </a>                 
+        </li>
      </ul>
  </aside>
