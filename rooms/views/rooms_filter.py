@@ -5,7 +5,6 @@ def calendar_view(request):
     
     salas = Room.objects.all()
    
-    print("TESTE:", salas)
     filtro_texto = request.GET.get('filtro_texto')
     filtro_sala = request.GET.get('filtro_sala')
 
