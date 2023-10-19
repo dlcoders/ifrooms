@@ -2,8 +2,8 @@ from datetime import datetime
 from django.db import models
 from django.urls import reverse
 
-from calendarapp.models import EventAbstract
-from accounts.models import User
+from apps.calendarapp.models import EventAbstract
+from apps.accounts.models import User
 
 
 class EventManager(models.Manager):

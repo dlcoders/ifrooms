@@ -12,9 +12,9 @@ from django.urls import reverse_lazy, reverse
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 
-from calendarapp.models import EventMember, Event
-from calendarapp.utils import Calendar
-from calendarapp.forms import EventForm, AddMemberForm
+from apps.calendarapp.models import EventMember, Event
+from apps.calendarapp.utils import Calendar
+from apps.calendarapp.forms import EventForm, AddMemberForm
 
 
 def get_date(req_day):

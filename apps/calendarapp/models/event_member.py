@@ -1,7 +1,7 @@
 from django.db import models
 
-from accounts.models import User
-from calendarapp.models import Event, EventAbstract
+from apps.accounts.models import User
+from apps.calendarapp.models import Event, EventAbstract
 
 
 class EventMember(EventAbstract):

@@ -39,10 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "calendarapp.apps.CalendarappConfig",
-    "accounts.apps.AccountsConfig",
-    "reservation",
-    "rooms",
+    "apps.calendarapp.apps.CalendarappConfig",
+    "apps.accounts.apps.AccountsConfig",
+    "apps.reservation",
+    "apps.rooms",
 ]
 
 MIDDLEWARE = [
