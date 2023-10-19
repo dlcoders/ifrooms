@@ -18,7 +18,8 @@
                 <div class="row justify-content-center">
                     <div class="col-md-12">
                         <div class="wrap d-md-flex">
-                            <div class="text-wrap p-4 p-lg-5 d-flex img" style="background-image: url({% static 'images/simboloif.png' %});">
+                            <div class="text-wrap">
+                                <img class="img" src="/static/images/simboloif.png">
                             </div>
                             <div class="login-wrap p-4 p-md-5">
                                 <div class="row justify-content-center py-md-5">
@@ -50,7 +51,7 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label class="label" for="password">Password</label>
+                                                        <label class="label" for="password">Repita a senha</label>
                                                         {{ form.password2 }}
                                                         <span class="text-danger">{{ form.errors.password2 }}</span>
                                                     </div>
