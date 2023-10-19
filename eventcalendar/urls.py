@@ -24,4 +24,5 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")),
     path("", include("calendarapp.urls")),
     path("rooms/", include("rooms.urls")),
+    path("reservation/", include("reservation.urls")),
 ]

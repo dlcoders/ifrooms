@@ -7,6 +7,7 @@ app_name = "calendarapp"
 
 urlpatterns = [
     path("my-calender-teacher/", views.MyCalenderTeacher.as_view(), name="my-calender-teacher"),
+    path("my-calender-coordinator/", views.MyCalenderCoordinator.as_view(), name="my-calender-coordinator"),
     path("calender/", views.CalendarViewNew.as_view(), name="calendar"),
     path("calenders/", views.CalendarView.as_view(), name="calendars"),
     path('delete_event/<int:event_id>/', views.delete_event, name='delete_event'),

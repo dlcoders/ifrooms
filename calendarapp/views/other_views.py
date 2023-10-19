@@ -182,3 +182,6 @@ def next_day(request, event_id):
 
 class MyCalenderTeacher(CalendarViewNew):
     template_name = "pages/teacher/my_calendar.html"
+
+class MyCalenderCoordinator(CalendarViewNew):
+    template_name = "pages/coordinator/my_calendar.html"
