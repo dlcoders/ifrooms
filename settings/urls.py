@@ -22,8 +22,8 @@ from calendarapp.views import MyCalendarUser
 urlpatterns = [
     path("", DashboardView.as_view(), name="dashboard"),
     path("admin/", admin.site.urls),
-    path("accounts/", include("accounts.urls")),
-    path("", include("calendarapp.urls")),
-    path("rooms/", include("rooms.urls")),
-    path("reservation/", include("reservation.urls")),
+    path("accounts/", include("apps.accounts.urls")),
+    path("", include("apps.calendarapp.urls")),
+    path("rooms/", include("apps.rooms.urls")),
+    path("reservation/", include("apps.reservation.urls")),
 ]

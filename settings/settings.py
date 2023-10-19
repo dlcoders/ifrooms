@@ -60,7 +60,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-ROOT_URLCONF = "eventcalendar.urls"
+ROOT_URLCONF = "settings.urls"
 
 TEMPLATES = [
     {
@@ -78,7 +78,7 @@ TEMPLATES = [
     }
 ]
 
-WSGI_APPLICATION = "eventcalendar.wsgi.application"
+WSGI_APPLICATION = "settings.wsgi.application"
 
 
 # Database
