@@ -26,6 +26,14 @@ class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         """Creates and returns a new user using an email address"""
         extra_fields.setdefault("is_staff", False)
+        extra_fields.setdefault("is_teacher", False)
+        extra_fields.setdefault("is_superuser", False)
+        return self._create_user(email, password, **extra_fields)
+    
+    def create_teacher(self, email, password=None, **extra_fields):
+        """Creates and returns a new user using an email address"""
+        extra_fields.setdefault("is_staff", False)
+        extra_fields.setdefault("is_teacher", True)
         extra_fields.setdefault("is_superuser", False)
         return self._create_user(email, password, **extra_fields)
 
@@ -33,12 +41,16 @@ class UserManager(BaseUserManager):
         """Creates and returns a new staffuser using an email address"""
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", False)
+        extra_fields.setdefault("is_teacher", False)
+
         return self._create_user(email, password, **extra_fields)
 
     def create_superuser(self, email, password=None, **extra_fields):
         """Creates and returns a new superuser using an email address"""
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
+        extra_fields.setdefault("is_teacher", False)
+
         return self._create_user(email, password, **extra_fields)
 
 
@@ -59,8 +71,10 @@ class User(AbstractBaseUser, PermissionsMixin):
         help_text="Ex: 123456",
     )
     
+    is_superuser = models.BooleanField(_("Superuser status"), default=False)
     is_staff = models.BooleanField(_("Staff status"), default=False)
     is_active = models.BooleanField(_("Active"), default=True)
+    is_teacher = models.BooleanField(_("Teacher status"), default=False)
     date_joined = models.DateTimeField(_("Date Joined"), auto_now_add=True)
     last_updated = models.DateTimeField(_("Last Updated"), auto_now=True)
 
