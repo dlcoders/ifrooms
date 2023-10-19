@@ -20,7 +20,7 @@ from .views import DashboardView
 from calendarapp.views import MyCalenderUser
 
 urlpatterns = [
-    path("", MyCalenderUser.as_view(), name="dashboard"),
+    path("", DashboardView.as_view(), name="dashboard"),
     path("admin/", admin.site.urls),
     path("accounts/", include("accounts.urls")),
     path("", include("calendarapp.urls")),

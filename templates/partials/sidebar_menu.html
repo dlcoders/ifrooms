@@ -4,13 +4,13 @@
         
  <aside class="app-sidebar">
     <div class="app-sidebar-img">
-        <img class="app-sidebar__overlay" src="{% static 'images/logoifrooms.svg' %}" height="100px">
-    </div>
+        <a href="{% url 'dashboard' %}"><img class="app-sidebar__overlay" src="{% static 'images/logoifrooms.svg' %}" height="100px">
+    </div></a>
 
     {% if not request.user.is_superuser and not request.user.is_staff and not request.user.is_teacher %}
     <ul class="app-menu">
         <li>
-             <a class="app-menu__item active" href="{% url 'dashboard' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Calendário</span></a>
+             <a class="app-menu__item active" href="{% url 'calendarapp:my-calender-user' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Calendário</span></a>
          </li>
      </ul>
     {% endif %}

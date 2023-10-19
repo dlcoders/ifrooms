@@ -110,9 +110,10 @@ class EventMemberDeleteView(generic.DeleteView):
     template_name = "event_delete.html"
     success_url = reverse_lazy("calendarapp:calendar")
 # view padrão para calendário
-class CalendarViewNew(LoginRequiredMixin, generic.View):
-    login_url = "accounts:signin"
-    template_name = "calendar.html"
+# class CalendarViewNew(LoginRequiredMixin, generic.View):
+class CalendarViewNew(generic.View):
+    # login_url = "accounts:signin"
+    template_name = "pages/dashboard.html"
     form_class = EventForm
 
     def get(self, request, *args, **kwargs):

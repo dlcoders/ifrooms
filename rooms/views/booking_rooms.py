@@ -1,7 +1,9 @@
 
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class BookingRoomView(TemplateView):
+class BookingRoomView(LoginRequiredMixin, TemplateView):
+    login_url = "accounts:signin"
     template_name = 'pages/teacher/booking_rooms.html'
 
     # def get_context_data(self, **kwargs):

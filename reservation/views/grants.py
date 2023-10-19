@@ -1,7 +1,9 @@
 
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class GrantsView(TemplateView):
+class GrantsView(LoginRequiredMixin, TemplateView):
+    login_url = "accounts:signin"
     template_name = 'pages/coordinator/grants.html'
 
     # def get_context_data(self, **kwargs):

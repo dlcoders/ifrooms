@@ -24,6 +24,6 @@ class SignInView(View):
             user = authenticate(matricula=matricula, password=password)
             if user:
                 login(request, user)
-                return redirect("calendarapp:calendar")
+                return redirect("dashboard")
         context = {"form": forms}
         return render(request, self.template_name, context)
