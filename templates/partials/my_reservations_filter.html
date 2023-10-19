@@ -1,0 +1,21 @@
+{% load static %}
+
+<form method="get" action="{% url 'calendarapp:calendar' %}">
+  <div>
+    <label for="filtro_texto">Texto:</label>
+    <input type="text" id="filtro_texto" name="filtro_texto" value="{{ request.GET.filtro_texto }}">
+  </div>
+  
+  <div>
+    <label for="filtro_sala">Sala:</label>
+    <select id="filtro_sala" name="filtro_sala">
+        <option value="">Todas as Salas</option>
+        {% for sala in salas %}
+          <option value="{{ sala.id }}">{{ sala.sala }}</option>
+        {% endfor %}
+    </select>
+  </div>
+  <div>
+    <button type="submit">Filtrar</button>
+  </div>
+</form>
