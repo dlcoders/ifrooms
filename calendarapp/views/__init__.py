@@ -2,6 +2,7 @@ from .event_list import AllEventsListView, RunningEventsListView
 from .other_views import (
     CalendarViewNew,
     CalendarView,
+    MyCalenderUser,
     MyCalenderTeacher,
     MyCalenderCoordinator,
     create_event,
@@ -20,6 +21,7 @@ __all__ = [
     RunningEventsListView,
     CalendarViewNew,
     CalendarView,
+    MyCalenderUser,
     MyCalenderTeacher,
     MyCalenderCoordinator,
     create_event,

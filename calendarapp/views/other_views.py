@@ -112,7 +112,7 @@ class EventMemberDeleteView(generic.DeleteView):
 # view padrão para calendário
 class CalendarViewNew(LoginRequiredMixin, generic.View):
     login_url = "accounts:signin"
-    template_name = "pages/calendar.html"
+    template_name = "calendar.html"
     form_class = EventForm
 
     def get(self, request, *args, **kwargs):
@@ -180,6 +180,9 @@ def next_day(request, event_id):
     else:
         return JsonResponse({'message': 'Error!'}, status=400)
 
+class MyCalenderUser(CalendarViewNew):
+    template_name = "pages/my_calendar.html"
+    
 class MyCalenderTeacher(CalendarViewNew):
     template_name = "pages/teacher/my_calendar.html"
 
