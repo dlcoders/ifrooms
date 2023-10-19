@@ -10,7 +10,7 @@
     {% if not request.user.is_superuser and not request.user.is_staff and not request.user.is_teacher %}
     <ul class="app-menu">
         <li>
-             <a class="app-menu__item active" href="{% url 'calendarapp:my-calender-user' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Calendário</span></a>
+             <a class="app-menu__item active" href="{% url 'calendarapp:my-calendar-user' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Calendário</span></a>
          </li>
      </ul>
     {% endif %}
@@ -23,7 +23,7 @@
              <a class="app-menu__item active" href="{% url 'reservation:grants' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Deferir</span></a>
          </li>
          <li>
-             <a class="app-menu__item" href="{% url 'calendarapp:my-calender-coordinator' %}"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Meu Calendário</span></a>
+             <a class="app-menu__item" href="{% url 'calendarapp:my-calendar-coordinator' %}"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Meu Calendário</span></a>
          </li>
          </li>
          <li>
@@ -56,7 +56,7 @@
              <a class="app-menu__item active" href="{% url 'booking-room' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Reservar</span></a>
          </li>
          <li>
-             <a class="app-menu__item" href="{% url 'calendarapp:my-calender-teacher' %}"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Meu Calendário</span></a>
+             <a class="app-menu__item" href="{% url 'calendarapp:my-calendar-teacher' %}"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Meu Calendário</span></a>
          </li>
          <li>
              <a class="app-menu__item" href="{% url 'my-reservations' %}"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Minhas Reservas</span></a>

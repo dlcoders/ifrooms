@@ -181,11 +181,11 @@ def next_day(request, event_id):
     else:
         return JsonResponse({'message': 'Error!'}, status=400)
 
-class MyCalenderUser(CalendarViewNew):
+class MyCalendarUser(CalendarViewNew):
     template_name = "pages/my_calendar.html"
     
-class MyCalenderTeacher(CalendarViewNew):
+class MyCalendarTeacher(CalendarViewNew):
     template_name = "pages/teacher/my_calendar.html"
 
-class MyCalenderCoordinator(CalendarViewNew):
+class MyCalendarCoordinator(CalendarViewNew):
     template_name = "pages/coordinator/my_calendar.html"
