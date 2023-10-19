@@ -109,7 +109,7 @@ class EventMemberDeleteView(generic.DeleteView):
     model = EventMember
     template_name = "event_delete.html"
     success_url = reverse_lazy("calendarapp:calendar")
-
+# view padrão para calendário
 class CalendarViewNew(LoginRequiredMixin, generic.View):
     login_url = "accounts:signin"
     template_name = "pages/calendar.html"
@@ -179,3 +179,6 @@ def next_day(request, event_id):
         return JsonResponse({'message': 'Sucess!'})
     else:
         return JsonResponse({'message': 'Error!'}, status=400)
+
+class MyCalenderTeacher(CalendarViewNew):
+    template_name = "pages/teacher/my_calendar.html"

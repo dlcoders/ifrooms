@@ -53,27 +53,14 @@
      <ul class="app-menu">
         
         <li>
-             <a class="app-menu__item active" href="{% url 'rooms' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Reservar Sala</span></a>
+             <a class="app-menu__item active" href="{% url 'booking-room' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Reservar</span></a>
          </li>
          <li>
-             <a class="app-menu__item" href="{% url 'calendarapp:calendar' %}"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Meu Calendário</span></a>
-         </li>
-         <!-- <li class="treeview">
-             <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Events</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-             <ul class="treeview-menu">
-                 <li>
-                     <a class="treeview-item" href="{% url 'calendarapp:running_events' %}"><i class="icon fa fa-circle-o"></i> Running</a>
-                 </li>
-                 <li>
-                     <a class="treeview-item" href="{% url 'calendarapp:running_events' %}"><i class="icon fa fa-circle-o"></i> Upcoming</a>
-                 </li>
-                 <li>
-                     <a class="treeview-item" href="{% url 'calendarapp:all_events' %}"><i class="icon fa fa-circle-o"></i> All</a>
-                 </li>
-             </ul> -->
+             <a class="app-menu__item" href="{% url 'calendarapp:my-calender-teacher' %}"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Meu Calendário</span></a>
          </li>
          <li>
-             <a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Minhas Reservas</span></a>
+             <a class="app-menu__item" href="{% url 'my-reservations' %}"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Minhas Reservas</span></a>
+         </li>
          </li>
          <li class="app-sidebar__toggle_styles">
             <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
