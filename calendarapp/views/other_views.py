@@ -98,7 +98,7 @@ def add_eventmember(request, event_id):
             if member.count() <= 9:
                 user = forms.cleaned_data["user"]
                 EventMember.objects.create(event=event, user=user)
-                return redirect("calendarapp:calendar")
+                return redirect("pages:calendar")
             else:
                 print("--------------User limit exceed!-----------------")
     context = {"form": forms}
@@ -112,7 +112,7 @@ class EventMemberDeleteView(generic.DeleteView):
 
 class CalendarViewNew(LoginRequiredMixin, generic.View):
     login_url = "accounts:signin"
-    template_name = "calendarapp/calendar.html"
+    template_name = "pages/calendar.html"
     form_class = EventForm
 
     def get(self, request, *args, **kwargs):

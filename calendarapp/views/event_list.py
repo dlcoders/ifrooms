@@ -6,7 +6,7 @@ from calendarapp.models import Event
 class AllEventsListView(ListView):
     """ All event list views """
 
-    template_name = "calendarapp/events_list.html"
+    template_name = "pages/events_list.html"
     model = Event
 
     def get_queryset(self):
@@ -16,7 +16,7 @@ class AllEventsListView(ListView):
 class RunningEventsListView(ListView):
     """ Running events list view """
 
-    template_name = "calendarapp/events_list.html"
+    template_name = "pages/events_list.html"
     model = Event
 
     def get_queryset(self):

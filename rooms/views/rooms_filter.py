@@ -17,4 +17,4 @@ def calendar_view(request):
 
     escolhas_predio = Room.CHOICES_PREDIO
 
-    return render(request, 'dashboard.html', {'salas': salas, 'escolhas_predio': escolhas_predio})
+    return render(request, 'pages/dashboard.html', {'salas': salas, 'escolhas_predio': escolhas_predio})
