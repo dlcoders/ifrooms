@@ -71,8 +71,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         help_text="Ex: 123456",
     )
     
-    is_superuser = models.BooleanField(_("Superuser status"), default=False)
-    is_staff = models.BooleanField(_("Staff status"), default=False)
+    is_superuser = models.BooleanField(_("Admin status"), default=False)
+    is_staff = models.BooleanField(_("Coordinator status"), default=False)
     is_active = models.BooleanField(_("Active"), default=True)
     is_teacher = models.BooleanField(_("Teacher status"), default=False)
     date_joined = models.DateTimeField(_("Date Joined"), auto_now_add=True)
