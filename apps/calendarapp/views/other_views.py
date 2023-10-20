@@ -189,3 +189,6 @@ class MyCalendarTeacher(CalendarViewNew):
 
 class MyCalendarCoordinator(CalendarViewNew):
     template_name = "pages/coordinator/my_calendar.html"
+
+class CalendarRoomReservationsView(CalendarViewNew):
+    template_name = "pages/coordinator/calendar_room_reservations.html"

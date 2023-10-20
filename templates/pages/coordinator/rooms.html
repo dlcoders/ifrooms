@@ -9,13 +9,17 @@
     </div>
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-        <li class="breadcrumb-item"><a href="#">Gerenciar Salas</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'calendarapp:calendar-room-reservations' %}">Gerenciar Salas</a></li>
         {% include 'partials/dropdown_user.html' %}
     </ul>
     
 {% endblock breadcrumb %}
 
 {% block content %}
+
+<a href="{% url 'create-room' %}">
+    <button class="btn btn-primary" style="margin-bottom: 1rem;">Criar Sala</button>
+</a>
 
 <div class="table-responsive">
     <div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
@@ -47,7 +51,7 @@
                             <td> Principal</td>
                             <td> Não</td>
                             <td> Ana Silva</td>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}"><i class="fas fa-search"></i></a></td>
                         </tr>
                         <tr role="row" class="even">
                             <td> Sala 33 </td>
@@ -55,7 +59,7 @@
                             <td> Principal</td>
                             <td> Sim</td>
                             <td> Pedro Santos</td>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}"><i class="fas fa-search"></i></a></td>
                         </tr>
                         <tr role="row" class="odd">
                             <td> Sala 5 </td>
@@ -63,7 +67,7 @@
                             <td> Principal</td>
                             <td> Sim</td>
                             <td> Maria Lima</td>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}"><i class="fas fa-search"></i></a></td>
                         </tr>
                         <tr role="row" class="odd">
                             <td> Sala 18 </td>
@@ -71,7 +75,7 @@
                             <td> Principal</td>
                             <td> Não</td>
                             <td> Carlos Ribeiro</td>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}"><i class="fas fa-search"></i></a></td>
                         </tr>
                         <tr role="row" class="even">
                             <td> Sala 8 </td>
@@ -79,7 +83,7 @@
                             <td> Principal</td>
                             <td> Sim</td>
                             <td> Sofia Pereira</td>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}"><i class="fas fa-search"></i></a></td>
                         </tr>
                         <tr role="row" class="even">
                             <td> Sala 22 </td>
@@ -87,7 +91,7 @@
                             <td> Principal</td>
                             <td> Não</td>
                             <td> Marcelo Alves</td>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}"><i class="fas fa-search"></i></a></td>
                         </tr>
                         <tr role="row" class="odd">
                             <td> Sala 14 </td>
@@ -95,7 +99,7 @@
                             <td> Principal</td>
                             <td> Sim</td>
                             <td> Lúcia Oliveira</td>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}"><i class="fas fa-search"></i></a></td>
                         </tr>
                         <tr role="row" class="odd">
                             <td> Sala 30 </td>
@@ -103,7 +107,7 @@
                             <td> Principal</td>
                             <td> Não</td>
                             <td> Tiago Santos</td>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}"><i class="fas fa-search"></i></a></td>
                         </tr>
                         <tr role="row" class="even">
                             <td> Sala 9 </td>
@@ -111,7 +115,7 @@
                             <td> Principal</td>
                             <td> Sim</td>
                             <td> Beatriz Lima</td>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}"><i class="fas fa-search"></i></a></td>
                         </tr>
                         <tr role="row" class="even">
                             <td> Sala 41 </td>
@@ -119,7 +123,7 @@
                             <td> Principal</td>
                             <td> Não</td>
                             <td> Rafael Silva</td>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}"><i class="fas fa-search"></i></a></td>
                         </tr>
                         <tr role="row" class="odd">
                             <td> Sala 3 </td>
@@ -127,7 +131,7 @@
                             <td> Principal</td>
                             <td> Não</td>
                             <td> Camila Almeida</td>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}"><i class="fas fa-search"></i></a></td>
                         </tr>
                         <tr role="row" class="even">
                             <td> Sala 17 </td>
@@ -135,7 +139,7 @@
                             <td> Principal</td>
                             <td> Sim</td>
                             <td> Gustavo Oliveira</td>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}"><i class="fas fa-search"></i></a></td>
                         </tr>
                         <tr role="row" class="odd">
                             <td> Sala 26 </td>
@@ -143,7 +147,7 @@
                             <td> Principal</td>
                             <td> Não</td>
                             <td> Isabela Costa</td>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}"><i class="fas fa-search"></i></a></td>
                         </tr>
                         <tr role="row" class="even">
                             <td> Sala 10 </td>
@@ -151,7 +155,7 @@
                             <td> Principal</td>
                             <td> Sim</td>
                             <td> André Santos</td>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}"><i class="fas fa-search"></i></a></td>
                         </tr>
                         <tr role="row" class="odd">
                             <td> Sala 7 </td>
@@ -159,7 +163,7 @@
                             <td> Principal</td>
                             <td> Não</td>
                             <td> Laura Pereira</td>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}"><i class="fas fa-search"></i></a></td>
                         </tr>                                                
                     </tbody>
                 </table>
@@ -172,6 +176,6 @@
 {% block extrascripts %}
     <script type="text/javascript" src="{% static 'js/plugins/jquery.dataTables.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/plugins/dataTables.bootstrap.min.js' %}"></script>
-    <script type="text/javascript">$('#sampleTable').DataTable();</script>
+    <script type="text/javascript">$('{% url 'calendarapp:calendar-room-reservations' %}sampleTable').DataTable();</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 {% endblock extrascripts %}

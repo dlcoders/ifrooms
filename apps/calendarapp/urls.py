@@ -9,6 +9,7 @@ urlpatterns = [
     path("my-calendar-user", views.MyCalendarUser.as_view(), name="my-calendar-user"),
     path("my-calendar-teacher/", views.MyCalendarTeacher.as_view(), name="my-calendar-teacher"),
     path("my-calendar-coordinator/", views.MyCalendarCoordinator.as_view(), name="my-calendar-coordinator"),
+    path('calendar-room-reservations/', views.CalendarRoomReservationsView.as_view(), name='calendar-room-reservations'),
     ######################################################################
     path("calendar/", views.CalendarViewNew.as_view(), name="calendar"),
     path("calendars/", views.CalendarView.as_view(), name="calendars"),

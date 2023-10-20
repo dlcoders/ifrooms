@@ -5,18 +5,19 @@
 
 {% block breadcrumb %}
     <div>
-        <h1><i class="fa fa-dashboard"></i> Reserva Sala X</h1>
+        <h1><i class="fa fa-dashboard"></i> Reserva Sala</h1>
     </div>
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
         <li class="breadcrumb-item"><a href="#">Deferir</a></li>
-        <li class="breadcrumb-item"><a href="#">Reserva Sala X</a></li>
+        <li class="breadcrumb-item"><a href="#">Reserva Sala</a></li>
         {% include 'partials/dropdown_user.html' %}
     </ul>
     
 {% endblock breadcrumb %}
 
 {% block content %}
+<div class="table-responsive">
 <form method="post" style="margin-left: 15px;">
     <div class="form-group">
       <label for="data">Data</label>
@@ -62,4 +63,5 @@
       </div>
 
     </form>
+  </div>
 {% endblock %}
