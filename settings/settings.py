@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "apps.calendarapp.apps.CalendarappConfig",
-    "apps.accounts.apps.AccountsConfig",
+    
+    "apps.calendarapp",
+    "apps.accounts",
     "apps.reservation",
     "apps.rooms",
 ]
@@ -56,7 +57,7 @@ MIDDLEWARE = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'accounts.auth_backends.MatriculaAuthBackend',
+    'apps.accounts.auth_backends.MatriculaAuthBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 

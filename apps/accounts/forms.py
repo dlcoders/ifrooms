@@ -14,6 +14,7 @@ class SignInForm(forms.Form):
         label="Senha",
         widget=forms.PasswordInput(attrs={"class": "form-control"})
     )
+    error_message = None
 
 
 class SignUpForm(forms.ModelForm):

@@ -25,5 +25,8 @@ class SignInView(View):
             if user:
                 login(request, user)
                 return redirect("dashboard")
+            else:
+                forms.error_message = "Credenciais inválidas. Verifique sua matrícula e senha."
         context = {"form": forms}
         return render(request, self.template_name, context)
+
