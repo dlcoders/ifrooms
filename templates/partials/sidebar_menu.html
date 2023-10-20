@@ -18,23 +18,28 @@
      {% if request.user.is_staff and not request.user.is_superuser %}
 
      <ul class="app-menu">
-        
         <li>
-             <a class="app-menu__item active" href="{% url 'reservation:grants' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Deferir</span></a>
-         </li>
-         <li>
-             <a class="app-menu__item" href="{% url 'calendarapp:my-calendar-coordinator' %}"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Meu Calendário</span></a>
-         </li>
-         </li>
-         <li>
-             <a class="app-menu__item" href="{% url 'reservation:rooms' %}"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Gerenciar Salas</span></a>
-         </li>
-         <li class="app-sidebar__toggle_styles">
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'grants' %} active{% endif %}" href="{% url 'reservation:grants' %}">
+                <i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Deferir</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'my-calendar-coordinator' %} active{% endif %}" href="{% url 'calendarapp:my-calendar-coordinator' %}">
+                <i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Meu Calendário</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'rooms' %} active{% endif %}" href="{% url 'reservation:rooms' %}">
+                <i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Gerenciar Salas</span>
+            </a>
+        </li>
+        <li class="app-sidebar__toggle_styles">
             <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
                 <i class="fa fa-expand" style="color: #59BBB2"></i>
-            </a>                 
+            </a>
         </li>
-     </ul>
+    </ul>
+    
 
      {% endif %}
 
@@ -51,21 +56,25 @@
      {% if request.user.is_teacher %}
 
      <ul class="app-menu">
-        
         <li>
-             <a class="app-menu__item active" href="{% url 'booking-room' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Reservar</span></a>
-         </li>
-         <li>
-             <a class="app-menu__item" href="{% url 'calendarapp:my-calendar-teacher' %}"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Meu Calendário</span></a>
-         </li>
-         <li>
-             <a class="app-menu__item" href="{% url 'my-reservations' %}"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Minhas Reservas</span></a>
-         </li>
-         </li>
-         <li class="app-sidebar__toggle_styles">
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'booking-room' %} active{% endif %}" href="{% url 'booking-room' %}">
+                <i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Reservar</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'my-calendar-teacher' %} active{% endif %}" href="{% url 'calendarapp:my-calendar-teacher' %}">
+                <i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Meu Calendário</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'my-reservations' %} active{% endif %}" href="{% url 'my-reservations' %}">
+                <i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Minhas Reservas</span>
+            </a>
+        </li>
+        <li class="app-sidebar__toggle_styles">
             <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
                 <i class="fa fa-expand" style="color: #59BBB2"></i>
-            </a>                 
+            </a>
         </li>
     </ul>
      {% endif %}
