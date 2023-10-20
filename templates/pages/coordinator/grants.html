@@ -18,7 +18,6 @@
 {% block content %}
 
 <div class="table-responsive">
-    {% include 'filters/my_reservations_filter.html' %}
     <div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
         <div class="row">
             <div class="col-sm-12">
@@ -28,21 +27,151 @@
                             <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 261.641px;">Nome</th>
                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 417.312px;">Chave</th>
                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Prédio</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Justificativa</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Solicitante</th>
                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Data</th>
                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Horário</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Situação</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Em aberto</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for event in latest_events %}
+                        <!-- {% for event in latest_events %}
                             <tr role="row" class="odd">
                                 <td class="sorting_1">{{ forloop.counter }}</td>
                                 <td>{{ event.title }}</td>
                                 <td>{{ event.start_time }}</td>
                                 <td>{{ event.end_time }}</td>
                             </tr>
-                        {% endfor %}
+                        {% endfor %} -->
+                        <tr role="row" class="odd">
+                            <td> Sala 57 </td>
+                            <td> Chave 57</td>
+                            <td> Principal</td>
+                            <td> Carla Ferraz</td>
+                            <td> 29/09/2023</td>
+                            <td> 14h-16h30</td>
+                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                        </tr>
+                        <tr role="row" class="odd">
+                            <td> Laboratório 71 </td>
+                            <td> Chave 71</td>
+                            <td> Principal</td>
+                            <td> Marcos Castro</td>
+                            <td> 28/09/2023</td>
+                            <td> 14h-16h30</td>
+                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                        </tr>
+                        <tr role="row" class="odd">
+                            <td> Sala 43 </td>
+                            <td> Chave 43</td>
+                            <td> Principal</td>
+                            <td> Joyce Gomes</td>
+                            <td> 27/09/2023</td>
+                            <td> 14h-16h30</td>
+                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                        </tr>
+                        <tr role="row" class="odd">
+                            <td> Laboratório 57 </td>
+                            <td> Chave 57</td>
+                            <td> Principal</td>
+                            <td> Marcos Castro</td>
+                            <td> 26/09/2023</td>
+                            <td> 14h-16h30</td>
+                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                        </tr>
+                        <tr role="row" class="even">
+                            <td> Sala 12 </td>
+                            <td> Chave 12</td>
+                            <td> Principal</td>
+                            <td> Ana Silva</td>
+                            <td> 28/09/2023</td>
+                            <td> 10h-12h</td>
+                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                        </tr>
+                        <tr role="row" class="even">
+                            <td> Laboratório 21 </td>
+                            <td> Chave 21</td>
+                            <td> Principal</td>
+                            <td> Pedro Santos</td>
+                            <td> 29/09/2023</td>
+                            <td> 13h-15h30</td>
+                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                        </tr>
+                        <tr role="row" class="odd">
+                            <td> Sala 5 </td>
+                            <td> Chave 5</td>
+                            <td> Principal</td>
+                            <td> Maria Lima</td>
+                            <td> 30/09/2023</td>
+                            <td> 15h-17h30</td>
+                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                        </tr>
+                        <tr role="row" class="odd">
+                            <td> Laboratório 19 </td>
+                            <td> Chave 19</td>
+                            <td> Principal</td>
+                            <td> Carlos Ribeiro</td>
+                            <td> 01/10/2023</td>
+                            <td> 09h-11h30</td>
+                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                        </tr>
+                        <tr role="row" class="even">
+                            <td> Sala 8 </td>
+                            <td> Chave 8</td>
+                            <td> Principal</td>
+                            <td> Sofia Pereira</td>
+                            <td> 02/10/2023</td>
+                            <td> 16h-18h30</td>
+                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                        </tr>
+                        <tr role="row" class="even">
+                            <td> Sala 12 </td>
+                            <td> Chave 12</td>
+                            <td> Principal</td>
+                            <td> Ana Silva</td>
+                            <td> 28/09/2023</td>
+                            <td> 10h-12h</td>
+                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                        </tr>
+                        
+                        <tr role="row" class="even">
+                            <td> Sala 31 </td>
+                            <td> Chave 31</td>
+                            <td> Principal</td>
+                            <td> Pedro Santos</td>
+                            <td> 29/09/2023</td>
+                            <td> 15h-17h30</td>
+                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                        </tr>
+                        
+                        <tr role="row" class="odd">
+                            <td> Laboratório 05 </td>
+                            <td> Chave 05</td>
+                            <td> Principal</td>
+                            <td> Maria Lima</td>
+                            <td> 30/09/2023</td>
+                            <td> 11h-13h30</td>
+                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                        </tr>
+                        <tr role="row" class="odd">
+                            <td> Sala 19 </td>
+                            <td> Chave 19</td>
+                            <td> Principal</td>
+                            <td> Carlos Ferreira</td>
+                            <td> 01/10/2023</td>
+                            <td> 09h-11h30</td>
+                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                        </tr>
+                        
+                        <tr role="row" class="even">
+                            <td> Sala 07 </td>
+                            <td> Chave 07</td>
+                            <td> Principal</td>
+                            <td> Laura Rodrigues</td>
+                            <td> 02/10/2023</td>
+                            <td> 13h-15h30</td>
+                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                        </tr>
+                                                
                     </tbody>
                 </table>
           
@@ -56,4 +185,5 @@
     <script type="text/javascript" src="{% static 'js/plugins/jquery.dataTables.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/plugins/dataTables.bootstrap.min.js' %}"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 {% endblock extrascripts %}
