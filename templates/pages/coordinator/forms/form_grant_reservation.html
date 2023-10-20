@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
-{% block title %}Reserva Sala X {% endblock title %}
+{% block title %}Reserva Sala {% endblock title %}
 
 {% block breadcrumb %}
     <div>
@@ -17,7 +17,7 @@
 {% endblock breadcrumb %}
 
 {% block content %}
-<form action="submit.php" method="post">
+<form method="post" style="margin-left: 15px;">
     <div class="form-group">
       <label for="data">Data</label>
       <input type="date" class="form-control" id="data" name="data" value="29/09/2023">
@@ -60,6 +60,6 @@
         <button type="button" class="btn btn-danger" id="indeferir">Indeferir</button>
         <button type="button" class="btn btn-success" id="deferir">Deferir</button>
       </div>
-      
+
     </form>
 {% endblock %}
