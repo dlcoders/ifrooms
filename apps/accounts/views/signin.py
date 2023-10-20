@@ -2,7 +2,7 @@ from django.views.generic import View
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 
-from accounts.forms import SignInForm
+from apps.accounts.forms import SignInForm
 
 
 class SignInView(View):
@@ -25,5 +25,8 @@ class SignInView(View):
             if user:
                 login(request, user)
                 return redirect("dashboard")
+            else:
+                forms.error_message = "Credenciais inválidas. Verifique sua matrícula e senha."
         context = {"form": forms}
         return render(request, self.template_name, context)
+

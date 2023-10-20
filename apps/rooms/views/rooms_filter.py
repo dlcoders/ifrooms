@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rooms.models import Room
+from apps.rooms.models import Room
 
 def calendar_view(request):
     

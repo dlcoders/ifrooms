@@ -50,6 +50,13 @@
                                                         <button type="submit" class="btn btn-primary">Login</button>
                                                     </div>
                                                 </div>
+                                                {% if form.error_message %}
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <p class="error-message">{{ form.error_message }}</p>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
                                             </div>
                                         </form>
                                         <div class="w-100">

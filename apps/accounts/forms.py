@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.password_validation import validate_password
 
-from accounts.models import User
+from apps.accounts.models import User
 
 
 class SignInForm(forms.Form):
@@ -14,6 +14,7 @@ class SignInForm(forms.Form):
         label="Senha",
         widget=forms.PasswordInput(attrs={"class": "form-control"})
     )
+    error_message = None
 
 
 class SignUpForm(forms.ModelForm):

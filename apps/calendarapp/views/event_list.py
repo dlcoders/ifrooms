@@ -1,6 +1,6 @@
 from django.views.generic import ListView
 
-from calendarapp.models import Event
+from apps.calendarapp.models import Event
 
 
 class AllEventsListView(ListView):

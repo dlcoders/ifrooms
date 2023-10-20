@@ -1,7 +1,7 @@
 from django.views.generic import View
 from django.shortcuts import render, redirect
 
-from accounts.forms import SignUpForm
+from apps.accounts.forms import SignUpForm
 
 
 class SignUpView(View):
