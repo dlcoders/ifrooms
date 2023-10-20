@@ -18,31 +18,190 @@
 {% block content %}
 
 <div class="table-responsive">
-    {% include 'filters/my_reservations_filter.html' %}
     <div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
                     <thead>
                         <tr role="row">
-                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 261.641px;">Nome</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 417.312px;">Chave</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Prédio</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Justificativa</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Data</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Horário</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Situação</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">#</th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 261.641px;">Nome da Sala</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 50px;">Chave</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 289.281px;">Prédio</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Disponível</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Responsável</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for event in latest_events %}
+                        <!-- {% for event in latest_events %}
                             <tr role="row" class="odd">
                                 <td class="sorting_1">{{ forloop.counter }}</td>
                                 <td>{{ event.title }}</td>
                                 <td>{{ event.start_time }}</td>
                                 <td>{{ event.end_time }}</td>
                             </tr>
-                        {% endfor %}
+                        {% endfor %} -->
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 101</td>
+                            <td>101</td>
+                            <td>Prédio A</td>
+                            <td>Sim</td>
+                            <td>João</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 102</td>
+                            <td>102</td>
+                            <td>Prédio A</td>
+                            <td>Não</td>
+                            <td>Maria</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 201</td>
+                            <td>201</td>
+                            <td>Prédio B</td>
+                            <td>Sim</td>
+                            <td>Carlos</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 202</td>
+                            <td>202</td>
+                            <td>Prédio B</td>
+                            <td>Não</td>
+                            <td>Ana</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 301</td>
+                            <td>301</td>
+                            <td>Prédio C</td>
+                            <td>Sim</td>
+                            <td>Fernanda</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 101</td>
+                            <td>101</td>
+                            <td>Prédio A</td>
+                            <td>Sim</td>
+                            <td>João</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 102</td>
+                            <td>102</td>
+                            <td>Prédio A</td>
+                            <td>Não</td>
+                            <td>Maria</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 201</td>
+                            <td>201</td>
+                            <td>Prédio B</td>
+                            <td>Sim</td>
+                            <td>Carlos</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 202</td>
+                            <td>202</td>
+                            <td>Prédio B</td>
+                            <td>Não</td>
+                            <td>Ana</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 301</td>
+                            <td>301</td>
+                            <td>Prédio C</td>
+                            <td>Sim</td>
+                            <td>Fernanda</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 101</td>
+                            <td>101</td>
+                            <td>Prédio A</td>
+                            <td>Sim</td>
+                            <td>João</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 102</td>
+                            <td>102</td>
+                            <td>Prédio A</td>
+                            <td>Não</td>
+                            <td>Maria</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 201</td>
+                            <td>201</td>
+                            <td>Prédio B</td>
+                            <td>Sim</td>
+                            <td>Carlos</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 202</td>
+                            <td>202</td>
+                            <td>Prédio B</td>
+                            <td>Não</td>
+                            <td>Ana</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 301</td>
+                            <td>301</td>
+                            <td>Prédio C</td>
+                            <td>Sim</td>
+                            <td>Fernanda</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 101</td>
+                            <td>101</td>
+                            <td>Prédio A</td>
+                            <td>Sim</td>
+                            <td>João</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 102</td>
+                            <td>102</td>
+                            <td>Prédio A</td>
+                            <td>Não</td>
+                            <td>Maria</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 201</td>
+                            <td>201</td>
+                            <td>Prédio B</td>
+                            <td>Sim</td>
+                            <td>Carlos</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 202</td>
+                            <td>202</td>
+                            <td>Prédio B</td>
+                            <td>Não</td>
+                            <td>Ana</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{% url 'reservation:room-reservation'%}"><i class="fas fa-search"></i></a></td>
+                            <td>Sala 301</td>
+                            <td>301</td>
+                            <td>Prédio C</td>
+                            <td>Sim</td>
+                            <td>Fernanda</td>
+                        </tr>
+
                     </tbody>
                 </table>
           
@@ -56,4 +215,5 @@
     <script type="text/javascript" src="{% static 'js/plugins/jquery.dataTables.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/plugins/dataTables.bootstrap.min.js' %}"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 {% endblock extrascripts %}
