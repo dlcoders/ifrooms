@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Reservar Sala{% endblock title %}
+
+{% block breadcrumb %}
+    <div>
+        <h1><i class="fa fa-dashboard"></i> Reservar Sala</h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item"><a href="#">Deferir</a></li>
+        <li class="breadcrumb-item"><a href="#">Reservar Sala</a></li>
+        {% include 'partials/dropdown_user.html' %}
+    </ul>
+    
+{% endblock breadcrumb %}
+
+{% block content %}
+
+<form method="post">
+  {% csrf_token %}
+
+  <div class="campos">
+    <label style="margin-top: 1rem;" for="data">Data</label>
+    <input type="date" id="data" name="data" class="form-control">
+  </div>
+  <div class="campos">
+    <label style="margin-top: 1rem;" for="periodicidade">Periodicidade</label>
+    <input type="text" id="periodicidade" name="periodicidade" class="form-control">
+  </div>
+  <div class="campos">
+    <label style="margin-top: 1rem;" for="horario_final">Horário final</label>
+    <input type="time" id="horario_final" name="horario_final" class="form-control">
+  </div>
+  <div class="campos">
+    <label style="margin-top: 1rem;" for="horario_inicio">Horário de início</label>
+    <input type="time" id="horario_inicio" name="horario_inicio" class="form-control">
+  </div>
+  <div class="campos">
+    <label style="margin-top: 1rem;" for="justificativa">Justificativa</label>
+    <textarea id="justificativa" name="justificativa" class="form-control"></textarea>
+  </div>
+  <div class="form-group">
+    <label style="margin-top: 1rem;" for="anexo">Anexo</label>
+    <input type="file" class="form-control-file" id="anexo" name="anexo">
+  </div>
+  <div class="campos">
+    <label style="margin-top: 1rem;" for="mensagem_avaliador">Mensagem do avaliador</label>
+    <input type="text" id="mensagem_avaliador" name="mensagem_avaliador" class="form-control">
+  </div>
+  <div class="campos">
+    <label style="margin-top: 1rem;" for="situacao">Situação</label>
+    <input type="text" id="situacao" name="situacao" class="form-control">
+  </div>
+
+  <button style="margin-top: 1rem;" type="button" class="btn btn-primary" id="enviar_mensagem">Salvar</button>
+</form>
+{% endblock %}
