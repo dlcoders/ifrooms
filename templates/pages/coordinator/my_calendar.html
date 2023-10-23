@@ -27,11 +27,11 @@
               <h3>{{ event.title }}</h3>
               <p>{{ event.description }}</p>
               <p>{{event.id}}</p>
-              <p>From: {{ event.start_time }}</p>
-              <p>To: {{ event.end_time }}</p>
+              <p>De: {{ event.start_time }}</p>
+              <p>Até {{ event.end_time }}</p>
           </div>
         {% empty %}
-          <p>No Running Events Found</p>
+          <p>Nenhuma Reserva Cadastrada</p>
         {% endfor %}
     </div>
 </div>
@@ -44,7 +44,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h5 class="modal-title text-white" id="exampleModalLongTitle">Add New Event</h5>
+                <h5 class="modal-title text-white" id="exampleModalLongTitle">Cadastrar Reserva</h5>
                 <button id="modalClose1" type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
