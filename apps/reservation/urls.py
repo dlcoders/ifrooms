@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import GrantsView, RoomsView, CoordinatorGrantReservationFormView, TeacherMakeReservationFormView, TeacherReservationFormView, TeacherBookingRoomView, TeacherMyReservationView
+from .views import GrantsView, CoordinatorGrantReservationFormView, TeacherMakeReservationFormView, TeacherReservationFormView, TeacherBookingRoomView, TeacherMyReservationView
 
 app_name = "reservation" 
 
@@ -8,11 +8,6 @@ urlpatterns = [
         'coord-grants/',
         GrantsView.as_view(),
         name='coord-grants'
-    ),
-    path(
-        'coord-rooms/',
-        RoomsView.as_view(),
-        name='coord-rooms'
     ),
     path(
         'coord-grant-reservation/',

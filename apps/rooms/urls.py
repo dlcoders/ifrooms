@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import calendar_view,CoordinatorCreateRoomFormView
+from .views import calendar_view,CoordinatorCreateRoomFormView, RoomsView
 
 app_name = "room"
 
@@ -8,6 +8,11 @@ urlpatterns = [
         'rooms/',
         calendar_view,
         name='rooms'
+    ),
+    path(
+        'coord-rooms/',
+        RoomsView.as_view(),
+        name='coord-rooms'
     ),
     path(
         'coord-form-room/',
