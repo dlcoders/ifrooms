@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 
-class MyReservationView(TemplateView):
+class TeacherMyReservationView(TemplateView):
     template_name = 'pages/teacher/my_reservations.html'
 
     # def get_context_data(self, **kwargs):

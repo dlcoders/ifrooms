@@ -1,0 +1,62 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Reservar Sala{% endblock title %}
+
+{% block breadcrumb %}
+    <div>
+        <h1><i class="fa fa-dashboard"></i> Reserva</h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'reservation:teacher-booking-room' %}">Reservar</a></li>
+        <li class="breadcrumb-item"><a href="#">Reservar Sala</a></li>
+        {% include 'partials/dropdown_user.html' %}
+    </ul>
+    
+{% endblock breadcrumb %}
+
+{% block content %}
+
+<div class="table-responsive">
+  <form method="post" style="margin-left: 15px;">
+    <div class="form-group">
+      <label for="horario_inicio">Sala</label>
+      <input type="text" class="form-control" id="room" name="room" value="Sala 49">
+    </div>
+      <div class="form-group">
+        <label for="data">Data</label>
+        <input type="date" class="form-control" id="data" name="data" value="29/09/2023">
+      </div>
+      <div class="form-group">
+        <label for="periodicidade">Periodicidade</label>
+        <select class="form-control" id="periodicidade" name="periodicidade">
+          <option value="Semanal">Semanal</option>
+          <option value="Diária">Diária</option>
+          <option value="Mensal">Mensal</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="horario_inicio">Horário de Início</label>
+        <input type="time" class="form-control" id="horario_inicio" name="horario_inicio" value="16:20">
+      </div>
+      <div class="form-group">
+        <label for="horario_final">Horário Final</label>
+        <input type="time" class="form-control" id="horario_final" name="horario_final" value="18:00">
+      </div>
+      <div class="form-group">
+        <label for="justificativa">Justificativa</label>
+        <textarea class="form-control" id="justificativa" name="justificativa"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="anexo">Anexo</label>
+        <input type="file" class="form-control-file" id="anexo" name="anexo">
+      </div>
+  
+      <div class="form-group">
+        <button type="button" class="btn btn-primary" id="save">Salvar</button>
+      </div>
+  
+      </form>
+    </div>
+{% endblock %}

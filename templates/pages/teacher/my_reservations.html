@@ -8,7 +8,7 @@
         <h1><i class="fa fa-dashboard"></i> Minhas Reservas</h1>
     </div>
     <ul class="app-breadcrumb breadcrumb">
-        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
         <li class="breadcrumb-item"><a href="#">Minhas Reservas</a></li>
         {% include 'partials/dropdown_user.html' %}
     </ul>
@@ -43,7 +43,7 @@
                             </tr>
                         {% endfor %} -->
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Laboratório 53</td>
                             <td>12345</td>
                             <td>Reunião de equipe</td>
@@ -52,7 +52,7 @@
                             <td>Aprovado</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Sala 48</td>
                             <td>54321</td>
                             <td>Treinamento de software</td>
@@ -61,7 +61,7 @@
                             <td>Pendente</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Auditório</td>
                             <td>98765</td>
                             <td>Entrevista de emprego</td>
@@ -70,7 +70,7 @@
                             <td>Rejeitado</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Apiário</td>
                             <td>24680</td>
                             <td>Apresentação de vendas</td>
@@ -79,7 +79,7 @@
                             <td>Aprovado</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Laboratório 57</td>
                             <td>13579</td>
                             <td>Conferência de tecnologia</td>
@@ -88,7 +88,7 @@
                             <td>Pendente</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Laboratório 53</td>
                             <td>12345</td>
                             <td>Reunião de equipe</td>
@@ -97,7 +97,7 @@
                             <td>Aprovado</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Sala 48</td>
                             <td>54321</td>
                             <td>Treinamento de software</td>
@@ -106,7 +106,7 @@
                             <td>Pendente</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Auditório</td>
                             <td>98765</td>
                             <td>Entrevista de emprego</td>
@@ -115,7 +115,7 @@
                             <td>Rejeitado</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Apiário</td>
                             <td>24680</td>
                             <td>Apresentação de vendas</td>
@@ -124,7 +124,7 @@
                             <td>Aprovado</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Laboratório 57</td>
                             <td>13579</td>
                             <td>Conferência de tecnologia</td>
@@ -133,7 +133,7 @@
                             <td>Pendente</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Laboratório 53</td>
                             <td>12345</td>
                             <td>Reunião de equipe</td>
@@ -142,7 +142,7 @@
                             <td>Aprovado</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Sala 48</td>
                             <td>54321</td>
                             <td>Treinamento de software</td>
@@ -151,7 +151,7 @@
                             <td>Pendente</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Auditório</td>
                             <td>98765</td>
                             <td>Entrevista de emprego</td>
@@ -160,7 +160,7 @@
                             <td>Rejeitado</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Apiário</td>
                             <td>24680</td>
                             <td>Apresentação de vendas</td>
@@ -169,7 +169,7 @@
                             <td>Aprovado</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Laboratório 57</td>
                             <td>13579</td>
                             <td>Conferência de tecnologia</td>
@@ -178,7 +178,7 @@
                             <td>Pendente</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Laboratório 53</td>
                             <td>12345</td>
                             <td>Reunião de equipe</td>
@@ -187,7 +187,7 @@
                             <td>Aprovado</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Sala 48</td>
                             <td>54321</td>
                             <td>Treinamento de software</td>
@@ -196,7 +196,7 @@
                             <td>Pendente</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Auditório</td>
                             <td>98765</td>
                             <td>Entrevista de emprego</td>
@@ -205,7 +205,7 @@
                             <td>Rejeitado</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Apiário</td>
                             <td>24680</td>
                             <td>Apresentação de vendas</td>
@@ -214,7 +214,7 @@
                             <td>Aprovado</td>
                         </tr>
                         <tr>
-                            <td> <a href=""><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'reservation:teacher-my-reservation'%}"><i class="fas fa-search"></i></a></td>
                             <td>Laboratório 57</td>
                             <td>13579</td>
                             <td>Conferência de tecnologia</td>
