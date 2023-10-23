@@ -1,9 +1,17 @@
 from django.urls import path
-from .views import calendar_view, BookingRoomView, MyReservationView, CreateRoomFormView
+from .views import calendar_view,CoordinatorCreateRoomFormView
+
+app_name = "room"
 
 urlpatterns = [
-    path('rooms/', calendar_view, name='rooms'),
-    path('booking-room/', BookingRoomView.as_view(), name='booking-room'),
-    path('my-reservations/', MyReservationView.as_view(), name='my-reservations'),
-    path('form-room', CreateRoomFormView.as_view(), name='form-room')
+    path(
+        'rooms/',
+        calendar_view,
+        name='rooms'
+    ),
+    path(
+        'coord-form-room/',
+        CoordinatorCreateRoomFormView.as_view(),
+        name='coord-form-room'
+    )
 ]
