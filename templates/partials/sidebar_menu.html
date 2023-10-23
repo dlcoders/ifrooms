@@ -25,17 +25,17 @@
      <ul class="app-menu">
         <li>
             <a class="app-menu__item{% if request.resolver_match.url_name == 'coord-grants' %} active{% endif %}" href="{% url 'reservation:coord-grants' %}">
-                <i class="app-menu__icon fa fa-check-double"></i><span class="app-menu__label">Verificar Reserva</span>
-            </a>
-        </li>
-        <li>
-            <a class="app-menu__item{% if request.resolver_match.url_name == 'my-calendar-coordinator' %} active{% endif %}" href="{% url 'calendarapp:my-calendar-coordinator' %}">
-                <i class="fa-solid fa-calendar-days"></i> <span class="app-menu__label "style="margin-left: 5px;">Meu Calendário</span>
+                <i class="app-menu__icon fa fa-check-double"></i><span class="app-menu__label">Solicitações de Reserva</span>
             </a>
         </li>
         <li>
             <a class="app-menu__item{% if request.resolver_match.url_name == 'coord-rooms' %} active{% endif %}" href="{% url 'room:coord-rooms' %}">
                 <i class="app-menu__icon fa fa-list-check"></i><span class="app-menu__label">Gerenciar Salas</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'my-calendar-coordinator' %} active{% endif %}" href="{% url 'calendarapp:my-calendar-coordinator' %}">
+                <i class="fa-solid fa-calendar-days"></i> <span class="app-menu__label "style="margin-left: 5px;">Meu Calendário</span>
             </a>
         </li>
         <li class="app-sidebar__toggle_styles">
@@ -72,13 +72,13 @@
             </a>
         </li>
         <li>
-            <a class="app-menu__item{% if request.resolver_match.url_name == 'my-calendar-teacher' %} active{% endif %}" href="{% url 'calendarapp:my-calendar-teacher' %}">
-                <i class="fa-solid fa-calendar-days"></i> <span class="app-menu__label "style="margin-left: 5px;">Meu Calendário</span>
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'teacher-reservations' %} active{% endif %}" href="{% url 'reservation:teacher-reservations' %}">
+                <i class="app-menu__icon fa fa-solid fa-book"></i><span class="app-menu__label">Minhas Reservas</span>
             </a>
         </li>
         <li>
-            <a class="app-menu__item{% if request.resolver_match.url_name == 'teacher-reservations' %} active{% endif %}" href="{% url 'reservation:teacher-reservations' %}">
-                <i class="app-menu__icon fa fa-solid fa-book"></i><span class="app-menu__label">Minhas Reservas</span>
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'my-calendar-teacher' %} active{% endif %}" href="{% url 'calendarapp:my-calendar-teacher' %}">
+                <i class="fa-solid fa-calendar-days"></i> <span class="app-menu__label "style="margin-left: 5px;">Meu Calendário</span>
             </a>
         </li>
         <li class="app-sidebar__toggle_styles">

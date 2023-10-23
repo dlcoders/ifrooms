@@ -2,8 +2,10 @@
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from apps.calendarapp.views.other_views import CalendarViewNew
+
 # Form Fazer Reserva
-class TeacherMakeReservationFormView(LoginRequiredMixin, TemplateView):
+class TeacherMakeReservationFormView(CalendarViewNew, LoginRequiredMixin, TemplateView):
     login_url = "accounts:signin"
     template_name = 'pages/teacher/forms/form_make_reservation.html'
 
