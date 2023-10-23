@@ -1,21 +1,25 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
-{% block title %}Usuários{% endblock title %}
+{% block title %}Gerenciar Usuários{% endblock title %}
 
 {% block breadcrumb %}
     <div>
-        <h1><i class="fa fa-dashboard"></i> Usuários</h1>
+        <h1><i class="fa-solid fa-user" style="color: #198754"></i> Gerenciar Usuários</h1>
     </div>
     <ul class="app-breadcrumb breadcrumb">
-        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-        <li class="breadcrumb-item"><a href="#">Usuários</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item"><a href="#">Gerenciar Usuários</a></li>
         {% include 'partials/dropdown_user.html' %}
     </ul>
     
 {% endblock breadcrumb %}
 
 {% block content %}
+
+<a href="{% url 'accounts:create-user' %}">
+    <button class="btn btn-primary" style="margin-bottom: 1rem;">Criar Usuário</button>
+</a>
 
 <div class="table-responsive">
     <div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
@@ -26,11 +30,9 @@
                         <tr role="row">
                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">#</th>
                             <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 261.641px;">Nome</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 417.312px;">Chave</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Prédio</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Disponível</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Responsável</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Agendamentos</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 417.312px;">Matrícula</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Função</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">E-mail</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,156 +45,75 @@
                             </tr>
                         {% endfor %} -->
                         <tr role="row" class="even">
-                            <td> <a href="{% url 'room:coord-form-room' %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 12 </td>
-                            <td> Chave 12</td>
-                            <td> Principal</td>
-                            <td> Não</td>
-                            <td> Ana Silva</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i></a></td>
+                            <td> <a href="{% url 'accounts:create-user' %}"><i class="fas fa-search"></i></a></td>
+                            <td> Bruno Monteiro </td>
+                            <td> 2018276</td>
+                            <td> Professor</td>
+                            <td> bruno.m@email.com</td>
                         </tr>
                         <tr role="row" class="even">
-                            <td> <a href="{% url 'room:coord-form-room' %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 33 </td>
-                            <td> Chave 33</td>
-                            <td> Principal</td>
-                            <td> Sim</td>
-                            <td> Pedro Santos</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i></a></td>
-                        </tr>
-                        <tr role="row" class="odd">
-                            <td> <a href="{% url 'room:coord-form-room' %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 5 </td>
-                            <td> Chave 5</td>
-                            <td> Principal</td>
-                            <td> Sim</td>
-                            <td> Maria Lima</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i></a></td>
-                        </tr>
-                        <tr role="row" class="odd">
-                            <td> <a href="{% url 'room:coord-form-room' %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 18 </td>
-                            <td> Chave 18</td>
-                            <td> Principal</td>
-                            <td> Não</td>
-                            <td> Carlos Ribeiro</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i></a></td>
+                            <td> <a href="{% url 'accounts:create-user' %}"><i class="fas fa-search"></i></a></td>
+                            <td> Maria Silva </td>
+                            <td> 2019350</td>
+                            <td> Coordenador</td>
+                            <td> maria.s@email.com</td>
                         </tr>
                         <tr role="row" class="even">
-                            <td> <a href="{% url 'room:coord-form-room' %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 8 </td>
-                            <td> Chave 8</td>
-                            <td> Principal</td>
-                            <td> Sim</td>
-                            <td> Sofia Pereira</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i></a></td>
+                            <td> <a href="{% url 'accounts:create-user' %}"><i class="fas fa-search"></i></a></td>
+                            <td> João Pereira </td>
+                            <td> 2021005</td>
+                            <td> Estudante</td>
+                            <td> joao.p@email.com</td>
                         </tr>
                         <tr role="row" class="even">
-                            <td> <a href="{% url 'room:coord-form-room' %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 22 </td>
-                            <td> Chave 22</td>
-                            <td> Principal</td>
-                            <td> Não</td>
-                            <td> Marcelo Alves</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i></a></td>
-                        </tr>
-                        <tr role="row" class="odd">
-                            <td> <a href="{% url 'room:coord-form-room' %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 14 </td>
-                            <td> Chave 14</td>
-                            <td> Principal</td>
-                            <td> Sim</td>
-                            <td> Lúcia Oliveira</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i></a></td>
-                        </tr>
-                        <tr role="row" class="odd">
-                            <td> <a href="{% url 'room:coord-form-room' %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 30 </td>
-                            <td> Chave 30</td>
-                            <td> Principal</td>
-                            <td> Não</td>
-                            <td> Tiago Santos</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i></a></td>
+                            <td> <a href="{% url 'accounts:create-user' %}"><i class="fas fa-search"></i></a></td>
+                            <td> Ana Carvalho </td>
+                            <td> 2017502</td>
+                            <td> Professor</td>
+                            <td> ana.c@email.com</td>
                         </tr>
                         <tr role="row" class="even">
-                            <td> <a href="{% url 'room:coord-form-room' %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 9 </td>
-                            <td> Chave 9</td>
-                            <td> Principal</td>
-                            <td> Sim</td>
-                            <td> Beatriz Lima</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i></a></td>
+                            <td> <a href="{% url 'accounts:create-user' %}"><i class="fas fa-search"></i></a></td>
+                            <td> Carlos Sousa </td>
+                            <td> 2019123</td>
+                            <td> Professor</td>
+                            <td> carlos.s@email.com</td>
                         </tr>
                         <tr role="row" class="even">
-                            <td> <a href="{% url 'room:coord-form-room' %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 41 </td>
-                            <td> Chave 41</td>
-                            <td> Principal</td>
-                            <td> Não</td>
-                            <td> Rafael Silva</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i></a></td>
-                        </tr>
-                        <tr role="row" class="odd">
-                            <td> <a href="{% url 'room:coord-form-room' %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 3 </td>
-                            <td> Chave 3</td>
-                            <td> Principal</td>
-                            <td> Não</td>
-                            <td> Camila Almeida</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i>
-                            </a></td>
+                            <td> <a href="{% url 'accounts:create-user' %}"><i class="fas fa-search"></i></a></td>
+                            <td> Maria Oliveira </td>
+                            <td> 2022101</td>
+                            <td> Estudante</td>
+                            <td> maria.o@email.com</td>
                         </tr>
                         <tr role="row" class="even">
-                            <td> <a href="{% url 'room:coord-form-room' %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 17 </td>
-                            <td> Chave 17</td>
-                            <td> Principal</td>
-                            <td> Sim</td>
-                            <td> Gustavo Oliveira</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i></a></td>
-                        </tr>
-                        <tr role="row" class="odd">
-                            <td> <a href="{% url 'room:coord-form-room' %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 26 </td>
-                            <td> Chave 26</td>
-                            <td> Principal</td>
-                            <td> Não</td>
-                            <td> Isabela Costa</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i></a></td>
+                            <td> <a href="{% url 'accounts:create-user' %}"><i class="fas fa-search"></i></a></td>
+                            <td> Luís Ferreira </td>
+                            <td> 2018345</td>
+                            <td> Professor</td>
+                            <td> luis.f@email.com</td>
                         </tr>
                         <tr role="row" class="even">
-                            <td> <a href="{% url 'room:coord-form-room' %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 10 </td>
-                            <td> Chave 10</td>
-                            <td> Principal</td>
-                            <td> Sim</td>
-                            <td> André Santos</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i></a></td>
+                            <td> <a href="{% url 'accounts:create-user' %}"><i class="fas fa-search"></i></a></td>
+                            <td> Sofia Alves </td>
+                            <td> 2019222</td>
+                            <td> Coordenador</td>
+                            <td> sofia.a@email.com</td>
                         </tr>
-                        <tr role="row" class="odd">
-                            <td> <a href="{% url 'room:coord-form-room' %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 7 </td>
-                            <td> Chave 7</td>
-                            <td> Principal</td>
-                            <td> Não</td>
-                            <td> Laura Pereira</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i></a></td>
-                        </tr>                                                
+                        <tr role="row" class="even">
+                            <td> <a href="{% url 'accounts:create-user' %}"><i class="fas fa-search"></i></a></td>
+                            <td> Pedro Rodrigues </td>
+                            <td> 2021100</td>
+                            <td> Estudante</td>
+                            <td> pedro.r@email.com</td>
+                        </tr>
+                        <tr role="row" class="even">
+                            <td> <a href="{% url 'accounts:create-user' %}"><i class="fas fa-search"></i></a></td>
+                            <td> Carla Santos </td>
+                            <td> 2017123</td>
+                            <td> Professor</td>
+                            <td> carla.s@email.com</td>
+                        </tr>       
                     </tbody>
                 </table>
             </div>
