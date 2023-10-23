@@ -9,7 +9,7 @@
     </div>
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
-        <li class="breadcrumb-item"><a href="#">Deferir</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'reservation:teacher-booking-room' %}">Reservar</a></li>
         <li class="breadcrumb-item"><a href="#">Reservar Sala</a></li>
         {% include 'partials/dropdown_user.html' %}
     </ul>
