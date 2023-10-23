@@ -8,10 +8,10 @@
 
 {% block breadcrumb %}
   <div>
-      <h1><i class="fa fa-calendar"></i> Meu Calendário</h1>
+      <h1><i class="fa fa-calendar-days" style="color: #198754;"></i> Meu Calendário</h1>
   </div>
   <ul class="app-breadcrumb breadcrumb">
-        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item" style="color: #198754;"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
       <li class="breadcrumb-item"><a href="#">Meu Calendário</a></li>
       {% include 'partials/dropdown_user.html' %}
   </ul>
