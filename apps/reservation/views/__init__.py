@@ -1,15 +1,13 @@
-from .grants import GrantsView
-from .rooms import RoomsView
-from .form_grant_reservation import GrantReservationFormView
-from .form_room_reservation import RoomReservationsFormView
-from .room_reservations import RoomReservationsView
-from .form_my_reservations import MyReservationFormView
+from .coord_grants import GrantsView
+from .coord_rooms import RoomsView
+from .coord_form_grant_reservation import CoordinatorGrantReservationFormView
+from .teacher_form_make_reservation import TeacherMakeReservationFormView
+from .teacher_form_my_reservations import TeacherMyReservationFormView
 
 __all__ = [
     GrantsView,
     RoomsView,
-    GrantReservationFormView,
-    RoomReservationsFormView,
-    RoomReservationsView,
-    MyReservationFormView
+    CoordinatorGrantReservationFormView,
+    TeacherMakeReservationFormView,
+    TeacherMyReservationFormView
 ]

@@ -24,7 +24,7 @@
 
      <ul class="app-menu">
         <li>
-            <a class="app-menu__item{% if request.resolver_match.url_name == 'grants' %} active{% endif %}" href="{% url 'reservation:grants' %}">
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'coord-grants' %} active{% endif %}" href="{% url 'reservation:coord-grants' %}">
                 <i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Deferir</span>
             </a>
         </li>
@@ -34,7 +34,7 @@
             </a>
         </li>
         <li>
-            <a class="app-menu__item{% if request.resolver_match.url_name == 'rooms' %} active{% endif %}" href="{% url 'reservation:rooms' %}">
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'coord-rooms' %} active{% endif %}" href="{% url 'reservation:coord-rooms' %}">
                 <i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Gerenciar Salas</span>
             </a>
         </li>
