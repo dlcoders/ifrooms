@@ -1,11 +1,11 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
-{% block title %}Verificar Reserva de Sala {% endblock title %}
+{% block title %}Solicitações de Reserva de Sala {% endblock title %}
 
 {% block breadcrumb %}
     <div>
-        <h1><i class="fa fa-building-circle-exclamation" style="color: #198754"></i> Verificar Reserva de Sala</h1>
+        <h1><i class="fa fa-building-circle-exclamation" style="color: #198754"></i> Solicitações de Reserva de Sala</h1>
     </div>
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
@@ -64,7 +64,7 @@
 
       <div class="form-group">
         <button type="button" class="btn btn-primary" id="enviar_mensagem">Enviar Mensagem ao Solicitante</button>
-        <button type="button" class="btn btn-danger" id="inVerificar Reserva">Indeferir</button>
+        <button type="button" class="btn btn-danger" id="inSolicitações de Reserva">Indeferir</button>
         <button type="button" class="btn btn-success" id="deferir">Deferir</button>
       </div>
 
