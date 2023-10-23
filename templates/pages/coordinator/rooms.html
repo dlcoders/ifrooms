@@ -8,7 +8,7 @@
         <h1><i class="fa fa-dashboard"></i> Gerenciar Salas</h1>
     </div>
     <ul class="app-breadcrumb breadcrumb">
-        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
         <li class="breadcrumb-item"><a href="{% url 'calendarapp:calendar-room-reservations' %}">Gerenciar Salas</a></li>
         {% include 'partials/dropdown_user.html' %}
     </ul>
@@ -208,6 +208,6 @@
 {% block extrascripts %}
     <script type="text/javascript" src="{% static 'js/plugins/jquery.dataTables.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/plugins/dataTables.bootstrap.min.js' %}"></script>
-    <script type="text/javascript">$('{% url 'calendarapp:calendar-room-reservations' %}sampleTable').DataTable();</script>
+    <script type="text/javascript">$('{% url "calendarapp:calendar-room-reservations" %}sampleTable').DataTable();</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 {% endblock extrascripts %}

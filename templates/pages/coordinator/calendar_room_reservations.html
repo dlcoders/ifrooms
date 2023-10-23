@@ -11,7 +11,8 @@
       <h1><i class="fa fa-calendar"></i> Agendamentos da Sala</h1>
   </div>
   <ul class="app-breadcrumb breadcrumb">
-      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home   fa-lg"></i></a></li>
+      <li class="breadcrumb-item"><a href="{% url 'reservation:rooms' %}">Gerenciar Salas</a></li>
       <li class="breadcrumb-item"><a href="#">Agendamentos da Sala</a></li>
       {% include 'partials/dropdown_user.html' %}
   </ul>
