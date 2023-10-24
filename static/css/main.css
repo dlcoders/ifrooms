@@ -14977,6 +14977,22 @@ be a descendant of the grid when it is being dragged.
   transition: background-color 0.3s ease;
 }
 
+.app-sidebar__toggle_responsive {
+  padding: 0 15px;
+  font-family: fontAwesome;
+  color: #fff;
+  line-height: 2.4;
+  -webkit-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+@media(min-width: 452px) {
+  .app-sidebar__toggle_responsive {
+    visibility: hidden;
+  }
+}
+
 .app-sidebar__toggle_styles{
   display: flex;
   justify-content: end;
