@@ -16740,3 +16740,23 @@ be a descendant of the grid when it is being dragged.
 .user .user-settings label {
   color: #666;
 }
+
+.content-home {
+  padding: 4.5em;
+  display: flex;
+  max-width: 70%;
+  padding: 6em;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-home{
+  height: 18em;
+  margin-left: 3em;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+}
