@@ -14837,7 +14837,7 @@ be a descendant of the grid when it is being dragged.
     left: -230px;
   }
   .app.sidenav-toggled .app-sidebar__overlay {
-    visibility: hidden;
+    visibility: visible;
   }
 }
 
@@ -14858,7 +14858,7 @@ be a descendant of the grid when it is being dragged.
     left: 0;
   }
   .app.sidenav-toggled .app-sidebar__overlay {
-    visibility: visible;
+    visibility: hidden;
   }
 }
 
@@ -15485,7 +15485,8 @@ be a descendant of the grid when it is being dragged.
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px) { 
+
   .app-title {
     margin: -15px -15px 15px;
     padding: 20px;
