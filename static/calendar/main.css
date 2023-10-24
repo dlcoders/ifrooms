@@ -289,6 +289,11 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 .fc .fc-toolbar.fc-header-toolbar {
     margin-bottom: 1.5em;
   }
+@media(max-width: 830px) {
+  .fc .fc-toolbar.fc-header-toolbar {
+    display: block;
+  }
+}
 .fc .fc-toolbar.fc-footer-toolbar {
     margin-top: 1.5em;
   }
