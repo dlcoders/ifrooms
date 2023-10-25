@@ -2073,7 +2073,7 @@ pre code {
 }
 
 .form-control::placeholder {
-  color: #198754;
+  color: #495057;
   opacity: 1;
 }
 
@@ -6318,6 +6318,7 @@ a.close.disabled {
   border-top: 1px solid #dee2e6;
   border-bottom-right-radius: 0.3rem;
   border-bottom-left-radius: 0.3rem;
+  justify-content: space-between;
 }
 
 .modal-footer > :not(:first-child) {
@@ -16792,4 +16793,11 @@ table tr {
 
 table td, table th {
   vertical-align: middle;
+}
+
+.col-md-9-my-calendar {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+  max-width: auto;
 }
