@@ -16824,3 +16824,9 @@ table td, table th {
     display: flex;
     justify-content: space-between;
 }
+
+.form-group-user-creation{
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
