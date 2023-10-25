@@ -15490,7 +15490,7 @@ be a descendant of the grid when it is being dragged.
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  margin: -30px -30px 30px;
+  margin-left: -30px;
   padding: 20px 30px;
 
 }
@@ -16758,22 +16758,25 @@ be a descendant of the grid when it is being dragged.
   color: #666;
 }
 
-.content-home {
-  padding: 4.5em;
+.content-text {
   display: flex;
-  max-width: 70%;
-  padding: 6em;
-  position: relative;
-  text-align: center;
-  vertical-align: middle;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  padding: 2rem;
 }
 
-.image-home{
-  height: 18em;
-  margin-left: 3em;
-  position: relative;
-  overflow: hidden;
-  padding: 1rem;
+.content-item {
+  margin-bottom: 2rem;
 }
+
+.content-img {
+  background-image: url("/static/images/campus_ifrn.jpg");
+  background-color: rgba(255, 255, 255, 0.7); 
+  background-blend-mode: screen; 
+  background-size: cover; 
+  background-position: center center; 
+  height: 100vh;
+  width: 100vw;
+}
+
