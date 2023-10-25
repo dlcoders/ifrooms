@@ -16811,7 +16811,10 @@ table td, table th {
 
   @media (max-width: 425px) {
     .form-group-room {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       gap: 10px;
     }
   }
