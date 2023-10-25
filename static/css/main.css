@@ -16780,3 +16780,16 @@ be a descendant of the grid when it is being dragged.
   width: 100vw;
 }
 
+@media (max-width: 768px) {
+  .content-img {
+    display: none !important;
+  }
+}
+
+table tr {
+  text-align: center;
+}
+
+table td, table th {
+  vertical-align: middle;
+}
