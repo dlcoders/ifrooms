@@ -16818,3 +16818,9 @@ table td, table th {
       gap: 10px;
     }
   }
+
+.form-group-reservation{
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
