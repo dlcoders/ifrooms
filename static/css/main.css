@@ -16801,3 +16801,17 @@ table td, table th {
           flex: 0 0 100%;
   max-width: auto;
 }
+
+.form-group-room {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+  @media (max-width: 425px) {
+    .form-group-room {
+      display: block;
+      gap: 10px;
+    }
+  }
