@@ -1,0 +1,92 @@
+{% load static %}
+<!-- Sidebar menu-->
+ <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+        
+ <aside class="app-sidebar">
+    <div class="app-sidebar-img">
+        <a href="{% url 'dashboard' %}"><img class="app-sidebar__overlay" src="{% static 'images/logoifrooms.svg' %}" height="100px">
+    </div></a>
+
+    {% if not request.user.is_superuser and not request.user.is_staff and not request.user.is_teacher %}
+    <ul class="app-menu">
+        <li>
+             <a class="app-menu__item active" href="{% url 'calendarapp:my-calendar-user' %}"><i class="fa-solid fa-calendar-days"></i> <span class="app-menu__label "style="margin-left: 5px;">Calendário</span></a>
+         </li>
+         <li class="app-sidebar__toggle_styles">
+            <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
+                <i class="fa-solid fa-up-right-and-down-left-from-center" style="color: #198754;"></i>
+            </a>
+        </li>
+     </ul>
+    {% endif %}
+
+     {% if request.user.is_staff and not request.user.is_superuser %}
+
+     <ul class="app-menu">
+        <li>
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'coord-grants' %} active{% endif %}" href="{% url 'reservation:coord-grants' %}">
+                <i class="app-menu__icon fa fa-check-double"></i><span class="app-menu__label">Solicitações de Reserva</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'coord-rooms' %} active{% endif %}" href="{% url 'room:coord-rooms' %}">
+                <i class="app-menu__icon fa fa-list-check"></i><span class="app-menu__label">Gerenciar Salas</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'my-calendar-coordinator' %} active{% endif %}" href="{% url 'calendarapp:my-calendar-coordinator' %}">
+                <i class="fa-solid fa-calendar-days"></i> <span class="app-menu__label "style="margin-left: 5px;">Meu Calendário</span>
+            </a>
+        </li>
+        <li class="app-sidebar__toggle_styles">
+            <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
+                <i class="fa fa-up-right-and-down-left-from-center" style="color: #198754"></i>
+            </a>
+        </li>
+    </ul>
+    
+
+     {% endif %}
+
+     {% if request.user.is_superuser %}
+
+     <ul class="app-menu">
+        <li>
+             <a class="app-menu__item active" href="{% url 'accounts:users' %}"><i class="app-menu__icon fa-solid fa-user"></i><span class="app-menu__label">Gerenciar Usuários</span></a>
+         </li>
+         <li class="app-sidebar__toggle_styles">
+            <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
+                <i class="fa fa-up-right-and-down-left-from-center" style="color: #198754"></i>
+            </a>
+        </li>
+     </ul>
+
+     {% endif %}
+
+     {% if request.user.is_teacher %}
+
+     <ul class="app-menu">
+        <li>
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'booking-room' %} active{% endif %}" href="{% url 'reservation:teacher-booking-room' %}">
+                <i class="fa-solid fa-house-circle-check" ></i></i><span class="app-menu__label" style="margin-left: 5px;">Reservar</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'teacher-reservations' %} active{% endif %}" href="{% url 'reservation:teacher-reservations' %}">
+                <i class="app-menu__icon fa fa-solid fa-book"></i><span class="app-menu__label">Minhas Reservas</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'my-calendar-teacher' %} active{% endif %}" href="{% url 'calendarapp:my-calendar-teacher' %}">
+                <i class="fa-solid fa-calendar-days"></i> <span class="app-menu__label "style="margin-left: 5px;">Meu Calendário</span>
+            </a>
+        </li>
+        <li class="app-sidebar__toggle_styles">
+            <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
+                <i class="fa fa-up-right-and-down-left-from-center" style="color: #198754"></i>
+            </a>
+        </li>
+    </ul>
+     {% endif %}
+
+ </aside>

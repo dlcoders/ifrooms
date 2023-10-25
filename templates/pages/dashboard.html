@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Página Inicial{% endblock title %}
+
+{% block breadcrumb %}
+    <div>
+        <h1><i class="fa fa-home" style="color: #198754;"></i> Página Inicial</h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg" style="color: #198754;"></i></a></li>
+        <li class="breadcrumb-item"><a href="#">Página Inicial</a></li>
+        {% include 'partials/dropdown_user.html' %}
+    </ul>
+    
+{% endblock breadcrumb %}
+
+{% block content %}
+<div class="table-responsive" style="display: flex; justify-content: center;">
+    <div class="content-text">
+        <div class="content-item">
+            <img src="static\images\logo.png" alt="" width="150px" height="150px">
+            <h1 style="color: #198754; margin-bottom: 2rem; margin-top: 0.5rem;">IFRooms</h1>
+            <h2 style="margin-bottom: 2rem;">Sistema de Gerenciamento de Salas e Laboratórios</h2>
+            <h3 style="margin-bottom: 2rem;">Campus Pau dos Ferros</h3>
+        </div>
+    </div>
+    
+    <div class="content-img"></div>
+
+</div>
+{% endblock content %}
+
+{% block extrascripts %}
+    <script type="text/javascript" src="{% static 'js/plugins/jquery.dataTables.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/dataTables.bootstrap.min.js' %}"></script>
+    <script type="text/javascript">$('#sampleTable').DataTable();</script>
+{% endblock extrascripts %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="clearfix">
+    <span class="left m-2" style="font-size: 20px;">Bem Vindo, {{ request.user }}</span>
+    <a class="btn btn-info right" href="{% url 'accounts:signout' %}"> Logout</a>
+	<a class="btn btn-info right mr-2" href="{% url 'calendarapp:calendar' %}?{{ next_month }} "> Próximo Mês >> </a>
+    <a class="btn btn-info right mr-2" href="{% url 'calendarapp:calendar' %}?{{ prev_month }}"> << Mês Anterior </a>
+    <a class="btn btn-info right mr-2" href="{% url 'calendarapp:event_new' %}"> + Nova Reserva </a>
+</div>
+<div style="color: blueviolet;">
+    {{ calendar }}
+</div>
+{% endblock %}
