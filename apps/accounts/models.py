@@ -15,25 +15,18 @@ class UserManager(BaseUserManager):
         return user
 
     def create_user(self, registration, password=None, registration_type='student', **extra_fields):
-        extra_fields.setdefault("is_staff", False)
-        extra_fields.setdefault("is_coordinator", False)
-        extra_fields.setdefault("is_teacher", False)
         return self._create_user(registration, password, registration_type, **extra_fields)
 
     def create_teacher(self, registration, password=None, registration_type='teacher', **extra_fields):
-        extra_fields.setdefault("is_staff", False)
-        extra_fields.setdefault("is_coordinator", False)
         extra_fields.setdefault("is_teacher", True)
         return self._create_user(registration, password, registration_type, **extra_fields)
 
     def create_coordinator(self, registration, password=None, registration_type='coordinator', **extra_fields):
-        extra_fields.setdefault("is_staff", False)
         extra_fields.setdefault("is_coordinator", True)
         return self._create_user(registration, password, registration_type, **extra_fields)
 
     def create_superuser(self, registration, password=None, **extra_fields):
         extra_fields.setdefault("is_staff", True)
-        extra_fields.setdefault("is_coordinator", False)
         extra_fields.setdefault("is_superuser", True)
         return self._create_user(registration, password, **extra_fields)
 
