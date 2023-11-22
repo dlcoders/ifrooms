@@ -16,6 +16,17 @@ class SignInForm(forms.Form):
 
 
 class SignUpForm(forms.ModelForm):
+    name = forms.CharField(
+        label="name",
+        widget=forms.TextInput(attrs={"class": "form-control"}),
+        max_length=100,
+        required=True,
+    )
+    email = forms.EmailField(
+        label="E-mail",
+        widget=forms.EmailInput(attrs={"class": "form-control"}),
+        required=True,
+    )
     registration = forms.CharField(
         label="Matrícula",
         widget=forms.TextInput(attrs={"class": "form-control"}),
@@ -36,7 +47,7 @@ class SignUpForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ["registration"]
+        fields = ["name", "email", "registration"]
 
     def clean_registration(self):
         registration = self.cleaned_data.get("registration")
