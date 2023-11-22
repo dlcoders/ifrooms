@@ -1,4 +1,5 @@
 from django.contrib import admin
-from .models.rooms import Room
+
+from apps.rooms.models import Room
 
 admin.site.register(Room)
