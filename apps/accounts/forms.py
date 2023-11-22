@@ -6,19 +6,17 @@ from apps.accounts.models import User
 
 
 class SignInForm(forms.Form):
-    matricula = forms.CharField(
-        label="Matrícula",
-        widget=forms.TextInput(attrs={"class": "form-control"})
-        )
+    registration = forms.CharField(
+        label="Matrícula", widget=forms.TextInput(attrs={"class": "form-control"})
+    )
     password = forms.CharField(
-        label="Senha",
-        widget=forms.PasswordInput(attrs={"class": "form-control"})
+        label="Senha", widget=forms.PasswordInput(attrs={"class": "form-control"})
     )
     error_message = None
 
 
 class SignUpForm(forms.ModelForm):
-    matricula = forms.CharField(
+    registration = forms.CharField(
         label="Matrícula",
         widget=forms.TextInput(attrs={"class": "form-control"}),
         max_length=12,
@@ -38,14 +36,15 @@ class SignUpForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ["matricula", "email"]
-        widgets = {"email": forms.EmailInput(attrs={"class": "form-control"})}
-        
-    def clean_matricula(self):
-        matricula = self.cleaned_data.get("matricula")
-        if len(matricula) > 12:
-            raise forms.ValidationError("A matrícula não pode ter mais de 12 caracteres.")
-        return matricula
+        fields = ["registration"]
+
+    def clean_registration(self):
+        registration = self.cleaned_data.get("registration")
+        if len(registration) > 12:
+            raise forms.ValidationError(
+                "A matrícula não pode ter mais de 12 caracteres."
+            )
+        return registration
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")

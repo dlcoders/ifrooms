@@ -1,17 +1,18 @@
 from django.contrib.auth.backends import ModelBackend
-from .models import User  # Importe seu modelo de usuário
+from django.contrib.auth import get_user_model
 
-class MatriculaAuthBackend(ModelBackend):
-    def authenticate(self, request, matricula=None, password=None, **kwargs):
+
+class RegistrationAuthBackend(ModelBackend):
+    def authenticate(self, request, registration=None, password=None, **kwargs):
         try:
-            user = User.objects.get(matricula=matricula)
+            user = get_user_model().objects.get(registration=registration)
             if user.check_password(password):
                 return user
-        except User.DoesNotExist:
+        except get_user_model().DoesNotExist:
             return None
 
     def get_user(self, user_id):
         try:
-            return User.objects.get(pk=user_id)
-        except User.DoesNotExist:
+            return get_user_model().objects.get(pk=user_id)
+        except get_user_model().DoesNotExist:
             return None

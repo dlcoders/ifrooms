@@ -24,8 +24,8 @@ SECRET_KEY = "i8e1s3!_(fjsiv%1pn3sb3o=s)!p*nzwh1$gp5-l&%nb!d=y_s"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-#DEBUG = False
-DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
+# DEBUG = False
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 ALLOWED_HOSTS = ["*"]
 
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    
     "apps.calendarapp",
     "apps.accounts",
     "apps.reservation",
@@ -57,8 +56,8 @@ MIDDLEWARE = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'apps.accounts.auth_backends.MatriculaAuthBackend',
-    'django.contrib.auth.backends.ModelBackend',
+    "apps.accounts.auth_backends.RegistrationAuthBackend",
+    "django.contrib.auth.backends.ModelBackend",
 ]
 
 ROOT_URLCONF = "settings.urls"
@@ -145,10 +144,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 """
 
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-#STATIC_ROOT=os.path.join(BASE_DIR, 'static/')
+# STATIC_ROOT=os.path.join(BASE_DIR, 'static/')
 
 #
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/') # 'data' is my media folder
-MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")  # 'data' is my media folder
+MEDIA_URL = "/media/"
