@@ -8,22 +8,44 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UserManager(BaseUserManager):
-    def _create_user(self, registration, password=None, registration_type='student', **extra_fields):
-        user = self.model(registration=registration, registration_type=registration_type, **extra_fields)
+    def _create_user(
+        self, registration, password=None, registration_type="student", **extra_fields
+    ):
+        user = self.model(
+            registration=registration,
+            registration_type=registration_type,
+            **extra_fields,
+        )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_user(self, registration, password=None, registration_type='student', **extra_fields):
-        return self._create_user(registration, password, registration_type, **extra_fields)
+    def create_user(
+        self, registration, password=None, registration_type="student", **extra_fields
+    ):
+        return self._create_user(
+            registration, password, registration_type, **extra_fields
+        )
 
-    def create_teacher(self, registration, password=None, registration_type='teacher', **extra_fields):
+    def create_teacher(
+        self, registration, password=None, registration_type="teacher", **extra_fields
+    ):
         extra_fields.setdefault("is_teacher", True)
-        return self._create_user(registration, password, registration_type, **extra_fields)
+        return self._create_user(
+            registration, password, registration_type, **extra_fields
+        )
 
-    def create_coordinator(self, registration, password=None, registration_type='coordinator', **extra_fields):
+    def create_coordinator(
+        self,
+        registration,
+        password=None,
+        registration_type="coordinator",
+        **extra_fields,
+    ):
         extra_fields.setdefault("is_coordinator", True)
-        return self._create_user(registration, password, registration_type, **extra_fields)
+        return self._create_user(
+            registration, password, registration_type, **extra_fields
+        )
 
     def create_superuser(self, registration, password=None, **extra_fields):
         extra_fields.setdefault("is_staff", True)
@@ -31,14 +53,13 @@ class UserManager(BaseUserManager):
         return self._create_user(registration, password, **extra_fields)
 
 
-
 class User(AbstractBaseUser, PermissionsMixin):
     """Custom user model"""
 
     REGISTRATION_TYPE_CHOICES = [
-        ('student', _('Aluno')),
-        ('coordinator', _('Coordenador')),
-        ('teacher', _('Professor')),
+        ("student", _("Aluno")),
+        ("coordinator", _("Coordenador")),
+        ("teacher", _("Professor")),
     ]
 
     registration = models.CharField(

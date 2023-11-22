@@ -1,6 +1,7 @@
 from django.contrib import admin
 from apps.accounts.models import User
 
+
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     list_display = [
@@ -43,4 +44,3 @@ class UserAdmin(admin.ModelAdmin):
     # Disable add new users through the Django Admin
     def has_add_permission(self, request):
         return False
-
