@@ -1,20 +1,23 @@
 from django.db import models
 
+from apps.accounts.models import User
+
 
 class Room(models.Model):
-    sala = models.CharField(
+    room_name = models.CharField(
         max_length=100,
         blank=True,
         null=True,
         verbose_name="Nome da Sala",
     )
-    chave = models.IntegerField(
+    key = models.CharField(
+        max_length=100,
         null=True,
         blank=True,
         verbose_name="Chave da Sala",
     )
 
-    CHOICES_PREDIO = (
+    CHOICES_DEPARTMENT = (
         ("Bloco 01 - Direção", "Bloco 01 - Direção"),
         ("Bloco 02 - Principal", "Bloco 02 - Principal"),
         ("Bloco 03 - Laboratórios", "Bloco 03 - Laboratórios"),
@@ -31,13 +34,27 @@ class Room(models.Model):
         ("Território do Campus", "Território do Campus"),
     )
 
-    predio = models.CharField(
+    department = models.CharField(
         max_length=100,
         blank=True,
         null=True,
-        verbose_name="Prédio",
-        choices=CHOICES_PREDIO,
+        verbose_name="Prédio:",
+        choices=CHOICES_DEPARTMENT,
+    )
+    available = models.BooleanField(
+        verbose_name="Sala disponível",
+        default=True,
+        blank=True,
+        null=True,
+    )
+    id_user_coordinator = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="coordinator_rooms",
+        limit_choices_to={"registration_type": "coordinator"},
+        blank=True,
+        null=True,
     )
 
     def __str__(self):
-        return self.sala
+        return self.room_name
