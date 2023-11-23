@@ -25,7 +25,7 @@ class UserAdmin(admin.ModelAdmin):
     readonly_fields = ["date_joined", "last_updated"]
 
     fieldsets = (
-        ("Usuário", {"fields": ("name", "email", "registration", "password")}),
+        ("Usuário", {"fields": ("name", "email", "registration", "registration_type", "password",)}),
         (
             "Permissões",
             {
