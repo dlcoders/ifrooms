@@ -1,3 +1,4 @@
+
 {% extends 'base/base.html' %}
 {% load static %}
 
@@ -47,7 +48,7 @@
                             </tr>
                         {% endfor %} -->
                         <tr role="row" class="even">
-                            <td> <a href="{% url 'room:rooms_form' rooms:id %}"><i class="fas fa-search"></i></a></td>
+                            <td> <a href="{% url 'room:rooms_update' id=room.id %}"><i class="fas fa-search"></i></a></td>
                             <td> Sala 12 </td>
                             <td> Chave 12</td>
                             <td> Principal</td>

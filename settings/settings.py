@@ -39,11 +39,20 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    
+    #bibs
+    'crispy_forms',
+    "crispy_bootstrap5",
+    
     "apps.calendarapp",
     "apps.accounts",
     "apps.reservation",
     "apps.rooms",
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
