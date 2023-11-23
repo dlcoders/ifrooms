@@ -8,12 +8,14 @@ class UserAdmin(admin.ModelAdmin):
         "registration",
         "name",
         "email",
+        "is_student",
         "is_coordinator",
         "is_teacher",
         "is_active",
     ]
     list_filter = [
         "is_superuser",
+        "is_student",
         "is_coordinator",
         "is_teacher",
         "is_active",
@@ -30,6 +32,7 @@ class UserAdmin(admin.ModelAdmin):
                 "fields": (
                     "is_superuser",
                     "is_staff",
+                    "is_student",
                     "is_coordinator",
                     "is_teacher",
                     "is_active",

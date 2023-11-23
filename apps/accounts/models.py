@@ -20,9 +20,10 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_user(
+    def create_student(
         self, registration, password=None, registration_type="student", **extra_fields
     ):
+        extra_fields.setdefault("is_student", True)
         return self._create_user(
             registration, password, registration_type, **extra_fields
         )
@@ -82,6 +83,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_superuser = models.BooleanField(_("Superuser"), default=False)
     is_staff = models.BooleanField(_("Staff"), default=False)
     is_active = models.BooleanField(_("Active"), default=True)
+    is_student = models.BooleanField(_("Student"), default=True)
     is_coordinator = models.BooleanField(_("Coordinator"), default=False)
     is_teacher = models.BooleanField(_("Teacher"), default=False)
     date_joined = models.DateTimeField(_("Date Joined"), auto_now_add=True)

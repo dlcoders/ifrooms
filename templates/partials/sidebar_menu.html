@@ -7,7 +7,7 @@
         <a href="{% url 'dashboard' %}"><img class="app-sidebar__overlay" src="{% static 'images/logoifrooms.svg' %}" height="100px">
     </div></a>
 
-    {% if not request.user.is_superuser and not request.user.is_staff and not request.user.is_teacher %}
+    {% if request.user.is_student %}
     <ul class="app-menu">
         <li>
              <a class="app-menu__item active" href="{% url 'calendarapp:my-calendar-user' %}"><i class="fa-solid fa-calendar-days"></i> <span class="app-menu__label "style="margin-left: 5px;">Calendário</span></a>
@@ -18,9 +18,8 @@
             </a>
         </li>
      </ul>
-    {% endif %}
 
-     {% if request.user.is_staff and not request.user.is_superuser %}
+     {% elif request.user.is_coordinator %}
 
      <ul class="app-menu">
         <li>
@@ -45,10 +44,7 @@
         </li>
     </ul>
     
-
-     {% endif %}
-
-     {% if request.user.is_superuser %}
+     {% elif request.user.is_superuser %}
 
      <ul class="app-menu">
         <li>
@@ -61,9 +57,7 @@
         </li>
      </ul>
 
-     {% endif %}
-
-     {% if request.user.is_teacher %}
+     {% elif request.user.is_teacher %}
 
      <ul class="app-menu">
         <li>
