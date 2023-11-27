@@ -1,21 +1,26 @@
-<!DOCTYPE html>
-{% load crispy_forms_tags %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+{% extends 'base/base.html' %}
+{% load static %}
 
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <form method="post">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <input type="submit" value="Save">
-        </form> 
+{% block title %}Criar/Editar Sala{% endblock title %}
+
+{% block breadcrumb %}
+    <div>
+        <h1><i class="fa fa-list-check" style="color: #198754"></i> Criar/Editar Sala</h1>
     </div>
-   
-</body>
-</html>
+    <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'room:rooms_list' %}">Gerenciar Salas</a></li>
+        <li class="breadcrumb-item active">Criar/Editar Sala</li>
+        {% include 'partials/dropdown_user.html' %}
+    </ul>
+{% endblock breadcrumb %}
+
+{% block content %}
+<div class="row container">
+    <form class="col-md-6" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>
+{% endblock content %}

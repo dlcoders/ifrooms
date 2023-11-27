@@ -1,17 +1,26 @@
-<!DOCTYPE html>
-{% load crispy_forms_tags %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Criar/Editar Sala{% endblock title %}
+
+{% block breadcrumb %}
+    <div>
+        <h1><i class="fa fa-list-check" style="color: #198754"></i> Criar/Editar Sala</h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'room:rooms_list' %}">Gerenciar Salas</a></li>
+        <li class="breadcrumb-item active">Criar/Editar Sala</li>
+        {% include 'partials/dropdown_user.html' %}
+    </ul>
+{% endblock breadcrumb %}
+
+{% block content %}
+<div class="row container">
     <form method="post">
         {% csrf_token %}
-        {{ form|crispy }}
+        {{ form.as_table }}
         <input type="submit" value="Update">
     </form>
-</body>
-</html>
+</div>
+{% endblock content %}

@@ -10,5 +10,5 @@ urlpatterns = [
     path("rooms/create", RoomsCreateView.as_view(), name="rooms_create"),
     path("rooms/update/<int:id>", RoomsUpdateView.as_view(), name="rooms_update"),
     path("rooms/delete/<int:id>", RoomsDeleteView.as_view(), name="rooms_delete"),
-    path("rooms/detail/<int:id>", RoomsDetailView.as_view(), name="rooms_detail")
+    path("rooms/detail/<int:id>", RoomsDetailView.as_view(), name="rooms_detail"),
 ]

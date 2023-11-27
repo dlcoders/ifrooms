@@ -1,7 +1,5 @@
-
 {% extends 'base/base.html' %}
 {% load static %}
-
 {% block title %}Gerenciar Salas {% endblock title %}
 
 {% block breadcrumb %}
@@ -29,7 +27,6 @@
                 <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
                     <thead>
                         <tr role="row">
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">#</th>
                             <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 261.641px;">Nome</th>
                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 417.312px;">Chave</th>
                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Prédio</th>
@@ -39,24 +36,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- {% for event in latest_events %}
-                            <tr role="row" class="odd">
-                                <td class="sorting_1">{{ forloop.counter }}</td>
-                                <td>{{ event.title }}</td>
-                                <td>{{ event.start_time }}</td>
-                                <td>{{ event.end_time }}</td>
-                            </tr>
-                        {% endfor %} -->
-                        <tr role="row" class="even">
-                            <td> <a href="{% url 'room:rooms_update' id=room.id %}"><i class="fas fa-search"></i></a></td>
-                            <td> Sala 12 </td>
-                            <td> Chave 12</td>
-                            <td> Principal</td>
-                            <td> Não</td>
-                            <td> Ana Silva</td>
-                            <td> <a href="{% url 'calendarapp:calendar-room-reservations' %}">
-                                <i class="fas fa-calendar-days"></i></a></td>
-                        </tr>                        
+                        {% for room in rooms %}
+                            <a href="{% url 'room:rooms_update' id=room.id %}">
+                                <tr role="row" class="odd">
+                                    <td>{{ room.room_name }}</td>
+                                    <td>{{ room.key }}</td>
+                                    <td>{{ room.department }}</td>
+                                    <td>{% if room.available %}Sim{% else %}Não{% endif %}</td>
+                                    <td>{{ room.id_user_coordinator.name }}</td>
+                                    <td><i class="fa fa-calendar-days" style="color: #198754;"></i></td>
+                                    <td>
+                                        <a href="{% url 'room:rooms_update' id=room.id %}" class="btn btn-primary btn-sm">Editar</a>
+                                    </td>
+                                </tr>
+                            </a>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

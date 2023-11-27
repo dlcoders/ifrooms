@@ -28,7 +28,6 @@ def calendar_view(request):
         {"salas": salas, "escolhas_predio": escolhas_predio},
     )
 
-
 class RoomsListView(ListView):
     model = Room
     template_name = 'rooms/rooms_list.html'
