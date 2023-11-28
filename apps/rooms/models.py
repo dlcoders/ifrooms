@@ -42,13 +42,14 @@ class Room(models.Model):
         choices=CHOICES_DEPARTMENT,
     )
     available = models.BooleanField(
-        verbose_name="Sala disponível",
+        verbose_name="Agendável",
         default=True,
         blank=True,
         null=True,
     )
     id_user_coordinator = models.ForeignKey(
         User,
+        verbose_name="Avaliador de Agendamentos",
         on_delete=models.CASCADE,
         related_name="coordinator_rooms",
         limit_choices_to={"registration_type": "coordinator"},

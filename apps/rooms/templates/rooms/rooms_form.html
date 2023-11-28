@@ -20,6 +20,7 @@
     <form class="col-md-6" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
+        <a class="btn btn-secondary" href="{% url 'room:rooms_list' %}">Descartar</a>
         <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
 </div>
