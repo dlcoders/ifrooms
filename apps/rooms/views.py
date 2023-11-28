@@ -32,7 +32,7 @@ class RoomsListView(ListView):
     model = Room
     template_name = 'rooms/rooms_list.html'
     context_object_name = 'rooms'  # Nome da variável a ser usada no template
-    # paginate_by = 10
+    # paginate_by = 2
     
 class RoomsCreateView(CreateView):
     template_name = 'rooms/rooms_form.html'

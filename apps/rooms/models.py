@@ -41,9 +41,14 @@ class Room(models.Model):
         verbose_name="Prédio:",
         choices=CHOICES_DEPARTMENT,
     )
-    available = models.BooleanField(
+    CHOICES_AVAILABLE = (
+        ("Sim", "Sim"),
+        ("Não", "Não"),
+    )
+    available = models.CharField(
+        max_length=5,
         verbose_name="Agendável",
-        default=True,
+        choices=CHOICES_AVAILABLE,
         blank=True,
         null=True,
     )

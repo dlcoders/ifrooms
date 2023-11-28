@@ -45,7 +45,7 @@
                                     </td>
                                     <td>{{ room.key }}</td>
                                     <td>{{ room.department }}</td>
-                                    <td>{% if room.available %}Sim{% else %}Não{% endif %}</td>
+                                    <td>{{ room.available }}</td>
                                     <td>{{ room.id_user_coordinator.name }}</td>
                                     <td><i class="fa fa-calendar-days" style="color: #198754;"></i></td>
                                     <td>
@@ -65,6 +65,43 @@
 {% block extrascripts %}
     <script type="text/javascript" src="{% static 'js/plugins/jquery.dataTables.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/plugins/dataTables.bootstrap.min.js' %}"></script>
-    <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <script type="text/javascript">
+        // Função para inicializar a tabela com os dados da view
+        function initializeDataTable() {
+            var table = $('#sampleTable').DataTable({
+                columns: [
+                    { data: 'room_name' },
+                    { data: 'key' },
+                    { data: 'department' },
+                    { data: 'available' },
+                    { data: 'id_user_coordinator_name' },
+                    { data: null, defaultContent: '<i class="fa fa-calendar-days" style="color: #198754;"></i>' },
+                    { data: null, defaultContent: '' }
+                ],
+                paging: true,  // Ativar a paginação
+                lengthMenu: [10, 25, 50, 75, 100],  // Opções de quantidade de itens por página
+                pageLength: 10  // Número padrão de itens por página
+            });
+
+            // Obtenha os dados da view e adicione à tabela
+            var roomData = [
+                {% for room in rooms %}
+                    {
+                        room_name: "{{ room.room_name }}",
+                        key: "{{ room.key }}",
+                        department: "{{ room.department }}",
+                        available: "{{ room.available }}",
+                        id_user_coordinator_name: "{{ room.id_user_coordinator.name }}"
+                    },
+                {% endfor %}
+            ];
+
+            table.rows.add(roomData).draw();
+        }
+
+        // Chame a função para inicializar a tabela
+        initializeDataTable();
+    </script>
 {% endblock extrascripts %}
