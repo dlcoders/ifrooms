@@ -3,6 +3,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from apps.calendarapp.views.other_views import CalendarViewNew
 
+from apps.rooms.models import Room
+from django.views.generic import ListView
+
 
 # Form Deferir Reserva
 class CoordinatorGrantReservationFormView(LoginRequiredMixin, TemplateView):
@@ -29,15 +32,15 @@ class GrantsView(LoginRequiredMixin, TemplateView):
 
 
 # Reservar Salas
-class TeacherBookingRoomView(LoginRequiredMixin, TemplateView):
-    login_url = "accounts:signin"
-    template_name = "pages/teacher/booking_rooms.html"
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['sua_variavel'] = 'Valor do contexto'
-    #     context['outra_variavel'] = 'Outro valor do contexto'
-    #     return context
+# class TeacherBookingRoomView(LoginRequiredMixin, TemplateView):
+#     login_url = "accounts:signin"
+#     template_name = "pages/teacher/booking_rooms.html"
+    
+#     # def get_context_data(self, **kwargs):
+#     #     context = super().get_context_data(**kwargs)
+#     #     context['sua_variavel'] = 'Valor do contexto'
+#     #     context['outra_variavel'] = 'Outro valor do contexto'
+#     #     return context
 
 
 # Form Fazer Reserva
@@ -72,3 +75,10 @@ class TeacherMyReservationView(TemplateView):
     #     context['sua_variavel'] = 'Valor do contexto'
     #     context['outra_variavel'] = 'Outro valor do contexto'
     #     return context
+
+# Reservar Salas
+class TeacherRoomsListView(ListView):
+    model = Room
+    template_name = 'pages/teacher/booking_rooms.html'
+    context_object_name = 'rooms'  # Nome da variável a ser usada no template
+    # paginate_by = 2

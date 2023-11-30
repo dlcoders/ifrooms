@@ -4,8 +4,9 @@ from .views import (
     CoordinatorGrantReservationFormView,
     TeacherMakeReservationFormView,
     TeacherReservationFormView,
-    TeacherBookingRoomView,
+    # TeacherBookingRoomView,
     TeacherMyReservationView,
+    TeacherRoomsListView,
 )
 
 app_name = "reservation"
@@ -18,7 +19,7 @@ urlpatterns = [
         name="coord-grant-reservation",
     ),
     path(
-        "teacher-make-reservation/",
+        "teacher-make-reservation/<int:id>/",
         TeacherMakeReservationFormView.as_view(),
         name="teacher-make-reservation",
     ),
@@ -29,7 +30,7 @@ urlpatterns = [
     ),
     path(
         "teacher-booking-room/",
-        TeacherBookingRoomView.as_view(),
+        TeacherRoomsListView.as_view(),
         name="teacher-booking-room",
     ),
     path(

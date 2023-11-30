@@ -133,8 +133,8 @@
       <div class="form-group">
         <label for="periodicidade">Periodicidade</label>
         <select class="form-control" id="periodicidade" name="periodicidade">
-          <option value="Semanal">Semanal</option>
           <option value="Diária">Diária</option>
+          <option value="Semanal">Semanal</option>
           <option value="Mensal">Mensal</option>
         </select>
       </div>
@@ -162,6 +162,7 @@
       </div>
   
       <div class="form-group">
+        <a class="btn btn-secondary" href="{% url 'room:rooms_list' %}">Descartar</a>
         <button type="button" class="btn btn-primary" id="save">Salvar</button>
       </div>
   
