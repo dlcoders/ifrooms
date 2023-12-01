@@ -1,3 +1,4 @@
+from django.urls import reverse_lazy
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -5,14 +6,23 @@ from django.views.generic import View
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 
-from apps.accounts.forms import SignInForm
+from apps.accounts.forms import SignInForm, UpdateUserForm
 
 from django.contrib.auth import logout
 
 from apps.accounts.forms import SignUpForm
 
-from django.views.generic import TemplateView
+from django.views.generic import (
+    CreateView,
+    UpdateView,
+    ListView,
+    DetailView,
+    DeleteView,
+    TemplateView,
+)
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+from apps.accounts.models import User
 
 
 class UsersView(LoginRequiredMixin, TemplateView):
@@ -83,8 +93,23 @@ class CreateUserView(LoginRequiredMixin, TemplateView):
     login_url = "accounts:signin"
     template_name = "pages/admin/forms/form_create_user.html"
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['sua_variavel'] = 'Valor do contexto'
-    #     context['outra_variavel'] = 'Outro valor do contexto'
-    #     return context
+
+class ListUserView(ListView):
+    model = User
+    template_name = "accounts/users.html"
+    context_object_name = "users"
+
+
+class UpdateUserView(UpdateView):
+    model = User
+    form_class = UpdateUserForm
+    template_name = "accounts/form.html"
+    success_url = reverse_lazy("accounts:user-list")
+    pk_url_kwarg = "id"
+
+
+class DeleteUserView(DeleteView):
+    model = User
+    pk_url_kwarg = "id"
+    template_name = "accounts/user_confirm_delete.html"
+    success_url = reverse_lazy("accounts:user-list")
