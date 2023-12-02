@@ -13,10 +13,8 @@ from django.contrib.auth import logout
 from apps.accounts.forms import SignUpForm
 
 from django.views.generic import (
-    CreateView,
     UpdateView,
     ListView,
-    DetailView,
     DeleteView,
     TemplateView,
 )
@@ -28,12 +26,6 @@ from apps.accounts.models import User
 class UsersView(LoginRequiredMixin, TemplateView):
     login_url = "accounts:signin"
     template_name = "pages/admin/users.html"
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['sua_variavel'] = 'Valor do contexto'
-    #     context['outra_variavel'] = 'Outro valor do contexto'
-    #     return context
 
 
 class SignUpView(View):

@@ -8,7 +8,6 @@ from django.views.generic import (
     CreateView,
     UpdateView,
     DeleteView,
-    DetailView,
 )
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -38,15 +37,13 @@ def calendar_view(request):
 class RoomsListView(ListView):
     model = Room
     template_name = "rooms/rooms.html"
-    context_object_name = "rooms"  # Nome da variável a ser usada no template
-    # paginate_by = 10
+    context_object_name = "rooms"
 
 
 class RoomsToReservationListView(ListView):
     model = Room
     template_name = "reservations/rooms-to-reservation.html"
-    context_object_name = "rooms"  # Nome da variável a ser usada no template
-    # paginate_by = 10
+    context_object_name = "rooms"
 
 
 class RoomsCreateView(CreateView):
@@ -59,7 +56,7 @@ class RoomsUpdateView(UpdateView):
     model = Room
     form_class = RoomForm
     template_name = "rooms/form.html"
-    pk_url_kwarg = "id"  # Nome da variável na URL
+    pk_url_kwarg = "id"
 
     def get_success_url(self):
         return reverse_lazy("room:room-list")
