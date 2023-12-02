@@ -5,11 +5,12 @@
 
 {% block breadcrumb %}
     <div>
-        <h1><i class="fa-solid fa-user" style="color: #198754"></i> Sala</h1>
+        <h1><i class="fa-solid fa-user" style="color: #198754"></i> Reserva</h1>
     </div>
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
-        <li class="breadcrumb-item"><a href="{% url 'room:room-list' %}">Gerenciar Salas</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'reservation:reservation-list' %}">Reservas</a></li>
+        <li class="breadcrumb-item"><a href="#">Reserva</a></li>
         <li class="breadcrumb-item"><a href="#">Confirmar exclusão</a></li>
         {% include 'partials/dropdown_user.html' %}
     </ul>
@@ -32,7 +33,7 @@
 
 <script>
     function redirectToUserList() {
-        window.location.href = '{% url "room:room-list" %}';
+        window.location.href = '{% url "reservation:reservation-list" %}';
     }
 </script>
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
-{% block title %}Agendamentos da Sala{% endblock title %}
+{% block title %}Meu Calendário{% endblock title %}
 
 {% block extracss %}
   <link href="{% static 'calendar/main.css' %}" rel="stylesheet" />
@@ -8,12 +8,11 @@
 
 {% block breadcrumb %}
   <div>
-      <h1><i class="fa fa-calendar-days" style="color: #198754"></i> Agendamentos da Sala</h1>
+      <h1><i class="fa fa-calendar-days" style="color: #198754;"></i> Meu Calendário</h1>
   </div>
   <ul class="app-breadcrumb breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa-solid fa-up-right-and-down-left-from-center" style="color: #198754;"></i></a></li>
-      <li class="breadcrumb-item"><a href="{% url 'room:coord-rooms' %}">Gerenciar Salas</a></li>
-      <li class="breadcrumb-item"><a href="#">Agendamentos da Sala</a></li>
+        <li class="breadcrumb-item" style="color: #198754;"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
+      <li class="breadcrumb-item"><a href="#">Meu Calendário</a></li>
       {% include 'partials/dropdown_user.html' %}
   </ul>
 {% endblock breadcrumb %}

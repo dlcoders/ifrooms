@@ -109,6 +109,8 @@ class EventMemberDeleteView(generic.DeleteView):
     model = EventMember
     template_name = "event_delete.html"
     success_url = reverse_lazy("calendarapp:calendar")
+
+
 # view padrão para calendário
 # class CalendarViewNew(LoginRequiredMixin, generic.View):
 class CalendarViewNew(generic.View):
@@ -124,16 +126,16 @@ class CalendarViewNew(generic.View):
         # start: '2020-09-16T16:00:00'
         for event in events:
             event_list.append(
-                {   "id": event.id,
+                {
+                    "id": event.id,
                     "title": event.title,
                     "start": event.start_time.strftime("%Y-%m-%dT%H:%M:%S"),
                     "end": event.end_time.strftime("%Y-%m-%dT%H:%M:%S"),
                     "description": event.description,
                 }
             )
-        
-        context = {"form": forms, "events": event_list,
-                   "events_month": events_month}
+
+        context = {"form": forms, "events": event_list, "events_month": events_month}
         return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
@@ -147,48 +149,48 @@ class CalendarViewNew(generic.View):
         return render(request, self.template_name, context)
 
 
-
 def delete_event(request, event_id):
     event = get_object_or_404(Event, id=event_id)
-    if request.method == 'POST':
+    if request.method == "POST":
         event.delete()
-        return JsonResponse({'message': 'Evento apagado com sucesso.'})
+        return JsonResponse({"message": "Evento apagado com sucesso."})
     else:
-        return JsonResponse({'message': 'Error!'}, status=400)
+        return JsonResponse({"message": "Error!"}, status=400)
+
 
 def next_week(request, event_id):
     event = get_object_or_404(Event, id=event_id)
-    if request.method == 'POST':
+    if request.method == "POST":
         next = event
         next.id = None
         next.start_time += timedelta(days=7)
         next.end_time += timedelta(days=7)
         next.save()
-        return JsonResponse({'message': 'Sucesso!'})
+        return JsonResponse({"message": "Sucesso!"})
     else:
-        return JsonResponse({'message': 'Error!'}, status=400)
+        return JsonResponse({"message": "Error!"}, status=400)
+
 
 def next_day(request, event_id):
-
     event = get_object_or_404(Event, id=event_id)
-    if request.method == 'POST':
+    if request.method == "POST":
         next = event
         next.id = None
         next.start_time += timedelta(days=1)
         next.end_time += timedelta(days=1)
         next.save()
-        return JsonResponse({'message': 'Sucesso!'})
+        return JsonResponse({"message": "Sucesso!"})
     else:
-        return JsonResponse({'message': 'Error!'}, status=400)
+        return JsonResponse({"message": "Error!"}, status=400)
 
-class MyCalendarUser(CalendarViewNew):
-    template_name = "pages/my_calendar.html"
-    
+
+class MyCalendarStudent(CalendarViewNew):
+    template_name = "calendars/student_calendar.html"
+
+
 class MyCalendarTeacher(CalendarViewNew):
-    template_name = "pages/teacher/my_calendar.html"
+    template_name = "calendars/teacher_calendar.html"
+
 
 class MyCalendarCoordinator(CalendarViewNew):
-    template_name = "pages/coordinator/my_calendar.html"
-
-class CalendarRoomReservationsView(CalendarViewNew):
-    template_name = "pages/coordinator/calendar_room_reservations.html"
+    template_name = "calendars/coordinator_calendar.html"

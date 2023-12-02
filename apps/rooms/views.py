@@ -42,6 +42,13 @@ class RoomsListView(ListView):
     # paginate_by = 10
 
 
+class RoomsToReservationListView(ListView):
+    model = Room
+    template_name = "reservations/rooms-to-reservation.html"
+    context_object_name = "rooms"  # Nome da variável a ser usada no template
+    # paginate_by = 10
+
+
 class RoomsCreateView(CreateView):
     template_name = "rooms/form.html"
     form_class = RoomForm
@@ -62,4 +69,3 @@ class RoomsDeleteView(DeleteView):
     model = Room
     success_url = reverse_lazy("room:room-list")
     pk_url_kwarg = "id"
-

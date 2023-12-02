@@ -23,7 +23,7 @@
 
      <ul class="app-menu">
         <li>
-            <a class="app-menu__item{% if request.resolver_match.url_name == 'coord-grants' %} active{% endif %}" href="{% url 'reservation:coord-grants' %}">
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'coord-grants' %} active{% endif %}" href="{% url 'reservation:reservation-list' %}">
                 <i class="app-menu__icon fa fa-check-double"></i><span class="app-menu__label">Solicitações de Reserva</span>
             </a>
         </li>
@@ -61,12 +61,12 @@
 
      <ul class="app-menu">
         <li>
-            <a class="app-menu__item{% if request.resolver_match.url_name == 'booking-room' %} active{% endif %}" href="{% url 'reservation:teacher-booking-room' %}">
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'booking-room' %} active{% endif %}" href="{% url 'room:reservation-room-list' %}">
                 <i class="fa-solid fa-house-circle-check" ></i></i><span class="app-menu__label" style="margin-left: 5px;">Reservar</span>
             </a>
         </li>
         <li>
-            <a class="app-menu__item{% if request.resolver_match.url_name == 'teacher-reservations' %} active{% endif %}" href="{% url 'reservation:teacher-reservations' %}">
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'teacher-reservations' %} active{% endif %}" href="{% url 'reservation:teacher-reservation-list' %}">
                 <i class="app-menu__icon fa fa-solid fa-book"></i><span class="app-menu__label">Minhas Reservas</span>
             </a>
         </li>

@@ -71,6 +71,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
 
     name = models.CharField(_("Nome"), max_length=100)
+
     email = models.EmailField(_("E-mail"), unique=True)
 
     registration_type = models.CharField(
@@ -92,6 +93,22 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = "registration"
+
+    def save(self, *args, **kwargs):
+        if self.registration_type == "student":
+            self.is_student = True
+            self.is_coordinator = False
+            self.is_teacher = False
+        elif self.registration_type == "coordinator":
+            self.is_student = False
+            self.is_coordinator = True
+            self.is_teacher = False
+        elif self.registration_type == "teacher":
+            self.is_student = False
+            self.is_coordinator = False
+            self.is_teacher = True
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.name} ({self.registration})"
