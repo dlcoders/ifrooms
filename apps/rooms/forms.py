@@ -12,5 +12,5 @@ class RoomForm(ModelForm):
             'key' : forms.TextInput(attrs={'class': 'form-control' }),
             'department' : forms.Select(attrs={'class': 'form-control' }),
             'available': forms.Select(attrs={'class': 'form-control' }),
-            'id_user_coordinator': forms.Select(attrs={'class': 'form-control' })
+            'id_user_coordinator': forms.SelectMultiple(attrs={'class': 'form-control' })
         }

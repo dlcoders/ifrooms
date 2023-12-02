@@ -3,7 +3,13 @@ from django.urls import reverse_lazy
 from apps.rooms.models import Room
 from .forms import RoomForm
 
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.views.generic import (
+    ListView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+    DetailView,
+)
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -20,41 +26,40 @@ def calendar_view(request):
     if filtro_sala:
         salas = salas.filter(id=filtro_sala)
 
-    escolhas_predio = Room.CHOICES_PREDIO
+    escolhas_predio = Room.CHOICES_DEPARTMENT
 
     return render(
         request,
-        "pages/dashboard.html",
+        "rooms/calendar.html",
         {"salas": salas, "escolhas_predio": escolhas_predio},
     )
 
+
 class RoomsListView(ListView):
     model = Room
-    template_name = 'rooms/rooms_list.html'
-    context_object_name = 'rooms'  # Nome da variável a ser usada no template
+    template_name = "rooms/rooms.html"
+    context_object_name = "rooms"  # Nome da variável a ser usada no template
     # paginate_by = 10
-    
+
+
 class RoomsCreateView(CreateView):
-    template_name = 'rooms/rooms_form.html'
+    template_name = "rooms/form.html"
     form_class = RoomForm
-    success_url =reverse_lazy('room:rooms_list')
-    
+    success_url = reverse_lazy("room:room-list")
+
+
 class RoomsUpdateView(UpdateView):
     model = Room
     form_class = RoomForm
-    template_name = 'rooms/rooms_form.html'
-    pk_url_kwarg = 'id' # Nome da variável na URL
-    
+    template_name = "rooms/form.html"
+    pk_url_kwarg = "id"  # Nome da variável na URL
+
     def get_success_url(self):
-        return reverse_lazy('room:rooms_list')
+        return reverse_lazy("room:room-list")
+
 
 class RoomsDeleteView(DeleteView):
     model = Room
-    success_url = reverse_lazy('room:rooms_list')
-    pk_url_kwarg = 'id'
+    success_url = reverse_lazy("room:room-list")
+    pk_url_kwarg = "id"
 
-    def get(self, *args, **kwargs):
-        return self.delete(*args, **kwargs)
-
-class RoomsDetailView(DetailView):
-    model = Room

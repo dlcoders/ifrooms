@@ -39,11 +39,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    
-    #bibs
-    'crispy_forms',
-    "crispy_bootstrap5",
-    
     "apps.calendarapp",
     "apps.accounts",
     "apps.reservation",
