@@ -4,7 +4,11 @@ from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from apps.calendarapp.views.other_views import CalendarViewNew
-from apps.reservation.form import CreateReservationForm, UpdateReservationForm
+from apps.reservation.form import (
+    CoordinatorGrantsReservationForm,
+    CreateReservationForm,
+    UpdateReservationForm,
+)
 from apps.reservation.models import Reservation
 
 from apps.rooms.models import Room
@@ -130,6 +134,29 @@ class ReservationCreateView(CreateView):
         form.instance.id_user_teacher = self.request.user
         form.instance.status = "Aguardando Resposta"
         return super().form_valid(form)
+
+
+class CoordinatorGrantsReservationView(UpdateView):
+    model = Reservation
+    form_class = CoordinatorGrantsReservationForm
+    template_name = "reservations/form_feedback.html"
+    pk_url_kwarg = "id"
+
+    def form_valid(self, form):
+        message = form.cleaned_data.get("message")
+
+        if "deferir" in self.request.POST:
+            form.instance.status = "Deferido"
+        elif "indeferir" in self.request.POST:
+            form.instance.status = "Indeferido"
+        elif "enviar_feedback" in self.request.POST:
+            form.instance.message = message
+            form.instance.status = "Aguardando Resposta"
+
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy("reservation:reservation-list")
 
 
 class ReservationUpdateView(UpdateView):

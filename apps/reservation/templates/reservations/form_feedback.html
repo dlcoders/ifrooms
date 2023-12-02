@@ -20,8 +20,14 @@
     <form class="col-md-6" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <a class="btn btn-secondary" href="{% url 'reservation:teacher-reservation-list' %}">Descartar</a>
-        <button type="submit" class="btn btn-primary">Salvar</button>
-    </form>
+        <div style="display: flex; justify-content: space-between;">
+            <div>
+                <button type="submit" class="btn btn-primary" name="deferir">Deferir</button>
+                <button type="submit" class="btn btn-danger" name="indeferir">Indeferir</button>
+                <button type="submit" class="btn btn-info" name="enviar_feedback">Enviar feedback</button>
+            </div>
+            <a class="btn btn-secondary" href="{% url 'reservation:reservation-list' %}">Descartar</a>
+        </div>
+        </form>
 </div>
 {% endblock content %}

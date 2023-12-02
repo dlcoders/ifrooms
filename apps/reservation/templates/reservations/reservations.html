@@ -1,15 +1,15 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
-{% block title %}Reservar Sala {% endblock title %}
+{% block title %}Solicitações de Reserva {% endblock title %}
 
 {% block breadcrumb %}
     <div>
-        <h1><i class="fa fa-list-check" style="color: #198754"></i> Reservar Sala</h1>
+        <h1><i class="fa fa-list-check" style="color: #198754"></i> Solicitações de Reserva</h1>
     </div>
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
-        <li class="breadcrumb-item"><a href="{% url 'calendarapp:calendar-room-reservations' %}">Reservar Sala</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'calendarapp:calendar-room-reservations' %}">Solicitações de Reserva</a></li>
         {% include 'partials/dropdown_user.html' %}
     </ul>
     
@@ -33,13 +33,13 @@
                             <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" >Anexo</th>
                             <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" >Professor</th>
                             <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" >Sala</th>
-                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" ></th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" >Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for reservation in reservations %}
                             <tr role="row" class="odd">
-                                    <td><i class="fas fa-search"></i></td>
+                                    <td><a href="{% url 'reservation:coordinator-reservation-feedback' id=reservation.id %}"><i class="fas fa-search"></i></a></td>
                                     <td>{{ reservation.date }}</td>
                                     <td>{{ reservation.startTime }}</td>
                                     <td>{{ reservation.endTime }}</td>
@@ -48,7 +48,7 @@
                                     <td>{{ reservation.annex }}</td>
                                     <td>{{ reservation.id_user_teacher }}</td>
                                     <td>{{ reservation.id_room }}</td>
-                                    <td></td>
+                                    <td>{{ reservation.status }}</td>
                                 </tr>
                         {% endfor %}
                     </tbody>
