@@ -29,27 +29,19 @@ class Room(models.Model):
 
     room_name = models.CharField(
         max_length=100,
-        blank=True,
-        null=True,
         verbose_name="Nome da Sala",
     )
     key = models.CharField(
         max_length=100,
-        null=True,
-        blank=True,
         verbose_name="Chave da Sala",
     )
     department = models.CharField(
         max_length=100,
-        blank=True,
-        null=True,
         verbose_name="Prédio:",
         choices=CHOICES_DEPARTMENT,
     )
     available = models.CharField(
         max_length=25,
-        blank=True,
-        null=True,
         verbose_name="Agendável",
         choices=STATUS_DEPARTMENT,
     )
@@ -58,8 +50,6 @@ class Room(models.Model):
         verbose_name="Avaliador de Agendamentos",
         related_name="coordinator_rooms",
         limit_choices_to={"registration_type": "coordinator"},
-        blank=True,
-        null=True,
     )
 
     def __str__(self):

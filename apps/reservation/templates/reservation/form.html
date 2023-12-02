@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Criar/Editar Sala{% endblock title %}
+
+{% block breadcrumb %}
+    <div>
+        <h1><i class="fa fa-list-check" style="color: #198754"></i> Criar/Editar Sala</h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'room:room-list' %}">Gerenciar Salas</a></li>
+        <li class="breadcrumb-item active">Criar/Editar Sala</li>
+        {% include 'partials/dropdown_user.html' %}
+    </ul>
+{% endblock breadcrumb %}
+
+{% block content %}
+<div class="row container">
+    <form class="col-md-6" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a class="btn btn-secondary" href="{% url 'room:room-list' %}">Descartar</a>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>
+{% endblock content %}

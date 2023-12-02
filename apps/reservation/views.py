@@ -1,11 +1,20 @@
+from django.urls import reverse_lazy
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from apps.calendarapp.views.other_views import CalendarViewNew
+from apps.reservation.form import ReservationForm
+from apps.reservation.models import Reservation
 
 from apps.rooms.models import Room
 from django.views.generic import ListView
 
+from django.views.generic import (
+    ListView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
 
 # Form Deferir Reserva
 class CoordinatorGrantReservationFormView(LoginRequiredMixin, TemplateView):
@@ -82,3 +91,33 @@ class TeacherRoomsListView(ListView):
     template_name = 'pages/teacher/booking_rooms.html'
     context_object_name = 'rooms'  # Nome da variável a ser usada no template
     # paginate_by = 2
+
+    
+class ReservationListView(ListView):
+    model = Reservation
+    template_name = "reservations/reservations.html"
+    context_object_name = "reservations"  # Nome da variável a ser usada no template
+    # paginate_by = 10
+
+
+class ReservationCreateView(CreateView):
+    template_name = "reservations/form.html"
+    form_class = ReservationForm
+    success_url = reverse_lazy("room:room-list")
+
+
+class ReservationUpdateView(UpdateView):
+    model = Reservation
+    form_class = ReservationForm
+    template_name = "reservations/form.html"
+    pk_url_kwarg = "id"  # Nome da variável na URL
+
+    def get_success_url(self):
+        return reverse_lazy("room:room-list")
+
+
+class ReservationDeleteView(DeleteView):
+    model = Reservation
+    success_url = reverse_lazy("room:room-list")
+    pk_url_kwarg = "id"
+

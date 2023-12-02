@@ -2,13 +2,13 @@ from django.forms import ModelForm
 from django import forms
 from .models import Reservation
 
-class RoomForm(ModelForm):
+class ReservationForm(ModelForm):
 
     class Meta:
         model = Reservation
         fields = '__all__'
         widgets = {
-            'date' : forms.DateField(attrs={'class': 'form-control' }),
+            'date' : forms.DateInput(attrs={'class': 'form-control' }),
             'startTime' : forms.DateInput(attrs={'class': 'form-control' }),
             'endTime' : forms.DateInput(attrs={'class': 'form-control' }),
             'justification': forms.Select(attrs={'class': 'form-control' }),
