@@ -16,8 +16,8 @@ class CreateReservationForm(ModelForm):
         ]
         widgets = {
             "date": forms.DateInput(attrs={"class": "form-control"}),
-            "startTime": forms.DateInput(attrs={"class": "form-control"}),
-            "endTime": forms.DateInput(attrs={"class": "form-control"}),
+            "startTime": forms.TimeInput(attrs={"class": "form-control"}),
+            "endTime": forms.TimeInput(attrs={"class": "form-control"}),
             "justification": forms.Select(attrs={"class": "form-control"}),
             "periodicity": forms.Select(attrs={"class": "form-control"}),
             "annex": forms.FileInput(attrs={"class": "form-control"}),
@@ -39,8 +39,8 @@ class UpdateReservationForm(ModelForm):
         ]
         widgets = {
             "date": forms.DateInput(attrs={"class": "form-control"}),
-            "startTime": forms.DateInput(attrs={"class": "form-control"}),
-            "endTime": forms.DateInput(attrs={"class": "form-control"}),
+            "startTime": forms.TimeInput(attrs={"class": "form-control"}),
+            "endTime": forms.TimeInput(attrs={"class": "form-control"}),
             "justification": forms.Select(attrs={"class": "form-control"}),
             "periodicity": forms.Select(attrs={"class": "form-control"}),
             "annex": forms.FileInput(attrs={"class": "form-control"}),
@@ -66,8 +66,8 @@ class CoordinatorGrantsReservationForm(ModelForm):
         ]
         widgets = {
             "date": forms.DateInput(attrs={"class": "form-control"}),
-            "startTime": forms.DateInput(attrs={"class": "form-control"}),
-            "endTime": forms.DateInput(attrs={"class": "form-control"}),
+            "startTime": forms.TimeInput(attrs={"class": "form-control"}),
+            "endTime": forms.TimeInput(attrs={"class": "form-control"}),
             "justification": forms.Select(attrs={"class": "form-control"}),
             "periodicity": forms.Select(attrs={"class": "form-control"}),
             "annex": forms.FileInput(attrs={"class": "form-control"}),
