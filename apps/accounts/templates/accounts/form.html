@@ -17,34 +17,15 @@
 {% endblock breadcrumb %}
 
 {% block content %}
-<div class="table-responsive">
+<div class="row container">
 
-  <form method="post" style="margin-left: 15px;">
+    <form class="col-md-6" method="post" enctype="multipart/form-data">
 
-      {% csrf_token %}
-      <div class="mb-3">
-          <label for="name" class="form-label">Nome</label>
-          {{ form.name }}
-      </div>
-      
-      <div class="mb-3">
-          <label for="email" class="form-label">E-mail</label>
-          {{ form.email }}
-      </div>
-
-      <div class="mb-3">
-          <label for="registration" class="form-label">Matrícula</label>
-          {{ form.registration }}
-      </div>
-
-      <div class="mb-3">
-          <label for="registration_type" class="form-label">Função</label>
-          {{ form.registration_type }}
-      </div>
-      
-      <button type="submit" class="btn btn-success">Salvar</button>
-  
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a class="btn btn-secondary" href="{% url 'accounts:user-list' %}">Descartar</a>
+        <button type="submit" class="btn btn-success">Salvar</button>
     </form>
+</div>
 
-  </div>
 {% endblock %}
