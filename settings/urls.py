@@ -20,7 +20,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from .views import DashboardView
-from apps.calendarapp.views import MyCalendarUser
 
 urlpatterns = [
     path("", DashboardView.as_view(), name="dashboard"),
