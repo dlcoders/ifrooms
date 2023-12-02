@@ -1,16 +1,16 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
-{% block title %}Criar/Editar Sala{% endblock title %}
+{% block title %}Formulário de Reserva{% endblock title %}
 
 {% block breadcrumb %}
     <div>
-        <h1><i class="fa fa-list-check" style="color: #198754"></i> Criar/Editar Sala</h1>
+        <h1><i class="fa fa-list-check" style="color: #198754"></i>Formulário de Reserva</h1>
     </div>
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
-        <li class="breadcrumb-item"><a href="{% url 'room:room-list' %}">Gerenciar Salas</a></li>
-        <li class="breadcrumb-item active">Criar/Editar Sala</li>
+        <li class="breadcrumb-item"><a href="{% url 'reservation:teacher-reservation-list' %}">Minhas Reservas</a></li>
+        <li class="breadcrumb-item active">Reserva</li>
         {% include 'partials/dropdown_user.html' %}
     </ul>
 {% endblock breadcrumb %}
@@ -20,7 +20,7 @@
     <form class="col-md-6" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <a class="btn btn-secondary" href="{% url 'room:room-list' %}">Descartar</a>
+        <a class="btn btn-secondary" href="{% url 'reservation:teacher-reservation-list' %}">Descartar</a>
         <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
 </div>

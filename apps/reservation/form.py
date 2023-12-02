@@ -2,22 +2,50 @@ from django.forms import ModelForm
 from django import forms
 from .models import Reservation
 
-class ReservationForm(ModelForm):
 
+class CreateReservationForm(ModelForm):
     class Meta:
         model = Reservation
-        fields = '__all__'
+        fields = [
+            "date",
+            "startTime",
+            "endTime",
+            "justification",
+            "periodicity",
+            "annex",
+        ]
         widgets = {
-            'date' : forms.DateInput(attrs={'class': 'form-control' }),
-            'startTime' : forms.DateInput(attrs={'class': 'form-control' }),
-            'endTime' : forms.DateInput(attrs={'class': 'form-control' }),
-            'justification': forms.Select(attrs={'class': 'form-control' }),
-            'periodicity': forms.Select(attrs={'class': 'form-control' }),
-            'annex': forms.FileInput(attrs={'class': 'form-control' }),
-            'message': forms.TextInput(attrs={'class': 'form-control' }),
-            'reply': forms.TextInput(attrs={'class': 'form-control' }),
-            'status': forms.Select(attrs={'class': 'form-control' }),
-            'id_room': forms.Select(attrs={'class': 'form-control' }),
-            'id_user_teacher': forms.Select(attrs={'class': 'form-control' }),
-            'id_user_coordinator': forms.Select(attrs={'class': 'form-control' }),
+            "date": forms.DateInput(attrs={"class": "form-control"}),
+            "startTime": forms.DateInput(attrs={"class": "form-control"}),
+            "endTime": forms.DateInput(attrs={"class": "form-control"}),
+            "justification": forms.Select(attrs={"class": "form-control"}),
+            "periodicity": forms.Select(attrs={"class": "form-control"}),
+            "annex": forms.FileInput(attrs={"class": "form-control"}),
+        }
+
+
+class UpdateReservationForm(ModelForm):
+    class Meta:
+        model = Reservation
+        fields = [
+            "date",
+            "startTime",
+            "endTime",
+            "justification",
+            "periodicity",
+            "annex",
+            "message",
+            "reply",
+        ]
+        widgets = {
+            "date": forms.DateInput(attrs={"class": "form-control"}),
+            "startTime": forms.DateInput(attrs={"class": "form-control"}),
+            "endTime": forms.DateInput(attrs={"class": "form-control"}),
+            "justification": forms.Select(attrs={"class": "form-control"}),
+            "periodicity": forms.Select(attrs={"class": "form-control"}),
+            "annex": forms.FileInput(attrs={"class": "form-control"}),
+            "message": forms.TextInput(
+                attrs={"class": "form-control", "disabled": "disabled"}
+            ),
+            "reply": forms.TextInput(attrs={"class": "form-control"}),
         }
