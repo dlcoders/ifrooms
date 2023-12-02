@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Usuário {% endblock title %}
+
+{% block breadcrumb %}
+    <div>
+        <h1><i class="fa-solid fa-user" style="color: #198754"></i> Usuário</h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'accounts:user-list' %}">Gerenciar Usuários</a></li>
+        <li class="breadcrumb-item"><a href="#">Usuário</a></li>
+        {% include 'partials/dropdown_user.html' %}
+    </ul>
+    
+{% endblock breadcrumb %}
+
+{% block content %}
+<div class="table-responsive">
+
+  <form method="post" style="margin-left: 15px;">
+
+      {% csrf_token %}
+      <div class="mb-3">
+          <label for="name" class="form-label">Nome</label>
+          {{ form.name }}
+      </div>
+      
+      <div class="mb-3">
+          <label for="email" class="form-label">E-mail</label>
+          {{ form.email }}
+      </div>
+
+      <div class="mb-3">
+          <label for="registration" class="form-label">Matrícula</label>
+          {{ form.registration }}
+      </div>
+
+      <div class="mb-3">
+          <label for="registration_type" class="form-label">Função</label>
+          {{ form.registration_type }}
+      </div>
+      
+      <button type="submit" class="btn btn-success">Salvar</button>
+  
+    </form>
+
+  </div>
+{% endblock %}

@@ -4,6 +4,29 @@ from apps.accounts.models import User
 
 
 class Room(models.Model):
+    STATUS_DEPARTMENT = (
+        ("yes", "Sim"),
+        ("no", "Não"),
+        ("progress", "Em Andamento"),
+    )
+
+    CHOICES_DEPARTMENT = (
+        ("administration", "Bloco 01 - Direção"),
+        ("main_building", "Bloco 02 - Principal"),
+        ("laboratories", "Bloco 03 - Laboratórios"),
+        ("dining_sector", "Bloco 04 - Setor de Alimentação"),
+        ("library", "Bloco 05 - Biblioteca"),
+        ("health_sector", "Bloco 06 - Setor de Saúde"),
+        ("sports_gymnasium", "Bloco 07 - Ginásio Poliesportivo"),
+        ("garage", "Bloco 08 - Garagem"),
+        ("pool_and_field", "Bloco 09 - Piscina e Campo"),
+        ("classrooms", "Bloco 10 - Salas de Aula"),
+        ("honey_house", "Bloco 11 - Casa do Mel"),
+        ("apiary", "Bloco 12 - Apiário"),
+        ("vocational_training_center", "Bloco 13 - CVT"),
+        ("campus_territory", "Território do Campus"),
+    )
+
     room_name = models.CharField(
         max_length=100,
         blank=True,
@@ -16,24 +39,6 @@ class Room(models.Model):
         blank=True,
         verbose_name="Chave da Sala",
     )
-
-    CHOICES_DEPARTMENT = (
-        ("Bloco 01 - Direção", "Bloco 01 - Direção"),
-        ("Bloco 02 - Principal", "Bloco 02 - Principal"),
-        ("Bloco 03 - Laboratórios", "Bloco 03 - Laboratórios"),
-        ("Bloco 04 - Setor de Alimentação", "Bloco 04 - Setor de Alimentação"),
-        ("Bloco 05 - Biblioteca", "Bloco 05 - Biblioteca"),
-        ("Bloco 06 - Setor de Saúde", "Bloco 06 - Setor de Saúde"),
-        ("Bloco 07 - Ginásio Poliesportivo", "Bloco 07 - Ginásio Poliesportivo"),
-        ("Bloco 08 - Garagem", "Bloco 08 - Garagem"),
-        ("Bloco 09 - Piscina e Campo", "Bloco 09 - Piscina e Campo"),
-        ("Bloco 10 - Salas de Aula", "Bloco 10 - Salas de Aula"),
-        ("Bloco 11 - Casa do Mel", "Bloco 11 - Casa do Mel"),
-        ("Bloco 12 - Apiário", "Bloco 12 - Apiário"),
-        ("Bloco 13 - CVT", "Bloco 13 - CVT"),
-        ("Território do Campus", "Território do Campus"),
-    )
-
     department = models.CharField(
         max_length=100,
         blank=True,
@@ -41,21 +46,16 @@ class Room(models.Model):
         verbose_name="Prédio:",
         choices=CHOICES_DEPARTMENT,
     )
-    CHOICES_AVAILABLE = (
-        ("Sim", "Sim"),
-        ("Não", "Não"),
-    )
     available = models.CharField(
-        max_length=5,
-        verbose_name="Agendável",
-        choices=CHOICES_AVAILABLE,
+        max_length=25,
         blank=True,
         null=True,
+        verbose_name="Agendável",
+        choices=STATUS_DEPARTMENT,
     )
-    id_user_coordinator = models.ForeignKey(
+    id_user_coordinator = models.ManyToManyField(
         User,
         verbose_name="Avaliador de Agendamentos",
-        on_delete=models.CASCADE,
         related_name="coordinator_rooms",
         limit_choices_to={"registration_type": "coordinator"},
         blank=True,

@@ -9,7 +9,7 @@
     </div>
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
-        <li class="breadcrumb-item"><a href="{% url 'room:rooms_list' %}">Gerenciar Salas</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'room:room-list' %}">Gerenciar Salas</a></li>
         <li class="breadcrumb-item active">Criar/Editar Sala</li>
         {% include 'partials/dropdown_user.html' %}
     </ul>
@@ -17,10 +17,11 @@
 
 {% block content %}
 <div class="row container">
-    <form method="post">
+    <form class="col-md-6" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_table }}
-        <input type="submit" value="Update">
+        {{ form.as_p }}
+        <a class="btn btn-secondary" href="{% url 'room:room-list' %}">Descartar</a>
+        <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
 </div>
 {% endblock content %}

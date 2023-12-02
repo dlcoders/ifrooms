@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Usuário {% endblock title %}
+
+{% block breadcrumb %}
+    <div>
+        <h1><i class="fa-solid fa-user" style="color: #198754"></i> Usuário</h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'accounts:user-list' %}">Gerenciar Usuários</a></li>
+        <li class="breadcrumb-item"><a href="#">Usuário</a></li>
+        <li class="breadcrumb-item"><a href="#">Confirmar exclusão</a></li>
+        {% include 'partials/dropdown_user.html' %}
+    </ul>
+    
+{% endblock breadcrumb %}
+
+{% block content %}
+<div class="table-responsive">
+
+    <form method="post">{% csrf_token %}
+        <p>Confirmar a exclusão de "{{ object }}"?</p>
+        {{ form }}
+        <div style="display: flex; gap:10px; align-items: center;">
+            <button type="button" class="btn btn-secondary" onclick="redirectToUserList()">Cancelar</button>
+            <input type="submit" class="btn btn-danger" value="Confirmar">
+          </div>
+    </form>
+    
+</div>
+
+<script>
+    function redirectToUserList() {
+        window.location.href = '{% url "accounts:user-list" %}';
+    }
+</script>
+{% endblock %}
