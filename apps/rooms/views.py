@@ -1,31 +1,17 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from apps.rooms.models import Room
+from .forms import RoomForm
 
-from django.views.generic import TemplateView
+from django.views.generic import (
+    ListView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+    DetailView,
+)
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-
-
-class CoordinatorCreateRoomFormView(LoginRequiredMixin, TemplateView):
-    login_url = "accounts:signin"
-    template_name = "pages/coordinator/forms/form_room.html"
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['sua_variavel'] = 'Valor do contexto'
-    #     context['outra_variavel'] = 'Outro valor do contexto'
-    #     return context
-
-
-# Gerenciar Salas
-class RoomsView(TemplateView):
-    template_name = "pages/coordinator/rooms.html"
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['sua_variavel'] = 'Valor do contexto'
-    #     context['outra_variavel'] = 'Outro valor do contexto'
-    #     return context
 
 
 def calendar_view(request):
@@ -40,10 +26,40 @@ def calendar_view(request):
     if filtro_sala:
         salas = salas.filter(id=filtro_sala)
 
-    escolhas_predio = Room.CHOICES_PREDIO
+    escolhas_predio = Room.CHOICES_DEPARTMENT
 
     return render(
         request,
-        "pages/dashboard.html",
+        "rooms/calendar.html",
         {"salas": salas, "escolhas_predio": escolhas_predio},
     )
+
+
+class RoomsListView(ListView):
+    model = Room
+    template_name = "rooms/rooms.html"
+    context_object_name = "rooms"  # Nome da variável a ser usada no template
+    # paginate_by = 10
+
+
+class RoomsCreateView(CreateView):
+    template_name = "rooms/form.html"
+    form_class = RoomForm
+    success_url = reverse_lazy("room:room-list")
+
+
+class RoomsUpdateView(UpdateView):
+    model = Room
+    form_class = RoomForm
+    template_name = "rooms/form.html"
+    pk_url_kwarg = "id"  # Nome da variável na URL
+
+    def get_success_url(self):
+        return reverse_lazy("room:room-list")
+
+
+class RoomsDeleteView(DeleteView):
+    model = Room
+    success_url = reverse_lazy("room:room-list")
+    pk_url_kwarg = "id"
+
