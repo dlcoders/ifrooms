@@ -84,9 +84,13 @@ class ReservationUpdateView(UpdateView):
     form_class = UpdateReservationForm
     template_name = "reservations/form_feedback.html"
     pk_url_kwarg = "id"
+    success_url = reverse_lazy("reservation:reservation-list")
 
-    def get_success_url(self):
-        return reverse_lazy("reservation:teacher-reservation-list")
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        return self.render_to_response(self.get_context_data(form=form, reservation=self.object))
+
 
 
 class ReservationDeleteView(DeleteView):
