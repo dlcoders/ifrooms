@@ -23,7 +23,7 @@ class Reservation(models.Model):
         ("Aguardando Resposta", "Aguardando Resposta"),
     ]
 
-    date = models.DateField(verbose_name="Data", blank=True, null=False)
+    date = models.DateField(verbose_name="Data:", blank=True, null=False)
     startTime = models.TimeField(verbose_name="Horário de Início")
     endTime = models.TimeField(verbose_name="Horário Final")
     justification = models.CharField(

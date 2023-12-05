@@ -10,7 +10,6 @@ from apps.reservation.form import (
 from apps.reservation.models import Reservation
 
 from apps.rooms.models import Room
-from django.views.generic import ListView
 
 from django.views.generic import (
     ListView,

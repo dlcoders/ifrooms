@@ -15,7 +15,7 @@ class CreateReservationForm(ModelForm):
             "annex",
         ]
         widgets = {
-            "date": forms.DateInput(attrs={"class": "form-control", "type": "date", 'data-date-format': 'dd/mm/yyyy'}),
+            "date": forms.DateInput(attrs={"class": "form-control","data-date-format": "dd/mm/yyyy" }),
             "startTime": forms.TimeInput(attrs={"class": "form-control", "type": "time"}),
             "endTime": forms.TimeInput(attrs={"class": "form-control", "type": "time"}),
             "justification": forms.Select(attrs={"class": "form-control"}),
@@ -37,7 +37,7 @@ class UpdateReservationForm(ModelForm):
             "reply",
         ]
         widgets = {
-            "date": forms.DateInput(attrs={"class": "form-control", "type": "date", 'data-date-format': 'dd/mm/yyyy'}),
+            "date": forms.DateInput(attrs={"class": "form-control", "data-date-format": "dd/mm/yyyy" }),
             "startTime": forms.TimeInput(attrs={"class": "form-control", "type": "time"}),
             "endTime": forms.TimeInput(attrs={"class": "form-control", "type": "time"}),
             "justification": forms.Select(attrs={"class": "form-control"}),
@@ -67,7 +67,7 @@ class CoordinatorGrantsReservationForm(ModelForm):
             "reply",
         ]
         widgets = {
-            "date": forms.DateInput(attrs={"class": "form-control", "type": "date", 'data-date-format': 'dd/mm/yyyy'}),
+            "date": forms.DateInput(attrs={"class": "form-control",'data-date-format': 'dd/mm/yyyy' }),
             "startTime": forms.TimeInput(attrs={"class": "form-control", "type": "time"}),
             "endTime": forms.TimeInput(attrs={"class": "form-control", "type": "time"}),
             "justification": forms.Select(attrs={"class": "form-control"}),
