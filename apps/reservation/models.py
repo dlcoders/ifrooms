@@ -1,5 +1,5 @@
 # models.py
-
+from dateutil.relativedelta import relativedelta
 from django.db import models
 from django.utils import timezone
 from apps.accounts.models import User
@@ -66,18 +66,18 @@ class Reservation(models.Model):
         return f"Reservation {self.id} - {self.justification} - {self.date} {self.startTime}-{self.endTime}"
 
     def save(self, *args, **kwargs):
-        # If the reservation is periodic, create additional reservations
         if self.periodicity:
-            # Calculate the number of occurrences based on the periodicity
             num_occurrences = kwargs.pop("num_occurrences", 1)
 
-            # Create additional reservations with updated dates
             for i in range(1, num_occurrences):
-                new_date = self.date + timezone.timedelta(days=i) if self.periodicity == 'Diária' else \
-                           self.date + timezone.timedelta(weeks=i) if self.periodicity == 'Semanal' else \
-                           self.date + timezone.timedelta(days=30 * i)  # Assuming a month has 30 days
+                if self.periodicity == 'Diária':
+                    new_date = self.date + timezone.timedelta(days=i)
+                elif self.periodicity == 'Semanal':
+                    new_date = self.date + timezone.timedelta(weeks=i)
+                elif self.periodicity == 'Mensal':
+                    # Use relativedelta for months with different numbers of days
+                    new_date = self.date + relativedelta(months=i)
 
-                # Create a new reservation with the updated date
                 new_reservation = Reservation(
                     date=new_date,
                     startTime=self.startTime,
@@ -92,8 +92,6 @@ class Reservation(models.Model):
                     id_user_teacher=self.id_user_teacher,
                 )
 
-                # Save the new reservation without calling its own save method
                 new_reservation.save_base(raw=True)
 
-        # Call the save method on the base class (Model)
         super().save(*args, **kwargs)
