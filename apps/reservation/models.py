@@ -1,8 +1,9 @@
-from django.db import models
+# models.py
 
+from django.db import models
+from django.utils import timezone
 from apps.accounts.models import User
 from apps.rooms.models import Room
-
 
 class Reservation(models.Model):
     JUSTIFICATION_CHOICES = [
@@ -63,3 +64,36 @@ class Reservation(models.Model):
 
     def __str__(self):
         return f"Reservation {self.id} - {self.justification} - {self.date} {self.startTime}-{self.endTime}"
+
+    def save(self, *args, **kwargs):
+        # If the reservation is periodic, create additional reservations
+        if self.periodicity:
+            # Calculate the number of occurrences based on the periodicity
+            num_occurrences = kwargs.pop("num_occurrences", 1)
+
+            # Create additional reservations with updated dates
+            for i in range(1, num_occurrences):
+                new_date = self.date + timezone.timedelta(days=i) if self.periodicity == 'Diária' else \
+                           self.date + timezone.timedelta(weeks=i) if self.periodicity == 'Semanal' else \
+                           self.date + timezone.timedelta(days=30 * i)  # Assuming a month has 30 days
+
+                # Create a new reservation with the updated date
+                new_reservation = Reservation(
+                    date=new_date,
+                    startTime=self.startTime,
+                    endTime=self.endTime,
+                    justification=self.justification,
+                    periodicity=self.periodicity,
+                    annex=self.annex,
+                    message=self.message,
+                    reply=self.reply,
+                    status=self.status,
+                    id_room=self.id_room,
+                    id_user_teacher=self.id_user_teacher,
+                )
+
+                # Save the new reservation without calling its own save method
+                new_reservation.save_base(raw=True)
+
+        # Call the save method on the base class (Model)
+        super().save(*args, **kwargs)
