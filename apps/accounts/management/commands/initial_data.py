@@ -14,7 +14,7 @@ class Command(BaseCommand):
 
         # Generate rooms
         rooms = []
-        for i in range(2):
+        for i in range(10):
             rooms.append(
                 Room(
                     room_name=f"Sala {i+1}",
@@ -50,12 +50,12 @@ class Command(BaseCommand):
                 is_coordinator=user_type == "coordinator",
                 is_teacher=user_type == "teacher",
             )
-            for _ in range(2)
+            for _ in range(10)
         ]
         User.objects.bulk_create(users)
 
         # Generate reservations
-        for _ in range(2):
+        for _ in range(10):
             status_choice = random.choice(
                 ["Deferido", "Indeferido", "Aguardando Resposta"]
             )
