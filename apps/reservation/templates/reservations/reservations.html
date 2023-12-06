@@ -30,7 +30,6 @@
                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" >Até</th>
                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" >Justificativa</th>
                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" >Periodicidade</th>
-                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" >Anexo</th>
                             <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" >Professor</th>
                             <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" >Sala</th>
                             <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" >Status</th>
@@ -40,12 +39,11 @@
                         {% for reservation in reservations %}
                             <tr role="row" class="odd">
                                     <td><a href="{% url 'reservation:coordinator-reservation-feedback' id=reservation.id %}"><i class="fas fa-search"></i></a></td>
-                                    <td>{{ reservation.date }}</td>
+                                    <td>{{ reservation.date|date:"d/m/Y" }}</td>
                                     <td>{{ reservation.startTime }}</td>
                                     <td>{{ reservation.endTime }}</td>
                                     <td>{{ reservation.justification }}</td>
                                     <td>{{ reservation.periodicity }}</td>
-                                    <td>{{ reservation.annex }}</td>
                                     <td>{{ reservation.id_user_teacher }}</td>
                                     <td>{{ reservation.id_room }}</td>
                                     <td>{{ reservation.status }}</td>

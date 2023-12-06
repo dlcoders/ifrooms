@@ -10,7 +10,6 @@ from apps.reservation.form import (
 from apps.reservation.models import Reservation
 
 from apps.rooms.models import Room
-from django.views.generic import ListView
 
 from django.views.generic import (
     ListView,
@@ -53,6 +52,10 @@ class ReservationCreateView(CreateView):
         form.instance.id_room = room
         form.instance.id_user_teacher = self.request.user
         form.instance.status = "Aguardando Resposta"
+
+        # Call the save method on the form instance
+        form.save()
+
         return super().form_valid(form)
 
 
@@ -84,9 +87,13 @@ class ReservationUpdateView(UpdateView):
     form_class = UpdateReservationForm
     template_name = "reservations/form_feedback.html"
     pk_url_kwarg = "id"
+    success_url = reverse_lazy("reservation:reservation-list")
 
-    def get_success_url(self):
-        return reverse_lazy("reservation:teacher-reservation-list")
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        return self.render_to_response(self.get_context_data(form=form, reservation=self.object))
+
 
 
 class ReservationDeleteView(DeleteView):
