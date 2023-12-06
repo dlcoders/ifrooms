@@ -52,6 +52,10 @@ class ReservationCreateView(CreateView):
         form.instance.id_room = room
         form.instance.id_user_teacher = self.request.user
         form.instance.status = "Aguardando Resposta"
+
+        # Call the save method on the form instance
+        form.save()
+
         return super().form_valid(form)
 
 

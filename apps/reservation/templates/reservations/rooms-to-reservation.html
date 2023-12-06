@@ -24,7 +24,7 @@
                 <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
                     <thead>
                         <tr role="row">
-                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 261.641px;">#</th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 261.641px;">Reservar</th>
                             <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 261.641px;">Nome</th>
                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 417.312px;">Chave</th>
                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Prédio</th>
@@ -36,7 +36,7 @@
                     <tbody>
                         {% for room in rooms %}
                                 <tr role="row" class="odd">
-                                    <td><a href="{% url 'reservation:reservation-create' id=room.id %}"><i class="fas fa-search"></i></a></td>
+                                    <td><a href="{% url 'reservation:reservation-create' id=room.id %}"><i class="fa-solid fa-building-circle-arrow-right"></i></a></td>
                                     <td> {{ room.room_name }}</td>
                                     <td>{{ room.key }}</td>
                                     <td>{{ room.get_department_display }}</td>
