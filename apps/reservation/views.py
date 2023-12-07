@@ -56,7 +56,6 @@ class ReservationCreateView(CreateView):
         form.instance.id_user_teacher = self.request.user
         form.instance.status = "Aguardando Resposta"
 
-        # Retrieve the value of the num_occurrences field
         num_occurrences = form.cleaned_data.get("num_occurrences", 1)
 
         if form.instance.periodicity:
