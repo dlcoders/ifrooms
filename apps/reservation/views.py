@@ -1,6 +1,9 @@
-from django.shortcuts import get_object_or_404
+from django.utils import timezone
 from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+from dateutil.relativedelta import relativedelta
 
 from apps.reservation.form import (
     CoordinatorGrantsReservationForm,
@@ -53,12 +56,38 @@ class ReservationCreateView(CreateView):
         form.instance.id_user_teacher = self.request.user
         form.instance.status = "Aguardando Resposta"
 
-        # Call the save method on the form instance
+        num_occurrences = form.cleaned_data.get("num_occurrences", 1)
+
+        if form.instance.periodicity:
+            for i in range(1, num_occurrences):
+                new_date = self.calculate_new_date(form.instance.date, form.instance.periodicity, i)
+                new_reservation = Reservation(
+                    date=new_date,
+                    startTime=form.instance.startTime,
+                    endTime=form.instance.endTime,
+                    justification=form.instance.justification,
+                    periodicity=form.instance.periodicity,
+                    annex=form.instance.annex,
+                    message=form.instance.message,
+                    reply=form.instance.reply,
+                    status=form.instance.status,
+                    id_room=form.instance.id_room,
+                    id_user_teacher=form.instance.id_user_teacher,
+                )
+                new_reservation.save()
+
         form.save()
 
         return super().form_valid(form)
 
-
+    def calculate_new_date(self, base_date, periodicity, increment):
+        if periodicity == 'Diária':
+            return base_date + timezone.timedelta(days=increment)
+        elif periodicity == 'Semanal':
+            return base_date + timezone.timedelta(weeks=increment)
+        elif periodicity == 'Mensal':
+            return base_date + relativedelta(months=increment)
+        
 class CoordinatorGrantsReservationView(UpdateView):
     model = Reservation
     form_class = CoordinatorGrantsReservationForm
