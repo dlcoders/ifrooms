@@ -18,20 +18,42 @@ class EventManager(models.Manager):
             user=user,
             is_active=True,
             is_deleted=False,
-            end_time__gte=datetime.now().date(),
-        ).order_by("start_time")
+            date__gte=datetime.now().date(),
+        ).order_by("date")
         return running_events
 
 
 class Event(EventAbstract):
     """ Event model """
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="events")
-    title = models.CharField(max_length=200)
-    description = models.TextField()
-    start_time = models.DateTimeField()
-    end_time = models.DateTimeField()
+    STATUS_CHOICES = [
+        ("granted", "Deferido"),
+        ("rejected", "Indeferido"),
+        ("in_progress", "Aguardando Resposta"),
+    ]
 
+    user = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE, 
+        related_name="events",
+        verbose_name="Usuário",
+    )
+    title = models.CharField(
+        verbose_name="Título", 
+        max_length=200,
+    )
+    date = models.DateField(
+        verbose_name="Data",
+    )
+    start_time = models.TimeField(verbose_name="Horário de Início")
+    end_time = models.TimeField(verbose_name="Horário Final")
+    status = models.CharField(
+            verbose_name="Status:",
+            max_length=20,
+            choices=STATUS_CHOICES,
+            default="Aguardando Resposta",
+    )
+    
     objects = EventManager()
 
     def __str__(self):

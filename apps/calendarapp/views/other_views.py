@@ -129,12 +129,15 @@ class CalendarViewNew(generic.View):
                 {
                     "id": event.id,
                     "title": event.title,
-                    "start": event.start_time.strftime("%Y-%m-%dT%H:%M:%S"),
-                    "end": event.end_time.strftime("%Y-%m-%dT%H:%M:%S"),
-                    "description": event.description,
+                    "date": event.date.strftime("%Y-%m-%d"),
+                    "start_time": event.start_time.strftime("%H:%M:%S"),
+                    "end_time": event.end_time.strftime("%H:%M:%S"),
+                    "status": event.status,
                 }
             )
-
+        print('events', events)
+        print('events_month', events_month)
+        print('event_list', event_list)
         context = {"form": forms, "events": event_list, "events_month": events_month}
         return render(request, self.template_name, context)
 

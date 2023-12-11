@@ -6,21 +6,21 @@ from apps.rooms.models import Room
 
 class Reservation(models.Model):
     JUSTIFICATION_CHOICES = [
-        ("Aula", "Aula"),
-        ("Trabalho", "Trabalho"),
-        ("Reunião", "Reunião"),
+        ("class", "Aula"),
+        ("work", "Trabalho"),
+        ("meeting", "Reunião"),
     ]
 
     PERIODICITY_CHOICES = [
-        ("Diária", "Diária"),
-        ("Semanal", "Semanal"),
-        ("Mensal", "Mensal"),
+        ("daily", "Diária"),
+        ("weekly", "Semanal"),
+        ("monthly", "Mensal"),
     ]
 
     STATUS_CHOICES = [
-        ("Deferido", "Deferido"),
-        ("Indeferido", "Indeferido"),
-        ("Aguardando Resposta", "Aguardando Resposta"),
+        ("granted", "Deferido"),
+        ("rejected", "Indeferido"),
+        ("in_progress", "Aguardando Resposta"),
     ]
 
     date = models.DateField(verbose_name="Data:", blank=True, null=False)
