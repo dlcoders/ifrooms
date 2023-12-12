@@ -55,6 +55,11 @@ class Event(EventAbstract):
         choices=STATUS_CHOICES,
         default="Aguardando Resposta",
     )
+    id_reservation = models.OneToOneField(
+        "reservation.Reservation",
+        on_delete=models.CASCADE,
+        verbose_name="Reserva do evento",
+    )
 
     objects = EventManager()
 

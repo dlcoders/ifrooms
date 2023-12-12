@@ -65,6 +65,7 @@ class ReservationCreateView(CreateView):
                 new_date = self.calculate_new_date(
                     form.instance.date, form.instance.periodicity, i
                 )
+
                 new_reservation = Reservation(
                     date=new_date,
                     startTime=form.instance.startTime,
@@ -79,32 +80,18 @@ class ReservationCreateView(CreateView):
                     id_user_teacher=form.instance.id_user_teacher,
                 )
 
-                Event.objects.get_or_create(
-                    user=self.request.user,
-                    title=form.instance.get_justification_display,
-                    start=datetime.combine(form.instance.date, form.instance.startTime),
-                    end=datetime.combine(form.instance.date, form.instance.endTime),
-                )
-
                 new_reservation.save()
-
-        Event.objects.get_or_create(
-            user=self.request.user,
-            title=form.instance.get_justification_display,
-            start=datetime.combine(form.instance.date, form.instance.startTime),
-            end=datetime.combine(form.instance.date, form.instance.endTime),
-        )
 
         form.save()
 
         return super().form_valid(form)
 
     def calculate_new_date(self, base_date, periodicity, increment):
-        if periodicity == "Diária":
+        if periodicity == "daily":
             return base_date + timezone.timedelta(days=increment)
-        elif periodicity == "Semanal":
+        elif periodicity == "weekly":
             return base_date + timezone.timedelta(weeks=increment)
-        elif periodicity == "Mensal":
+        elif periodicity == "monthly":
             return base_date + relativedelta(months=increment)
 
 

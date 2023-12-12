@@ -65,3 +65,24 @@ class Reservation(models.Model):
 
     def __str__(self):
         return f"Reservation {self.id} - {self.justification} - {self.date} {self.startTime}-{self.endTime}"
+
+    def save(self, *args, **kwargs):
+        # check if it's a new reservation
+        is_new_reservation = not self.pk
+
+        super().save(*args, **kwargs)
+
+        event, created = Event.objects.get_or_create(
+            user=self.id_user_teacher,
+            title=self.get_justification_display(),
+            start=datetime.combine(self.date, self.startTime),
+            end=datetime.combine(self.date, self.endTime),
+            id_reservation=self,
+        )
+
+        # if it's an existing reservation, update the event
+        if not created and is_new_reservation:
+            event.title = self.get_justification_display()
+            event.start = datetime.combine(self.date, self.startTime)
+            event.end = datetime.combine(self.date, self.endTime)
+            event.save()
