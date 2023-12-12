@@ -43,7 +43,12 @@
                                     <td>{{ reservation.startTime }}</td>
                                     <td>{{ reservation.endTime }}</td>
                                     <td>{{ reservation.justification }}</td>
-                                    <td>{{ reservation.periodicity }}</td>
+                                    <td>{% if reservation.periodicity %}
+                                            {{ reservation.periodicity }}
+                                        {% else %}
+                                            Nenhuma
+                                        {% endif %}
+                                    </td>
                                     <td>{{ reservation.id_user_teacher }}</td>
                                     <td>{{ reservation.id_room }}</td>
                                     <td>{{ reservation.status }}</td>
