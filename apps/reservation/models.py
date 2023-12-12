@@ -60,8 +60,6 @@ class Reservation(models.Model):
         return f"Reservation {self.id} - {self.justification} - {self.date} {self.startTime}-{self.endTime}"
 
     def save(self, *args, **kwargs):
-        is_new_reservation = not self.pk
-
         super().save(*args, **kwargs)
 
         event = Event.objects.filter(id_reservation=self).first()
@@ -79,5 +77,6 @@ class Reservation(models.Model):
                 start=datetime.combine(self.date, self.startTime),
                 end=datetime.combine(self.date, self.endTime),
                 id_reservation=self,
+                id_room=self.id_room,
                 status=self.status,
             )

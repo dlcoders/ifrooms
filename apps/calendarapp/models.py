@@ -3,6 +3,7 @@ from datetime import datetime
 from django.urls import reverse
 
 from apps.accounts.models import User
+from apps.rooms.models import Room
 
 
 class EventAbstract(models.Model):
@@ -77,6 +78,7 @@ class Event(EventAbstract):
     )
     start = models.DateTimeField()
     end = models.DateTimeField()
+    id_room = models.ForeignKey(Room, on_delete=models.CASCADE, verbose_name="Sala")
     status = models.CharField(
         verbose_name="Status:",
         max_length=20,

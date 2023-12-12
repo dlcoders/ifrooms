@@ -24,7 +24,8 @@
         <h4 class="mb-4">Próximas Reservas</h4>
         {% for event in events_month %}
           <div class="fc-event">
-              <h3>{{ event.title }}</h3>
+              <h3>{{ event.id_room }}</h3>
+              <h4>{{ event.title }}</h4>
               <p>De {{ event.start|time:"H:i" }} até {{ event.end|time:"H:i" }}</p>
               <p>{{ event.end|date }}</p>
           </div>
@@ -38,43 +39,6 @@
     <div id="calendar"></div>
 </div>
 
-<div class="modal fade show" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-          <div class="modal-header bg-primary">
-              <h5 class="modal-title text-white" id="title_event_detail"></h5>
-              <button id="modalDetailClose" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <form method="">
-              {% csrf_token %}
-              <div class="modal-body">
-                  
-                  <div class="form-group">
-                      <label for="message-text" class="col-form-label">Justificativa:</label>
-                      <p id = "justification_event_detail">
-                        {{ event.justification }}
-                      </p>
-                  </div>
-                  <div class="form-group">
-                      <label for="message-text" class="col-form-label">Dia e Hora de Início da Aula:</label>
-                      <p id = "start_time_event_detail">{{ event.start }}</p>
-                  </div>
-                  <div class="form-group">
-                      <label for="message-text" class="col-form-label">Dia e Hora do Término da Aula:</label>
-                      <p id = "end_event_detail">{{ event.end }}</p>
-                  </div>
-              </div>
-              <div class="modal-footer">
-                    <button id="delete-event-button" data-event-id="" type="button" class="btn btn-danger">Apagar</button>
-                    <button id="add-to-next-week" data-event-id-week="" type="button" class="btn btn-success">Semana seguinte</button>
-                    <button id="add-to-next-day" data-event-id-day="" type="button" class="btn btn-primary">Dia seguinte</button>
-              </div>
-          </form>
-        </div>
-    </div>
-</div>
 {% endblock content %}
 
 
