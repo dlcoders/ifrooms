@@ -26,6 +26,12 @@ class Reservation(models.Model):
         verbose_name="Justificativa:",
         max_length=200,
     )
+    class_school = models.CharField(
+        verbose_name="Turma:",
+        max_length=50,
+        blank=True,
+        null=True,
+    )
     periodicity = models.CharField(
         verbose_name="Periodicidade:",
         max_length=20,
@@ -76,6 +82,7 @@ class Reservation(models.Model):
                 title=self.justification,
                 start=datetime.combine(self.date, self.startTime),
                 end=datetime.combine(self.date, self.endTime),
+                class_school=self.class_school,
                 id_reservation=self,
                 id_room=self.id_room,
                 status=self.status,

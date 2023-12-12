@@ -71,6 +71,7 @@ class ReservationCreateView(CreateView):
                     startTime=form.instance.startTime,
                     endTime=form.instance.endTime,
                     justification=form.instance.justification,
+                    class_school=form.instance.class_school,
                     periodicity=form.instance.periodicity,
                     annex=form.instance.annex,
                     message=form.instance.message,

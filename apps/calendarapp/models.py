@@ -78,6 +78,12 @@ class Event(EventAbstract):
     )
     start = models.DateTimeField()
     end = models.DateTimeField()
+    class_school = models.CharField(
+        verbose_name="Turma:",
+        max_length=50,
+        blank=True,
+        null=True,
+    )
     id_room = models.ForeignKey(Room, on_delete=models.CASCADE, verbose_name="Sala")
     status = models.CharField(
         verbose_name="Status:",
