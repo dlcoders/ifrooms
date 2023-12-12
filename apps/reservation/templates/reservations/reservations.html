@@ -44,7 +44,7 @@
                                     <td>{{ reservation.date|date:"d/m/Y" }}</td>
                                     <td>{{ reservation.startTime }}</td>
                                     <td>{{ reservation.endTime }}</td>
-                                    <td>{{ reservation.get_justification_display }}</td>
+                                    <td>{{ reservation.justification }}</td>
                                     <td>{% if reservation.periodicity %}
                                             {{ reservation.get_periodicity_display }}
                                         {% else %}

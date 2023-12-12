@@ -7,12 +7,6 @@ from datetime import datetime
 
 
 class Reservation(models.Model):
-    JUSTIFICATION_CHOICES = [
-        ("class", "Aula"),
-        ("work", "Trabalho"),
-        ("meeting", "Reunião"),
-    ]
-
     PERIODICITY_CHOICES = [
         ("daily", "Diária"),
         ("weekly", "Semanal"),
@@ -28,10 +22,9 @@ class Reservation(models.Model):
     date = models.DateField(verbose_name="Data:", blank=True, null=False)
     startTime = models.TimeField(verbose_name="Horário de Início")
     endTime = models.TimeField(verbose_name="Horário Final")
-    justification = models.CharField(
+    justification = models.TextField(
         verbose_name="Justificativa:",
-        max_length=20,
-        choices=JUSTIFICATION_CHOICES,
+        max_length=200,
     )
     periodicity = models.CharField(
         verbose_name="Periodicidade:",
@@ -74,7 +67,7 @@ class Reservation(models.Model):
         event = Event.objects.filter(id_reservation=self).first()
 
         if event:
-            event.title = self.get_justification_display()
+            event.title = self.justification
             event.start = datetime.combine(self.date, self.startTime)
             event.end = datetime.combine(self.date, self.endTime)
             event.status = self.status
@@ -82,7 +75,7 @@ class Reservation(models.Model):
         else:
             Event.objects.create(
                 user=self.id_user_teacher,
-                title=self.get_justification_display(),
+                title=self.justification,
                 start=datetime.combine(self.date, self.startTime),
                 end=datetime.combine(self.date, self.endTime),
                 id_reservation=self,

@@ -66,7 +66,7 @@ class Command(BaseCommand):
                 date=fake.date_this_decade(),
                 startTime=fake.time(),
                 endTime=fake.time(),
-                justification=random.choice(Reservation.JUSTIFICATION_CHOICES)[0],
+                justification=fake.text(max_nb_chars=200),
                 periodicity=random.choice(Reservation.PERIODICITY_CHOICES)[0]
                 if fake.boolean()
                 else None,
