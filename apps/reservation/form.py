@@ -34,7 +34,7 @@ class CreateReservationForm(ModelForm):
                 attrs={"class": "form-control", "type": "time"}
             ),
             "endTime": forms.TimeInput(attrs={"class": "form-control", "type": "time"}),
-            "justification": forms.Select(attrs={"class": "form-control"}),
+            "justification": forms.Textarea(attrs={"class": "form-control", "rows": 4}),
             "periodicity": forms.Select(attrs={"class": "form-control"}),
             "annex": forms.FileInput(attrs={"class": "form-control"}),
         }
@@ -61,7 +61,7 @@ class UpdateReservationForm(ModelForm):
                 attrs={"class": "form-control", "type": "time"}
             ),
             "endTime": forms.TimeInput(attrs={"class": "form-control", "type": "time"}),
-            "justification": forms.Select(attrs={"class": "form-control"}),
+            "justification": forms.Textarea(attrs={"class": "form-control", "rows": 4}),
             "periodicity": forms.Select(attrs={"class": "form-control"}),
             "annex": forms.FileInput(attrs={"class": "form-control"}),
             "message": forms.TextInput(
@@ -98,7 +98,7 @@ class CoordinatorGrantsReservationForm(ModelForm):
                 attrs={"class": "form-control", "type": "time"}
             ),
             "endTime": forms.TimeInput(attrs={"class": "form-control", "type": "time"}),
-            "justification": forms.Select(attrs={"class": "form-control"}),
+            "justification": forms.Textarea(attrs={"class": "form-control", "rows": 4}),
             "periodicity": forms.Select(attrs={"class": "form-control"}),
             "annex": forms.FileInput(attrs={"class": "form-control"}),
             "message": forms.TextInput(attrs={"class": "form-control"}),

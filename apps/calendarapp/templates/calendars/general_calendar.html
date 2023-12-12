@@ -12,7 +12,7 @@
   </div>
   <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item" style="color: #198754;"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
-      <li class="breadcrumb-item"><a href="#">Meu Calendário</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'calendarapp:general-calendar' %}"> Calendário Geral</a></li>
       {% include 'partials/dropdown_user.html' %}
   </ul>
 {% endblock breadcrumb %}
@@ -38,6 +38,7 @@
 <div class="col-md-9">
     <div id="calendar"></div>
 </div>
+
 {% endblock content %}
 
 

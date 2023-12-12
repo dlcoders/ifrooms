@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.utils import timezone
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
@@ -13,6 +14,7 @@ from apps.reservation.form import (
 from apps.reservation.models import Reservation
 
 from apps.rooms.models import Room
+from apps.calendarapp.models import Event
 
 from django.views.generic import (
     ListView,
@@ -60,7 +62,10 @@ class ReservationCreateView(CreateView):
 
         if form.instance.periodicity:
             for i in range(1, num_occurrences):
-                new_date = self.calculate_new_date(form.instance.date, form.instance.periodicity, i)
+                new_date = self.calculate_new_date(
+                    form.instance.date, form.instance.periodicity, i
+                )
+
                 new_reservation = Reservation(
                     date=new_date,
                     startTime=form.instance.startTime,
@@ -74,6 +79,7 @@ class ReservationCreateView(CreateView):
                     id_room=form.instance.id_room,
                     id_user_teacher=form.instance.id_user_teacher,
                 )
+
                 new_reservation.save()
 
         form.save()
@@ -81,17 +87,18 @@ class ReservationCreateView(CreateView):
         return super().form_valid(form)
 
     def calculate_new_date(self, base_date, periodicity, increment):
-        if periodicity == 'Diária':
+        if periodicity == "daily":
             return base_date + timezone.timedelta(days=increment)
-        elif periodicity == 'Semanal':
+        elif periodicity == "weekly":
             return base_date + timezone.timedelta(weeks=increment)
-        elif periodicity == 'Mensal':
+        elif periodicity == "monthly":
             return base_date + relativedelta(months=increment)
-        
+
+
 class CoordinatorGrantsReservationView(UpdateView):
     model = Reservation
     form_class = CoordinatorGrantsReservationForm
-    template_name = "reservations/form_feedback.html"
+    template_name = "reservations/form_grants.html"
     pk_url_kwarg = "id"
 
     def form_valid(self, form):
@@ -121,8 +128,9 @@ class ReservationUpdateView(UpdateView):
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         form = self.get_form()
-        return self.render_to_response(self.get_context_data(form=form, reservation=self.object))
-
+        return self.render_to_response(
+            self.get_context_data(form=form, reservation=self.object)
+        )
 
 
 class ReservationDeleteView(DeleteView):

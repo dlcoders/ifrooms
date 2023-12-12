@@ -1,35 +1,30 @@
 # models.py
 from django.db import models
 from apps.accounts.models import User
+from apps.calendarapp.models import Event
 from apps.rooms.models import Room
+from datetime import datetime
 
 
 class Reservation(models.Model):
-    JUSTIFICATION_CHOICES = [
-        ("Aula", "Aula"),
-        ("Trabalho", "Trabalho"),
-        ("Reunião", "Reunião"),
-    ]
-
     PERIODICITY_CHOICES = [
-        ("Diária", "Diária"),
-        ("Semanal", "Semanal"),
-        ("Mensal", "Mensal"),
+        ("daily", "Diária"),
+        ("weekly", "Semanal"),
+        ("monthly", "Mensal"),
     ]
 
     STATUS_CHOICES = [
-        ("Deferido", "Deferido"),
-        ("Indeferido", "Indeferido"),
-        ("Aguardando Resposta", "Aguardando Resposta"),
+        ("granted", "Deferido"),
+        ("rejected", "Indeferido"),
+        ("in_progress", "Aguardando Resposta"),
     ]
 
     date = models.DateField(verbose_name="Data:", blank=True, null=False)
     startTime = models.TimeField(verbose_name="Horário de Início")
     endTime = models.TimeField(verbose_name="Horário Final")
-    justification = models.CharField(
+    justification = models.TextField(
         verbose_name="Justificativa:",
-        max_length=20,
-        choices=JUSTIFICATION_CHOICES,
+        max_length=200,
     )
     periodicity = models.CharField(
         verbose_name="Periodicidade:",
@@ -63,3 +58,25 @@ class Reservation(models.Model):
 
     def __str__(self):
         return f"Reservation {self.id} - {self.justification} - {self.date} {self.startTime}-{self.endTime}"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        event = Event.objects.filter(id_reservation=self).first()
+
+        if event:
+            event.title = self.justification
+            event.start = datetime.combine(self.date, self.startTime)
+            event.end = datetime.combine(self.date, self.endTime)
+            event.status = self.status
+            event.save()
+        else:
+            Event.objects.create(
+                user=self.id_user_teacher,
+                title=self.justification,
+                start=datetime.combine(self.date, self.startTime),
+                end=datetime.combine(self.date, self.endTime),
+                id_reservation=self,
+                id_room=self.id_room,
+                status=self.status,
+            )
