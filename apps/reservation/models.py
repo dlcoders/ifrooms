@@ -1,7 +1,7 @@
 # models.py
 from django.db import models
 from apps.accounts.models import User
-from apps.calendarapp.models.event import Event
+from apps.calendarapp.models import Event
 from apps.rooms.models import Room
 from datetime import datetime
 
@@ -67,22 +67,24 @@ class Reservation(models.Model):
         return f"Reservation {self.id} - {self.justification} - {self.date} {self.startTime}-{self.endTime}"
 
     def save(self, *args, **kwargs):
-        # check if it's a new reservation
         is_new_reservation = not self.pk
 
         super().save(*args, **kwargs)
 
-        event, created = Event.objects.get_or_create(
-            user=self.id_user_teacher,
-            title=self.get_justification_display(),
-            start=datetime.combine(self.date, self.startTime),
-            end=datetime.combine(self.date, self.endTime),
-            id_reservation=self,
-        )
+        event = Event.objects.filter(id_reservation=self).first()
 
-        # if it's an existing reservation, update the event
-        if not created and is_new_reservation:
+        if event:
             event.title = self.get_justification_display()
             event.start = datetime.combine(self.date, self.startTime)
             event.end = datetime.combine(self.date, self.endTime)
+            event.status = self.status
             event.save()
+        else:
+            Event.objects.create(
+                user=self.id_user_teacher,
+                title=self.get_justification_display(),
+                start=datetime.combine(self.date, self.startTime),
+                end=datetime.combine(self.date, self.endTime),
+                id_reservation=self,
+                status=self.status,
+            )

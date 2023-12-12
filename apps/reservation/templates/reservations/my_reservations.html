@@ -40,7 +40,7 @@
                             <tr role="row" class="odd">
                                     <td>
                                         {% if reservation.status == "Aguardando Resposta" %}
-                                            <a href="{% url 'reservation:coordinator-reservation-feedback' id=reservation.id %}"><i class="fas fa-search"></i></a>
+                                            <a href="{% url 'reservation:reservation-update' id=reservation.id %}"><i class="fas fa-search"></i></a>
                                         {% endif %}
                                     </td>
                                     <td>{{ reservation.id_room.room_name }}</td>

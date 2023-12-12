@@ -1,9 +1,32 @@
-from datetime import datetime, timedelta
 from django.db import models
+from datetime import datetime
 from django.urls import reverse
 
-from apps.calendarapp.models import EventAbstract
 from apps.accounts.models import User
+
+
+class EventAbstract(models.Model):
+    """Event abstract model"""
+
+    is_active = models.BooleanField(default=True)
+    is_deleted = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+class EventAbstract(models.Model):
+    """Event abstract model"""
+
+    is_active = models.BooleanField(default=True)
+    is_deleted = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
 
 
 class EventManager(models.Manager):
@@ -21,6 +44,7 @@ class EventManager(models.Manager):
         running_events = Event.objects.filter(
             user=user,
             is_active=True,
+            status="Deferido",
             is_deleted=False,
             end__gte=datetime.now().date(),
         ).order_by("start")
@@ -30,12 +54,6 @@ class EventManager(models.Manager):
 
 class Event(EventAbstract):
     """Event model"""
-
-    STATUS_CHOICES = [
-        ("granted", "Deferido"),
-        ("rejected", "Indeferido"),
-        ("in_progress", "Aguardando Resposta"),
-    ]
 
     user = models.ForeignKey(
         User,
@@ -52,7 +70,6 @@ class Event(EventAbstract):
     status = models.CharField(
         verbose_name="Status:",
         max_length=20,
-        choices=STATUS_CHOICES,
         default="Aguardando Resposta",
     )
     id_reservation = models.OneToOneField(

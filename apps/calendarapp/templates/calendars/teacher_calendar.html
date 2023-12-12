@@ -25,8 +25,8 @@
         {% for event in events_month %}
           <div class="fc-event">
               <h3>{{ event.title }}</h3>
-              <p>De: {{ event.start|time:"H:i" }}</p>
-              <p>Até {{ event.end|time:"H:i" }}</p>
+              <p>De {{ event.start|time:"H:i" }} até {{ event.end|time:"H:i" }}</p>
+              <p>{{ event.end|date }}</p>
           </div>
         {% empty %}
           <p>Nenhuma Reserva Cadastrada</p>
