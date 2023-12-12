@@ -43,19 +43,6 @@
             </a>
         </li>
     </ul>
-    
-     {% elif request.user.is_superuser %}
-
-     <ul class="app-menu">
-        <li>
-             <a class="app-menu__item active" href="{% url 'accounts:user-list' %}"><i class="app-menu__icon fa-solid fa-user"></i><span class="app-menu__label">Gerenciar Usuários</span></a>
-         </li>
-         <li class="app-sidebar__toggle_styles">
-            <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
-                <i class="fa fa-up-right-and-down-left-from-center" style="color: #198754"></i>
-            </a>
-        </li>
-     </ul>
 
      {% elif request.user.is_teacher %}
 
@@ -81,6 +68,20 @@
             </a>
         </li>
     </ul>
+
+    {% elif request.user.is_superuser %}
+
+     <ul class="app-menu">
+        <li>
+             <a class="app-menu__item active" href="{% url 'accounts:user-list' %}"><i class="app-menu__icon fa-solid fa-user"></i><span class="app-menu__label">Gerenciar Usuários</span></a>
+         </li>
+         <li class="app-sidebar__toggle_styles">
+            <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
+                <i class="fa fa-up-right-and-down-left-from-center" style="color: #198754"></i>
+            </a>
+        </li>
+     </ul>
+     
      {% endif %}
 
  </aside>

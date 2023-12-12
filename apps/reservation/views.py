@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.utils import timezone
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
@@ -81,9 +82,8 @@ class ReservationCreateView(CreateView):
                 Event.objects.get_or_create(
                     user=self.request.user,
                     title=form.instance.get_justification_display,
-                    start_time=form.instance.startTime,
-                    end_time=form.instance.endTime,
-                    date=new_date,
+                    start=datetime.combine(form.instance.date, form.instance.startTime),
+                    end=datetime.combine(form.instance.date, form.instance.endTime),
                 )
 
                 new_reservation.save()
@@ -91,9 +91,8 @@ class ReservationCreateView(CreateView):
         Event.objects.get_or_create(
             user=self.request.user,
             title=form.instance.get_justification_display,
-            date=form.instance.date,
-            start_time=form.instance.startTime,
-            end_time=form.instance.endTime,
+            start=datetime.combine(form.instance.date, form.instance.startTime),
+            end=datetime.combine(form.instance.date, form.instance.endTime),
         )
 
         form.save()

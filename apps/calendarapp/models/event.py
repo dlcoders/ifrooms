@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.db import models
 from django.urls import reverse
 
@@ -7,24 +7,29 @@ from apps.accounts.models import User
 
 
 class EventManager(models.Manager):
-    """ Event manager """
+    """Event manager"""
 
     def get_all_events(self, user):
         events = Event.objects.filter(user=user, is_active=True, is_deleted=False)
         return events
 
     def get_running_events(self, user):
+        # today = datetime.now().date()
+        # start_of_week = today - timedelta(days=today.weekday())
+        # end_of_week = start_of_week + timedelta(days=6)
+
         running_events = Event.objects.filter(
             user=user,
             is_active=True,
             is_deleted=False,
-            date__gte=datetime.now().date(),
-        ).order_by("date")
+            end__gte=datetime.now().date(),
+        ).order_by("start")
+
         return running_events
 
 
 class Event(EventAbstract):
-    """ Event model """
+    """Event model"""
 
     STATUS_CHOICES = [
         ("granted", "Deferido"),
@@ -33,27 +38,24 @@ class Event(EventAbstract):
     ]
 
     user = models.ForeignKey(
-        User, 
-        on_delete=models.CASCADE, 
+        User,
+        on_delete=models.CASCADE,
         related_name="events",
         verbose_name="Usuário",
     )
     title = models.CharField(
-        verbose_name="Título", 
+        verbose_name="Título",
         max_length=200,
     )
-    date = models.DateField(
-        verbose_name="Data",
-    )
-    start_time = models.TimeField(verbose_name="Horário de Início")
-    end_time = models.TimeField(verbose_name="Horário Final")
+    start = models.DateTimeField()
+    end = models.DateTimeField()
     status = models.CharField(
-            verbose_name="Status:",
-            max_length=20,
-            choices=STATUS_CHOICES,
-            default="Aguardando Resposta",
+        verbose_name="Status:",
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default="Aguardando Resposta",
     )
-    
+
     objects = EventManager()
 
     def __str__(self):

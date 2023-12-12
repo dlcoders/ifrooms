@@ -1,7 +1,9 @@
 # models.py
 from django.db import models
 from apps.accounts.models import User
+from apps.calendarapp.models.event import Event
 from apps.rooms.models import Room
+from datetime import datetime
 
 
 class Reservation(models.Model):

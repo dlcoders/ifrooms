@@ -61,14 +61,14 @@ def create_event(request):
     if request.POST and form.is_valid():
         title = form.cleaned_data["title"]
         description = form.cleaned_data["description"]
-        start_time = form.cleaned_data["start_time"]
-        end_time = form.cleaned_data["end_time"]
+        start = form.cleaned_data["start"]
+        end = form.cleaned_data["end"]
         Event.objects.get_or_create(
             user=request.user,
             title=title,
             description=description,
-            start_time=start_time,
-            end_time=end_time,
+            start=start,
+            end=end,
         )
         return HttpResponseRedirect(reverse("calendarapp:calendar"))
     return render(request, "event.html", {"form": form})
@@ -129,15 +129,14 @@ class CalendarViewNew(generic.View):
                 {
                     "id": event.id,
                     "title": event.title,
-                    "date": event.date.strftime("%Y-%m-%d"),
-                    "start_time": event.start_time.strftime("%H:%M:%S"),
-                    "end_time": event.end_time.strftime("%H:%M:%S"),
+                    "start": event.start.strftime("%Y-%m-%dT%H:%M:%S"),
+                    "end": event.end.strftime("%Y-%m-%dT%H:%M:%S"),
                     "status": event.status,
                 }
             )
-        print('events', events)
-        print('events_month', events_month)
-        print('event_list', event_list)
+        print("events", events)
+        print("events_month", events_month)
+        print("event_list", event_list)
         context = {"form": forms, "events": event_list, "events_month": events_month}
         return render(request, self.template_name, context)
 
