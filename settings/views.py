@@ -10,8 +10,8 @@ class DashboardView(LoginRequiredMixin, View):
     template_name = "pages/dashboard.html"
 
     def get(self, request, *args, **kwargs):
-        # events = Event.objects.get_all_events(user=request.user)
-        # running_events = Event.objects.get_running_events(user=request.user)
+        # events = Event.objects.get_all_events_by_user(user=request.user)
+        # running_events = Event.objects.get_running_events_by_user(user=request.user)
         # latest_events = Event.objects.filter(user=request.user).order_by("-id")[:10]
         # context = {
         #     "total_event": events.count(),

@@ -25,7 +25,7 @@
     
     <ul class="app-menu">
         <li>
-             <a class="app-menu__item active" href="{% url 'calendarapp:my-calendar-user' %}"><i class="fa-solid fa-calendar-days"></i> <span class="app-menu__label "style="margin-left: 5px;">Calendário</span></a>
+             <a class="app-menu__item active" href="{% url 'calendarapp:general-calendar' %}"><i class="fa-solid fa-calendar-days"></i> <span class="app-menu__label "style="margin-left: 5px;">Calendário Geral</span></a>
          </li>
          <li class="app-sidebar__toggle_styles">
             <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
@@ -48,8 +48,8 @@
             </a>
         </li>
         <li>
-            <a class="app-menu__item{% if request.resolver_match.url_name == 'my-calendar-coordinator' %} active{% endif %}" href="{% url 'calendarapp:my-calendar-coordinator' %}">
-                <i class="fa-solid fa-calendar-days"></i> <span class="app-menu__label "style="margin-left: 5px;">Meu Calendário</span>
+            <a class="app-menu__item{% if request.resolver_match.url_name == 'my-calendar-coordinator' %} active{% endif %}" href="{% url 'calendarapp:general-calendar' %}">
+                <i class="fa-solid fa-calendar-days"></i> <span class="app-menu__label "style="margin-left: 5px;">Calendário Geral</span>
             </a>
         </li>
         <li class="app-sidebar__toggle_styles">

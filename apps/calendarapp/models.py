@@ -32,15 +32,25 @@ class EventAbstract(models.Model):
 class EventManager(models.Manager):
     """Event manager"""
 
-    def get_all_events(self, user):
+    def get_all_events(self):
+        events = Event.objects.filter(is_active=True, is_deleted=False)
+        return events
+
+    def get_all_events_by_user(self, user):
         events = Event.objects.filter(user=user, is_active=True, is_deleted=False)
         return events
 
-    def get_running_events(self, user):
-        # today = datetime.now().date()
-        # start_of_week = today - timedelta(days=today.weekday())
-        # end_of_week = start_of_week + timedelta(days=6)
+    def get_running_events(self):
+        running_events = Event.objects.filter(
+            is_active=True,
+            status="Deferido",
+            is_deleted=False,
+            end__gte=datetime.now().date(),
+        ).order_by("start")
 
+        return running_events
+
+    def get_running_events_by_user(self, user):
         running_events = Event.objects.filter(
             user=user,
             is_active=True,

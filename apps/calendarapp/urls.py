@@ -7,17 +7,12 @@ app_name = "calendarapp"
 
 urlpatterns = [
     path(
-        "my-calendar-user", views.MyCalendarStudent.as_view(), name="my-calendar-user"
+        "general-calendar", views.GeneralCalendar.as_view(), name="general-calendar"
     ),
     path(
         "my-calendar-teacher/",
         views.MyCalendarTeacher.as_view(),
         name="my-calendar-teacher",
-    ),
-    path(
-        "my-calendar-coordinator/",
-        views.MyCalendarCoordinator.as_view(),
-        name="my-calendar-coordinator",
     ),
     ######################################################################
     path("calendar/", views.CalendarViewNew.as_view(), name="calendar"),
