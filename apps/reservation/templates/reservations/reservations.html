@@ -38,7 +38,9 @@
                     <tbody>
                         {% for reservation in reservations %}
                             <tr role="row" class="odd">
-                                    <td><a href="{% url 'reservation:coordinator-reservation-feedback' id=reservation.id %}"><i class="fas fa-search"></i></a></td>
+                                    <td>
+                                        <a href="{% url 'reservation:coordinator-reservation-feedback' id=reservation.id %}"><i class="fas fa-search"></i></a>
+                                    </td>
                                     <td>{{ reservation.date|date:"d/m/Y" }}</td>
                                     <td>{{ reservation.startTime }}</td>
                                     <td>{{ reservation.endTime }}</td>

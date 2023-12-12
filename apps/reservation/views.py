@@ -111,7 +111,7 @@ class ReservationCreateView(CreateView):
 class CoordinatorGrantsReservationView(UpdateView):
     model = Reservation
     form_class = CoordinatorGrantsReservationForm
-    template_name = "reservations/form_feedback.html"
+    template_name = "reservations/form_grants.html"
     pk_url_kwarg = "id"
 
     def form_valid(self, form):
