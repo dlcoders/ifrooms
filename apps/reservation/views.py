@@ -1,4 +1,3 @@
-from datetime import datetime
 from django.utils import timezone
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
@@ -28,6 +27,17 @@ class ReservationListView(ListView):
     model = Reservation
     template_name = "reservations/reservations.html"
     context_object_name = "reservations"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        filtered_reservations = Reservation.objects.filter(
+            id_room__id_user_coordinator=self.request.user
+        )
+
+        context["reservations"] = filtered_reservations
+
+        return context
 
 
 class TeacherReservationListView(LoginRequiredMixin, ListView):
