@@ -3,7 +3,7 @@ from django.db import models
 from apps.accounts.models import User
 from apps.calendarapp.models import Event
 from apps.rooms.models import Room
-from datetime import datetime
+from datetime import datetime, time
 
 
 class Reservation(models.Model):
@@ -72,18 +72,24 @@ class Reservation(models.Model):
 
         if event:
             event.title = self.justification
-            event.start = datetime.combine(self.date, self.startTime)
-            event.end = datetime.combine(self.date, self.endTime)
+            event.start = datetime.combine(self.date, self.convert_to_time(self.startTime))
+            event.end = datetime.combine(self.date, self.convert_to_time(self.endTime))
             event.status = self.status
             event.save()
         else:
             Event.objects.create(
                 user=self.id_user_teacher,
                 title=self.justification,
-                start=datetime.combine(self.date, self.startTime),
-                end=datetime.combine(self.date, self.endTime),
+                start=datetime.combine(self.date, self.convert_to_time(self.startTime)),
+                end=datetime.combine(self.date, self.convert_to_time(self.endTime)),
                 class_school=self.class_school,
                 id_reservation=self,
                 id_room=self.id_room,
                 status=self.status,
             )
+
+    def convert_to_time(self, input_time):
+        if isinstance(input_time, time):
+            return input_time
+
+        return datetime.strptime(str(input_time), "%H:%M:%S").time()
