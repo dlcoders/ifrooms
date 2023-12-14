@@ -40,7 +40,7 @@ class Command(BaseCommand):
         return rooms
 
     def generate_users(self):
-        user_type = random.choice(["student", "coordinator", "teacher"])
+        user_type = random.choice(["student", "teacher"])
         users = [
             User(
                 registration=self.fake.unique.random_number(6),
@@ -51,7 +51,6 @@ class Command(BaseCommand):
                 is_staff=self.fake.boolean(),
                 is_active=True,
                 is_student=user_type == "student",
-                is_coordinator=user_type == "coordinator",
                 is_teacher=user_type == "teacher",
             )
             for _ in range(10)
