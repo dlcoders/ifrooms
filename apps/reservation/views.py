@@ -78,8 +78,8 @@ class ReservationCreateView(CreateView):
 
                 new_reservation = Reservation(
                     date=new_date,
-                    startTime=form.instance.startTime,
-                    endTime=form.instance.endTime,
+                    start_time=form.instance.start_time,
+                    end_time=form.instance.end_time,
                     justification=form.instance.justification,
                     class_school=form.instance.class_school,
                     periodicity=form.instance.periodicity,

@@ -19,8 +19,8 @@ class CreateReservationForm(ModelForm):
         model = Reservation
         fields = [
             "date",
-            "startTime",
-            "endTime",
+            "start_time",
+            "end_time",
             "justification",
             "class_school",
             "periodicity",
@@ -29,12 +29,12 @@ class CreateReservationForm(ModelForm):
         ]
         widgets = {
             "date": forms.DateInput(
-                attrs={"class": "form-control", "data-date-format": "dd/mm/yyyy"}
+                attrs={"class": "form-control", "type":"date", "data-date-format": "dd/mm/yyyy"}
             ),
-            "startTime": forms.TimeInput(
+            "start_time": forms.TimeInput(
                 attrs={"class": "form-control", "type": "time"}
             ),
-            "endTime": forms.TimeInput(attrs={"class": "form-control", "type": "time"}),
+            "end_time": forms.TimeInput(attrs={"class": "form-control", "type": "time"}),
             "class_school": forms.TextInput(attrs={"class": "form-control"}),
             "justification": forms.Textarea(attrs={"class": "form-control", "rows": 4}),
             "periodicity": forms.Select(attrs={"class": "form-control"}),
@@ -47,8 +47,8 @@ class UpdateReservationForm(ModelForm):
         model = Reservation
         fields = [
             "date",
-            "startTime",
-            "endTime",
+            "start_time",
+            "end_time",
             "class_school",
             "justification",
             "periodicity",
@@ -60,10 +60,10 @@ class UpdateReservationForm(ModelForm):
             "date": forms.DateInput(
                 attrs={"class": "form-control", "data-date-format": "dd/mm/yyyy"}
             ),
-            "startTime": forms.TimeInput(
+            "start_time": forms.TimeInput(
                 attrs={"class": "form-control", "type": "time"}
             ),
-            "endTime": forms.TimeInput(attrs={"class": "form-control", "type": "time"}),
+            "end_time": forms.TimeInput(attrs={"class": "form-control", "type": "time"}),
             "justification": forms.Textarea(attrs={"class": "form-control", "rows": 4}),
             "class_school": forms.TextInput(attrs={"class": "form-control"}),
             "periodicity": forms.Select(attrs={"class": "form-control"}),
@@ -86,8 +86,8 @@ class CoordinatorGrantsReservationForm(ModelForm):
         model = Reservation
         fields = [
             "date",
-            "startTime",
-            "endTime",
+            "start_time",
+            "end_time",
             "class_school",
             "justification",
             "periodicity",
@@ -99,10 +99,10 @@ class CoordinatorGrantsReservationForm(ModelForm):
             "date": forms.DateInput(
                 attrs={"class": "form-control", "data-date-format": "dd/mm/yyyy"}
             ),
-            "startTime": forms.TimeInput(
+            "start_time": forms.TimeInput(
                 attrs={"class": "form-control", "type": "time"}
             ),
-            "endTime": forms.TimeInput(attrs={"class": "form-control", "type": "time"}),
+            "end_time": forms.TimeInput(attrs={"class": "form-control", "type": "time"}),
             "justification": forms.Textarea(attrs={"class": "form-control", "rows": 4}),
             "class_school": forms.TextInput(attrs={"class": "form-control"}),
             "periodicity": forms.Select(attrs={"class": "form-control"}),

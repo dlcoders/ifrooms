@@ -65,8 +65,8 @@ class Command(BaseCommand):
 
             reservation = Reservation(
                 date=self.fake.date_this_decade(),
-                startTime=self.fake.time(),
-                endTime=self.fake.time(),
+                start_time=self.fake.time(),
+                end_time=self.fake.time(),
                 justification=self.fake.text(max_nb_chars=200),
                 periodicity=random.choice(Reservation.PERIODICITY_CHOICES)[0] if self.fake.boolean() else None,
                 annex=None,
