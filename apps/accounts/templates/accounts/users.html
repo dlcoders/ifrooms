@@ -1,0 +1,62 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Gerenciar Usuários{% endblock title %}
+
+{% block breadcrumb %}
+    <div>
+        <h1><i class="fa-solid fa-user" style="color: #198754"></i> Gerenciar Usuários</h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'accounts:user-list' %}">Gerenciar Usuários</a></li>
+        {% include 'partials/dropdown_user.html' %}
+    </ul>
+    
+{% endblock breadcrumb %}
+
+{% block content %}
+
+<div class="table-responsive">
+    <div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">#</th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 261.641px;">Nome</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 417.312px;">Matrícula</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Função</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">E-mail</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                                <tr role="row">
+                                    <td> <a href="{% url 'accounts:user-update' id=user.id %}"><i class="fas fa-search"></i></a></td>
+                                    <td>{{ user.name }}</td>
+                                    <td>{{ user.registration }}</td>
+                                    <td>{{ user.get_registration_type_display }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>
+                                        <a href="{% url 'accounts:user-delete' id=user.id %}">
+                                            <i class="fa-solid fa-trash" style="color:  #198754;"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                        {% endfor %} 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extrascripts %}
+    <script type="text/javascript" src="{% static 'js/plugins/jquery.dataTables.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/dataTables.bootstrap.min.js' %}"></script>
+    <script type="text/javascript">$('#sampleTable').DataTable();</script>
+{% endblock extrascripts %}

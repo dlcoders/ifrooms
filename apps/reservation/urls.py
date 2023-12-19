@@ -1,36 +1,40 @@
 from django.urls import path
-from .views import GrantsView, CoordinatorGrantReservationFormView, TeacherMakeReservationFormView, TeacherReservationFormView, TeacherBookingRoomView, TeacherMyReservationView
+from .views import (
+    CoordinatorGrantsReservationView,
+    ReservationCreateView,
+    ReservationDeleteView,
+    ReservationListView,
+    ReservationUpdateView,
+    TeacherReservationListView,
+)
 
-app_name = "reservation" 
+app_name = "reservation"
 
 urlpatterns = [
     path(
-        'coord-grants/',
-        GrantsView.as_view(),
-        name='coord-grants'
+        "reservation-create/<int:id>",
+        ReservationCreateView.as_view(),
+        name="reservation-create",
     ),
     path(
-        'coord-grant-reservation/',
-        CoordinatorGrantReservationFormView.as_view(),
-        name='coord-grant-reservation'
+        "teacher-reservation-list",
+        TeacherReservationListView.as_view(),
+        name="teacher-reservation-list",
     ),
-    path('teacher-make-reservation/',
-        TeacherMakeReservationFormView.as_view(),
-        name='teacher-make-reservation'
+    path("reservation-list", ReservationListView.as_view(), name="reservation-list"),
+    path(
+        "coordinator/reservation-grants/<int:id>",
+        CoordinatorGrantsReservationView.as_view(),
+        name="coordinator-reservation-feedback",
     ),
     path(
-        'teacher-my-reservation/',
-        TeacherReservationFormView.as_view(),
-        name='teacher-my-reservation'
+        "reservation-update/<int:id>",
+        ReservationUpdateView.as_view(),
+        name="reservation-update",
     ),
     path(
-        'teacher-booking-room/',
-        TeacherBookingRoomView.as_view(), 
-        name='teacher-booking-room'
-    ),
-    path(
-        'teacher-reservations/',
-        TeacherMyReservationView.as_view(),
-        name='teacher-reservations'
+        "reservation-delete/<int:id>",
+        ReservationDeleteView.as_view(),
+        name="reservation-delete",
     ),
 ]

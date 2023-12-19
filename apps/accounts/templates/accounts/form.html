@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Usuário {% endblock title %}
+
+{% block breadcrumb %}
+    <div>
+        <h1><i class="fa-solid fa-user" style="color: #198754"></i> Usuário</h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item"><a href="{% url 'accounts:user-list' %}">Gerenciar Usuários</a></li>
+        <li class="breadcrumb-item"><a href="#">Usuário</a></li>
+        {% include 'partials/dropdown_user.html' %}
+    </ul>
+    
+{% endblock breadcrumb %}
+
+{% block content %}
+<div class="row container">
+
+    <form class="col-md-6" method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a class="btn btn-secondary" href="{% url 'accounts:user-list' %}">Descartar</a>
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </form>
+</div>
+
+{% endblock %}
