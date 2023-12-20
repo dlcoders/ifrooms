@@ -42,8 +42,8 @@
                                         <a href="{% url 'reservation:coordinator-reservation-feedback' id=reservation.id %}"><i class="fas fa-search"></i></a>
                                     </td>
                                     <td>{{ reservation.date|date:"d/m/Y" }}</td>
-                                    <td>{{ reservation.startTime }}</td>
-                                    <td>{{ reservation.endTime }}</td>
+                                    <td>{{ reservation.start_time }}</td>
+                                    <td>{{ reservation.end_time }}</td>
                                     <td>{{ reservation.justification }}</td>
                                     <td>{% if reservation.periodicity %}
                                             {{ reservation.get_periodicity_display }}

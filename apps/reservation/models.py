@@ -3,7 +3,7 @@ from django.db import models
 from apps.accounts.models import User
 from apps.calendarapp.models import Event
 from apps.rooms.models import Room
-from datetime import datetime
+from datetime import datetime, time
 
 
 class Reservation(models.Model):
@@ -20,8 +20,8 @@ class Reservation(models.Model):
     ]
 
     date = models.DateField(verbose_name="Data:", blank=True, null=False)
-    startTime = models.TimeField(verbose_name="Horário de Início")
-    endTime = models.TimeField(verbose_name="Horário Final")
+    start_time = models.TimeField(verbose_name="Horário de Início")
+    end_time = models.TimeField(verbose_name="Horário Final")
     justification = models.TextField(
         verbose_name="Justificativa:",
         max_length=200,
@@ -63,7 +63,7 @@ class Reservation(models.Model):
     )
 
     def __str__(self):
-        return f"Reservation {self.id} - {self.justification} - {self.date} {self.startTime}-{self.endTime}"
+        return f"Reservation {self.id} - {self.justification} - {self.date} {self.start_time}-{self.end_time}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -72,18 +72,24 @@ class Reservation(models.Model):
 
         if event:
             event.title = self.justification
-            event.start = datetime.combine(self.date, self.startTime)
-            event.end = datetime.combine(self.date, self.endTime)
+            event.start = datetime.combine(self.date, self.convert_to_time(self.start_time))
+            event.end = datetime.combine(self.date, self.convert_to_time(self.end_time))
             event.status = self.status
             event.save()
         else:
             Event.objects.create(
                 user=self.id_user_teacher,
                 title=self.justification,
-                start=datetime.combine(self.date, self.startTime),
-                end=datetime.combine(self.date, self.endTime),
+                start=datetime.combine(self.date, self.convert_to_time(self.start_time)),
+                end=datetime.combine(self.date, self.convert_to_time(self.end_time)),
                 class_school=self.class_school,
                 id_reservation=self,
                 id_room=self.id_room,
                 status=self.status,
             )
+
+    def convert_to_time(self, input_time):
+        if isinstance(input_time, time):
+            return input_time
+
+        return datetime.strptime(str(input_time), "%H:%M:%S").time()

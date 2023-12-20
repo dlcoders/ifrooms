@@ -48,8 +48,8 @@
                                     <td>{{ reservation.id_room.get_department_display }}</td>
                                     <td>{{ reservation.justification }}</td>
                                     <td>{{ reservation.date|date:"d/m/Y" }}</td>
-                                    <td>{{ reservation.startTime }}</td>
-                                    <td>{{ reservation.endTime }}</td>
+                                    <td>{{ reservation.start_time }}</td>
+                                    <td>{{ reservation.end_time }}</td>
                                     <td>{{ reservation.status }}</td>
                                 </tr>
                         {% endfor %}
