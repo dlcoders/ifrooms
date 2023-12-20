@@ -95,21 +95,18 @@ DATABASES = {
     }
 }
 
-"""
 ##CONECTAR CON POSTGRES
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'proyectoHadaMadrina',
+        'NAME': 'ifrooms',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',
         'DATABASE_PORT': '5432',
-        
     }
 }
 
-"""
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
