@@ -36,7 +36,7 @@
                     <tbody>
                         {% for room in rooms %}
                                 <tr role="row" class="odd">
-                                    {% if room.get_available_display == "Sim" %}
+                                    {% if room.get_available_display == "Sim" and room.id_user_coordinator.all %}
                                         <td><a href="{% url 'reservation:reservation-create' id=room.id %}"><i class="fa-solid fa-building-circle-arrow-right"></i></a></td>
                                     {% else %}
                                     <td></td>
