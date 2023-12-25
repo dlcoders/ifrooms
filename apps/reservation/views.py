@@ -1,6 +1,6 @@
 from django.utils import timezone
 from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from dateutil.relativedelta import relativedelta
@@ -64,6 +64,23 @@ class ReservationCreateView(CreateView):
 
     def form_valid(self, form):
         room = self.get_context_data().get("room")
+        start_time = form.instance.start_time
+        end_time = form.instance.end_time
+        date = form.instance.date
+
+        existing_reservations = Reservation.objects.filter(
+            id_room=room,
+            date=date,
+            start_time__lt=end_time,
+            end_time__gt=start_time,
+        )
+
+        if existing_reservations.exists():
+            error_message = "Já existe uma reserva para este horário"
+            return render(
+                self.request, "reservations/form.html", {"error_message": error_message}
+            )
+
         form.instance.id_room = room
         form.instance.id_user_teacher = self.request.user
         form.instance.status = "Aguardando Resposta"
