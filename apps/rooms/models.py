@@ -4,10 +4,9 @@ from apps.accounts.models import User
 
 
 class Room(models.Model):
-    STATUS_DEPARTMENT = (
+    CHOICES_AVAILABLE = (
         ("yes", "Sim"),
         ("no", "Não"),
-        ("progress", "Em Andamento"),
     )
 
     CHOICES_DEPARTMENT = (
@@ -43,13 +42,15 @@ class Room(models.Model):
     available = models.CharField(
         max_length=25,
         verbose_name="Agendável",
-        choices=STATUS_DEPARTMENT,
+        choices=CHOICES_AVAILABLE,
     )
     id_user_coordinator = models.ManyToManyField(
         User,
         verbose_name="Avaliador de Agendamentos",
         related_name="coordinator_rooms",
         limit_choices_to={"registration_type": "coordinator"},
+        null=True,
+        blank=True
     )
 
     def __str__(self):
