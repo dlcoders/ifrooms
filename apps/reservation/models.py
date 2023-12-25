@@ -43,10 +43,10 @@ class Reservation(models.Model):
         verbose_name="Anexo:", upload_to="reservation_annex/", blank=True, null=True
     )
     message = models.CharField(
-        verbose_name="Mensagem:", max_length=150, blank=True, null=True
+        verbose_name="Mensagem ao Solicitante:", max_length=150, blank=True, null=True
     )
     reply = models.CharField(
-        verbose_name="Resposta:", max_length=150, blank=True, null=True
+        verbose_name="Mensagem ao Responsável:", max_length=150, blank=True, null=True
     )
     status = models.CharField(
         verbose_name="Status:",
