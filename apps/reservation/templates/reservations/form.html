@@ -22,7 +22,7 @@
             <div class="alert alert-danger">
                 {{ error_message }}
             </div>
-            <a class="btn btn-secondary" href="{% url 'room:reservation-room-list' %}">Voltar</a>
+            <button type="button" class="btn btn-secondary" onclick="goBack()">Voltar</button>
         {% else %}
             {% csrf_token %}
             {{ form.as_p }}
@@ -31,4 +31,11 @@
         {% endif %}
     </form>
 </div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
 {% endblock content %}
