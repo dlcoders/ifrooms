@@ -49,6 +49,8 @@ class Room(models.Model):
         verbose_name="Avaliador de Agendamentos",
         related_name="coordinator_rooms",
         limit_choices_to={"registration_type": "coordinator"},
+        null=True,
+        blank=True
     )
 
     def __str__(self):
